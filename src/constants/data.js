@@ -78,6 +78,7 @@ export const PROJECTS = [
             "Secure file upload system for assignments"
         ],
         tech: ["Spring Boot", "PostgreSQL", "React", "JWT", "Docker"],
+        image: "/projects/edusync.png",
         github: "https://github.com/alexpierce/edusync",
         demo: "https://edusync-demo.com"
     },
@@ -92,6 +93,7 @@ export const PROJECTS = [
             "Billing and insurance claim processing"
         ],
         tech: ["Node.js/NestJS", "MongoDB", "React", "Redis", "Swagger"],
+        image: "/projects/mediflow.png",
         github: "https://github.com/alexpierce/mediflow",
         demo: "https://mediflow-demo.com"
     },
@@ -106,6 +108,7 @@ export const PROJECTS = [
             "Multi-author workspace with approval workflows"
         ],
         tech: ["Next.js", "PostgreSQL", "Tailwind CSS", "OAuth2", "Prisma"],
+        image: "/projects/nexus.png",
         github: "https://github.com/alexpierce/nexus-cms",
         demo: "https://nexus-cms.com"
     },
@@ -120,6 +123,7 @@ export const PROJECTS = [
             "Security audit logging for all auth events"
         ],
         tech: ["Express", "Redis", "JWT", "Bcrypt", "Node.js"],
+        image: "/projects/securegate.png",
         github: "https://github.com/alexpierce/securegate",
         demo: null
     }

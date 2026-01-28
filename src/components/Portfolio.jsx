@@ -391,17 +391,29 @@ export const Projects = () => {
                             className="group h-full"
                         >
                             <div className="h-full flex flex-col bg-white dark:bg-slate-950 rounded-xl overflow-hidden border border-slate-200 dark:border-white/10 hover:border-indigo-500/30 transition-all duration-700 relative">
-                                <div className="p-6 md:p-7 flex-1 flex flex-col relative z-10">
-                                    <div className="flex justify-between items-start mb-10">
-                                        <div className="w-12 h-12 bg-slate-950 dark:bg-white/5 rounded-lg flex items-center justify-center text-indigo-500 shadow-3xl group-hover:scale-105 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-700 border border-white/5">
+                                {/* Project Image Box */}
+                                <div className="relative h-64 overflow-hidden group-hover:h-56 transition-all duration-700 ease-in-out">
+                                    <div className="absolute inset-0 bg-indigo-600/10 group-hover:bg-transparent transition-colors duration-700 z-10"></div>
+                                    <img
+                                        src={project.image}
+                                        alt={project.name}
+                                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
+                                    />
+                                    {/* Project Logo Overlay */}
+                                    <div className="absolute bottom-6 left-6 z-20">
+                                        <div className="w-14 h-14 bg-slate-950 dark:bg-white rounded-xl flex items-center justify-center text-white dark:text-slate-950 shadow-3xl group-hover:bg-indigo-600 group-hover:text-white transition-all duration-700 border border-white/5">
                                             {idx === 0 ? <GraduationCap size={28} strokeWidth={1} /> : idx === 1 ? <ShieldCheck size={28} strokeWidth={1} /> : idx === 2 ? <FileText size={28} strokeWidth={1} /> : <Terminal size={28} strokeWidth={1} />}
-                                        </div>
-                                        <div className="flex gap-4">
-                                            <a href={project.github} className="w-12 h-12 bg-slate-50 dark:bg-white/5 text-slate-400 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 rounded-xl transition-all border border-slate-100 dark:border-white/5 flex items-center justify-center"><Github size={18} /></a>
-                                            {project.demo && <a href={project.demo} className="px-6 h-12 bg-slate-950 dark:bg-white text-white dark:text-slate-950 hover:bg-indigo-600 dark:hover:bg-indigo-500 hover:text-white text-[9px] font-black uppercase tracking-[0.2em] rounded-xl transition-all shadow-2xl flex items-center justify-center">Live Node</a>}
                                         </div>
                                     </div>
 
+                                    {/* Action Buttons Overlay */}
+                                    <div className="absolute top-6 right-6 z-20 flex gap-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700">
+                                        <a href={project.github} className="w-12 h-12 bg-white/10 backdrop-blur-md text-white hover:bg-white hover:text-slate-950 rounded-xl transition-all border border-white/10 flex items-center justify-center"><Github size={18} /></a>
+                                        {project.demo && <a href={project.demo} className="px-6 h-12 bg-indigo-600 text-white hover:bg-white hover:text-slate-950 text-[9px] font-black uppercase tracking-[0.2em] rounded-xl transition-all shadow-2xl flex items-center justify-center">Live Node</a>}
+                                    </div>
+                                </div>
+
+                                <div className="p-6 md:p-7 flex-1 flex flex-col relative z-10">
                                     <h3 className="text-xl md:text-2xl font-display font-black text-slate-950 dark:text-white mb-4 tracking-[-0.03em] uppercase leading-none">{project.name}</h3>
 
                                     <div className="mb-8">
