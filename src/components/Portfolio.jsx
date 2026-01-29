@@ -33,11 +33,11 @@ export const Navbar = () => {
     }, []);
 
     const navLinks = [
-        { name: 'Core', href: '#about' },
-        { name: 'Arsenal', href: '#skills' },
-        { name: 'Systems', href: '#projects' },
-        { name: 'History', href: '#experience' },
-        { name: 'Direct', href: '#contact' },
+        { name: 'About', href: '#about' },
+        { name: 'Skills', href: '#skills' },
+        { name: 'Projects', href: '#projects' },
+        { name: 'Experience', href: '#experience' },
+        { name: 'Contact', href: '#contact' },
     ];
 
     return (
@@ -78,7 +78,7 @@ export const Navbar = () => {
                                 href="/cv.pdf"
                                 className="px-8 py-3.5 hidden lg:flex items-center space-x-3 bg-slate-950 dark:bg-white dark:text-slate-950 text-white text-[9px] font-black uppercase tracking-[0.3em] rounded-xl hover:bg-indigo-600 dark:hover:bg-indigo-500 hover:text-white transition-all shadow-2xl active:scale-95 border border-white/10"
                             >
-                                <span>Protocol: Resume</span>
+                                <span>View Resume</span>
                             </a>
                         </div>
                     </div>
@@ -114,7 +114,7 @@ export const Navbar = () => {
                                 </a>
                             ))}
                             <div className="pt-4 border-t border-slate-100 dark:border-white/5">
-                                <a href="/cv.pdf" className="w-full py-5 bg-slate-950 dark:bg-white dark:text-slate-950 text-white text-center rounded-2xl font-black uppercase tracking-[0.3em] text-[9px] shadow-2xl block">Initialize Resume Download</a>
+                                <a href="/cv.pdf" className="w-full py-5 bg-slate-950 dark:bg-white dark:text-slate-950 text-white text-center rounded-2xl font-black uppercase tracking-[0.3em] text-[10px] shadow-2xl block">View Resume</a>
                             </div>
                         </div>
                     </motion.div>
@@ -146,7 +146,7 @@ export const Hero = () => {
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-600"></span>
                             </span>
-                            Active Node: Lead Architect
+                            Available for Projects
                         </div>
 
                         <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-black text-slate-950 dark:text-white leading-[0.9] tracking-[-0.04em] uppercase mb-10 text-balance">
@@ -166,7 +166,7 @@ export const Hero = () => {
                                 href="#projects"
                                 className="magnetic-button px-10 py-5 bg-slate-950 dark:bg-white text-white dark:text-slate-950 text-[10px] font-black uppercase tracking-[0.4em] rounded-xl shadow-2xl hover:bg-indigo-600 dark:hover:bg-indigo-500 hover:text-white transition-all min-w-[240px] text-center"
                             >
-                                Explorer Systems
+                                View Projects
                             </motion.a>
                             <motion.a
                                 whileHover={{ scale: 1.02, y: -2 }}
@@ -174,7 +174,7 @@ export const Hero = () => {
                                 href="#contact"
                                 className="magnetic-button px-10 py-5 bg-transparent text-slate-950 dark:text-slate-400 text-[10px] font-black uppercase tracking-[0.4em] border border-slate-200 dark:border-white/10 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-all min-w-[240px] text-center"
                             >
-                                Direct Dialogue
+                                Contact Me
                             </motion.a>
                         </div>
                     </motion.div>
@@ -210,7 +210,7 @@ export const Hero = () => {
                 className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center"
             >
                 <div className="w-px h-20 bg-gradient-to-b from-indigo-500 to-transparent"></div>
-                <span className="text-[8px] font-black text-slate-400 uppercase tracking-[0.6em] mt-6">Scroll to Traverse</span>
+                <span className="text-[8px] font-black text-slate-400 uppercase tracking-[0.6em] mt-6">Scroll to Discover</span>
             </motion.div>
         </section>
     );
@@ -219,76 +219,83 @@ export const Hero = () => {
 // --- About Component ---
 export const About = () => {
     return (
-        <section id="about" className="py-16 md:py-20 bg-white dark:bg-slate-950 relative overflow-hidden transition-colors duration-1000">
+        <section id="about" className="py-16 md:py-24 bg-white dark:bg-slate-950 relative overflow-hidden transition-colors duration-1000">
             <div className="container mx-auto px-6 max-w-7xl">
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-stretch">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
                     {/* Visual Card Column */}
-                    <div className="relative">
+                    <div className="flex flex-col space-y-12">
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                            className="relative group h-full"
+                            className="relative group w-full"
                         >
                             <div className="absolute -inset-4 bg-slate-50 dark:bg-white/5 rounded-[2rem] rotate-1 transition-transform group-hover:rotate-0 duration-1000"></div>
-                            <div className="relative h-full bg-slate-950 rounded-2xl flex flex-col items-center justify-center text-indigo-500 p-8 lg:p-10 overflow-hidden shadow-3xl border border-white/5 min-h-[450px]">
-                                <Terminal size={300} strokeWidth={0.2} className="mb-8 opacity-[0.03] absolute -top-10 -right-10 rotate-12" />
-                                <Code2 size={100} strokeWidth={0.8} className="relative z-10 group-hover:scale-105 transition-transform duration-1000 text-white dark:text-indigo-400 mb-12" />
-                                <div className="text-center relative z-10 w-full mt-auto">
-                                    <div className="flex justify-center mb-6">
+                            <div className="relative aspect-[4/3] bg-slate-950 rounded-2xl flex flex-col items-center justify-center text-indigo-500 p-8 overflow-hidden shadow-3xl border border-white/5">
+                                <Terminal size={200} strokeWidth={0.2} className="mb-8 opacity-[0.03] absolute -top-10 -right-10 rotate-12" />
+                                <Code2 size={80} strokeWidth={0.8} className="relative z-10 group-hover:scale-105 transition-transform duration-1000 text-white dark:text-indigo-400" />
+                                <div className="text-center relative z-10 w-full mt-8">
+                                    <div className="flex justify-center mb-4">
                                         <div className="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white border-2 border-white dark:border-slate-950 shadow-xl">
                                             <ShieldCheck size={18} />
                                         </div>
                                     </div>
-                                    <p className="text-[10px] font-black tracking-[0.6em] uppercase text-indigo-500/50 mb-4 px-4 border-b border-indigo-500/20 pb-4 inline-block">Architecture Protocol</p>
-                                    <h4 className="text-3xl font-display font-black text-white uppercase tracking-[-0.02em] leading-none mb-2">Systems First</h4>
-                                    <p className="text-[10px] font-mono text-white/30 tracking-widest uppercase">Kernel Node: 0x1A4F</p>
+                                    <p className="text-[9px] font-black tracking-[0.6em] uppercase text-indigo-500/50 mb-4 px-4 border-b border-indigo-500/20 pb-4 inline-block">Architecture Protocol</p>
+                                    <h4 className="text-2xl font-display font-black text-white uppercase tracking-[-0.02em] leading-none mb-2">Systems First</h4>
+                                    <p className="text-[9px] font-mono text-white/30 tracking-widest uppercase">Kernel Node: 0x1A4F</p>
                                 </div>
                             </div>
                         </motion.div>
-                    </div>
 
-                    {/* Content Column */}
-                    <div className="flex flex-col">
                         <motion.div
-                            initial={{ opacity: 0, x: 30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="h-full flex flex-col"
+                            className="max-w-xl"
                         >
-                            <div className="inline-block px-5 py-2.5 bg-slate-50 dark:bg-white/5 text-indigo-600 dark:text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] rounded-lg mb-8 border border-slate-200 dark:border-white/10 self-start">
-                                Engineering Ethos
+                            <div className="inline-block px-4 py-2 bg-slate-50 dark:bg-white/5 text-indigo-600 dark:text-indigo-400 text-[9px] font-black uppercase tracking-[0.4em] rounded-lg mb-6 border border-slate-200 dark:border-white/10">
+                                Philosophy
                             </div>
 
-                            <h2 className="text-3xl md:text-4xl font-display font-black text-slate-950 dark:text-white mb-6 leading-[0.9] tracking-[-0.04em] uppercase">
-                                Designing <br />
-                                <span className="text-indigo-600 dark:text-indigo-500 italic">Invisible</span> <br />
-                                Infrastructure<span className="text-slate-200 dark:text-white/20">.</span>
+                            <h2 className="text-2xl md:text-3xl font-display font-black text-slate-950 dark:text-white mb-6 uppercase tracking-tight leading-tight">
+                                Building <br />
+                                <span className="text-indigo-600 dark:text-indigo-500 italic">Scalable</span> <br />
+                                Systems.
                             </h2>
 
-                            <p className="text-base text-slate-500 dark:text-slate-400 leading-relaxed mb-8 font-medium tracking-tight">
-                                I build the resilient backbones that power high-availability digital ecosystems. My approach prioritizes <span className="text-slate-950 dark:text-white font-black underline decoration-indigo-500/30 dark:decoration-indigo-500/20 decoration-8 underline-offset-4 underline">architectural purity</span> over temporary convenience.
+                            <p className="text-sm md:text-base text-slate-500 dark:text-slate-400 leading-relaxed font-medium tracking-tight">
+                                I specialize in building resilient digital foundations. My approach priorities clean architectural design, ensuring that every system I build is both performant and ultra-scalable for long-term growth.
                             </p>
-
-                            <div className="grid sm:grid-cols-2 gap-4 mt-auto">
-                                {[
-                                    { title: "Distributed Scaling", desc: "Crafting stateless systems for massive horizontal expansion.", icon: <ExternalLink size={16} /> },
-                                    { title: "Hardened Security", desc: "Zero-trust integration and military-grade encryption.", icon: <ShieldCheck size={16} /> },
-                                    { title: "Metric Optimization", desc: "Microsecond performance via low-level query refinement.", icon: <Terminal size={16} /> },
-                                    { title: "Continuous Flow", desc: "Automated pipelines ensuring zero-downtime deployment.", icon: <Code2 size={16} /> }
-                                ].map((item, i) => (
-                                    <div key={i} className="group p-5 rounded-xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-white/10 hover:border-indigo-500/30 transition-all duration-700 relative overflow-hidden">
-                                        <div className="w-8 h-8 bg-slate-50 dark:bg-white/5 rounded-lg flex items-center justify-center text-slate-400 dark:text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 group-hover:scale-110 transition-all mb-3 border border-slate-100 dark:border-white/5">
-                                            {item.icon}
-                                        </div>
-                                        <h4 className="font-display font-black text-sm text-slate-950 dark:text-white mb-2 uppercase tracking-tight">{item.title}</h4>
-                                        <p className="text-[10px] text-slate-500 dark:text-slate-400 font-medium leading-relaxed tracking-tight">{item.desc}</p>
-                                    </div>
-                                ))}
-                            </div>
                         </motion.div>
+                    </div>
+
+                    {/* Content Column - Features */}
+                    <div className="h-full">
+                        <div className="grid sm:grid-cols-2 gap-4 h-full">
+                            {[
+                                { title: "Distributed Scaling", desc: "Crafting stateless systems for massive horizontal expansion.", icon: <ExternalLink size={16} /> },
+                                { title: "Hardened Security", desc: "Zero-trust integration and encryption standards.", icon: <ShieldCheck size={16} /> },
+                                { title: "Performance Tuning", desc: "Optimizing for microsecond response times.", icon: <Terminal size={16} /> },
+                                { title: "Reliability First", desc: "Automated pipelines ensuring maximum uptime.", icon: <Code2 size={16} /> }
+                            ].map((item, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5, delay: 0.1 * i }}
+                                    className="group p-6 rounded-2xl bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-white/5 hover:border-indigo-500/30 transition-all duration-700 h-full flex flex-col items-start"
+                                >
+                                    <div className="w-10 h-10 bg-slate-50 dark:bg-white/5 rounded-xl flex items-center justify-center text-slate-400 dark:text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-all mb-4 border border-slate-100 dark:border-white/5">
+                                        {item.icon}
+                                    </div>
+                                    <h4 className="font-display font-black text-sm text-slate-950 dark:text-white mb-3 uppercase tracking-tight">{item.title}</h4>
+                                    <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium leading-relaxed tracking-tight">{item.desc}</p>
+                                </motion.div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -315,7 +322,7 @@ export const Skills = () => {
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
                     <div className="max-w-3xl">
                         <div className="inline-block px-5 py-2.5 bg-white dark:bg-white/5 text-indigo-600 dark:text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] rounded-lg mb-10 border border-slate-200 dark:border-white/10 shadow-sm">
-                            Technical Arsenal
+                            Technical Skills
                         </div>
                         <h2 className="text-3xl md:text-4xl font-display font-black text-slate-950 dark:text-white uppercase tracking-[-0.04em] leading-[0.9]">
                             Core Competen<span className="text-indigo-600 dark:text-indigo-500">cies.</span>
@@ -372,10 +379,10 @@ export const Projects = () => {
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
                     <div className="max-w-4xl">
                         <div className="inline-block px-5 py-2.5 bg-slate-50 dark:bg-white/5 text-indigo-600 dark:text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] rounded-lg mb-10 border border-slate-200 dark:border-white/10 shadow-sm">
-                            Deployment Archive
+                            Portfolio
                         </div>
                         <h2 className="text-3xl md:text-4xl font-display font-black text-slate-950 dark:text-white mb-6 uppercase tracking-[-0.04em] leading-[0.9]">
-                            Production <br /> Systems<span className="text-indigo-600 dark:text-indigo-500">.</span>
+                            My Projects<span className="text-indigo-600 dark:text-indigo-500">.</span>
                         </h2>
                     </div>
                 </div>
@@ -417,12 +424,12 @@ export const Projects = () => {
                                     <h3 className="text-xl md:text-2xl font-display font-black text-slate-950 dark:text-white mb-4 tracking-[-0.03em] uppercase leading-none">{project.name}</h3>
 
                                     <div className="mb-8">
-                                        <p className="text-[9px] font-black text-indigo-500 dark:text-indigo-400 uppercase tracking-[0.5em] mb-4">Technical Objective</p>
+                                        <p className="text-[9px] font-black text-indigo-500 dark:text-indigo-400 uppercase tracking-[0.5em] mb-4">Goal</p>
                                         <p className="text-base text-slate-500 dark:text-slate-400 font-medium leading-relaxed tracking-tight italic border-l-2 border-indigo-500/20 pl-6">{project.problem}</p>
                                     </div>
 
                                     <div className="mb-8">
-                                        <p className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.5em] mb-4">Systems Architecture</p>
+                                        <p className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.5em] mb-4">Features</p>
                                         <ul className="space-y-4">
                                             {project.features.map((f, i) => (
                                                 <li key={i} className="flex items-center text-slate-600 dark:text-slate-400 font-bold group/item">
@@ -462,7 +469,7 @@ export const ExperienceEducation = () => {
                     {/* Experience */}
                     <div>
                         <div className="inline-block px-5 py-2.5 bg-white/5 text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] rounded-lg mb-10 border border-white/10">
-                            Career Trajectory
+                            My Experience
                         </div>
                         <h2 className="text-3xl md:text-4xl font-display font-black text-white mb-10 uppercase tracking-[-0.04em] leading-none">
                             Experi<span className="text-indigo-500">ence.</span>
@@ -497,7 +504,7 @@ export const ExperienceEducation = () => {
                     <div className="space-y-20">
                         <div>
                             <div className="inline-block px-5 py-2.5 bg-white/5 text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] rounded-lg mb-10 border border-white/10">
-                                Academic Foundation
+                                Academic History
                             </div>
                             <h2 className="text-3xl md:text-4xl font-display font-black text-white mb-10 uppercase tracking-[-0.04em] leading-none">Education<span className="text-indigo-500">.</span></h2>
 
@@ -555,11 +562,10 @@ export const Contact = () => {
                     <div className="grid lg:grid-cols-12 gap-12 lg:gap-24 items-stretch relative z-10">
                         <div className="lg:col-span-12 xl:col-span-7">
                             <div className="inline-block px-5 py-2.5 bg-indigo-600 text-white text-[9px] font-black uppercase tracking-[0.4em] rounded-lg mb-12">
-                                Communication Channel
+                                Send a Message
                             </div>
                             <h2 className="text-3xl md:text-4xl font-display font-black text-white mb-8 leading-[0.9] tracking-[-0.04em] uppercase">
-                                Initiate <br />
-                                Direct <span className="text-indigo-500 italic">Dialogue</span><span className="text-white/20">.</span>
+                                Get in <span className="text-indigo-500 italic">Touch</span><span className="text-white/20">.</span>
                             </h2>
                             <p className="text-xl text-slate-400 mb-16 font-medium leading-relaxed max-w-2xl tracking-tight">
                                 I am currently reviewing high-impact architectural opportunities. Let's discuss how my systems philosophy can strengthen your infrastructure.
@@ -571,7 +577,7 @@ export const Contact = () => {
                                         <Mail size={22} />
                                     </div>
                                     <div className="relative z-10">
-                                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-[0.5em] mb-2 leading-none">Primary SMTP</p>
+                                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-[0.5em] mb-2 leading-none">Email</p>
                                         <p className="text-lg font-display font-black text-white group-hover:text-indigo-400 transition-colors tracking-tighter uppercase leading-none truncate">{PROFILE.email}</p>
                                     </div>
                                 </a>
@@ -629,7 +635,7 @@ export const Footer = () => {
         { name: 'Arsenal', href: '#skills' },
         { name: 'Systems', href: '#projects' },
         { name: 'History', href: '#experience' },
-        { name: 'Terminal', href: '#contact' },
+        { name: 'Contact', href: '#contact' },
     ];
 
     const socialLinks = [
@@ -704,7 +710,7 @@ export const Footer = () => {
                         {/* Social Protocols */}
                         <div className="space-y-6">
                             <h4 className="text-[10px] font-black text-slate-950 dark:text-white uppercase tracking-[0.4em] mb-8 border-b border-indigo-500/20 pb-4 inline-block">
-                                Protocols
+                                Socials
                             </h4>
                             <ul className="space-y-4">
                                 {socialLinks.map((social) => (
@@ -730,7 +736,7 @@ export const Footer = () => {
                         {/* Direct Line */}
                         <div className="col-span-2 md:col-span-1 space-y-6">
                             <h4 className="text-[10px] font-black text-slate-950 dark:text-white uppercase tracking-[0.4em] mb-8 border-b border-indigo-500/20 pb-4 inline-block">
-                                Transmission
+                                Contact
                             </h4>
                             <div className="bg-slate-50 dark:bg-white/5 p-6 rounded-2xl border border-slate-200 dark:border-white/10 space-y-4">
                                 <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2 leading-none">Primary Interface</p>
