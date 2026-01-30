@@ -555,41 +555,39 @@ export const Contact = () => {
     return (
         <section id="contact" className="py-24 bg-white dark:bg-slate-950 relative overflow-hidden transition-colors duration-1000">
             <div className="container mx-auto px-6 max-w-7xl relative z-10">
-                <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-                    <div className="grid md:grid-cols-3 gap-12 w-full">
-                        <motion.a
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: 0.1 }}
-                            href={`mailto:${PROFILE.email}`}
-                            className="group p-10 bg-slate-50 dark:bg-white/5 rounded-[2rem] border border-slate-200 dark:border-white/10 hover:border-indigo-500/30 transition-all duration-500 relative flex flex-col items-center justify-center min-h-[140px]"
-                        >
-                            <span className="text-sm font-black text-slate-950 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors uppercase tracking-[0.5em] relative z-10">Email</span>
-                        </motion.a>
+                <div className="flex flex-wrap items-center justify-center gap-x-12 md:gap-x-24 gap-y-8">
+                    <motion.a
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1 }}
+                        href={`mailto:${PROFILE.email}`}
+                        className="text-[11px] font-black text-slate-950 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-500 uppercase tracking-[0.6em] transition-all duration-500"
+                    >
+                        Email
+                    </motion.a>
 
-                        <motion.a
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            href={PROFILE.github}
-                            className="group p-10 bg-slate-50 dark:bg-white/5 rounded-[2rem] border border-slate-200 dark:border-white/10 hover:border-indigo-500/30 transition-all duration-500 relative flex flex-col items-center justify-center min-h-[140px]"
-                        >
-                            <span className="text-sm font-black text-slate-950 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors uppercase tracking-[0.5em] relative z-10">Github</span>
-                        </motion.a>
+                    <motion.a
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, delay: 0.1 }}
+                        href={PROFILE.github}
+                        className="text-[11px] font-black text-slate-950 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-500 uppercase tracking-[0.6em] transition-all duration-500"
+                    >
+                        Github
+                    </motion.a>
 
-                        <motion.a
-                            initial={{ opacity: 0, y: 10 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: 0.3 }}
-                            href={PROFILE.linkedin}
-                            className="group p-10 bg-slate-50 dark:bg-white/5 rounded-[2rem] border border-slate-200 dark:border-white/10 hover:border-indigo-500/30 transition-all duration-500 relative flex flex-col items-center justify-center min-h-[140px]"
-                        >
-                            <span className="text-sm font-black text-slate-950 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors uppercase tracking-[0.5em] relative z-10">Linkedin</span>
-                        </motion.a>
-                    </div>
+                    <motion.a
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, delay: 0.2 }}
+                        href={PROFILE.linkedin}
+                        className="text-[11px] font-black text-slate-950 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-500 uppercase tracking-[0.6em] transition-all duration-500"
+                    >
+                        Linkedin
+                    </motion.a>
                 </div>
             </div>
         </section>
