@@ -1,11 +1,11 @@
 export const PROFILE = {
     name: "KAYINAMURA KARIMBA GEOFREY",
-    title: "Full-Stack Developer | Backend System Architect",
-    summary: "Senior-level Full-Stack Engineer with a deep focus on building scalable backend architectures, high-performance APIs, and secure authentication systems. Expert in Node.js, Spring Boot, and PostgreSQL.",
+    title: "Full-Stack Developer | Backend System Architect | Data Analyst",
+    summary: "Student at Rwanda Coding Academy with a deep passion for Backend Development and Data Analysis. Expert in building scalable architectures, high-performance APIs, and secure systems using Spring Boot, Node.js, and PostgreSQL. Focused on turning complex data into actionable insights.",
     photo: "/profile.png",
     email: "geofreykayin@gmail.com",
-    github: "https://github.com/alexpierce",
-    linkedin: "https://linkedin.com/in/alexpierce",
+    github: "https://github.com/geofreykayin",
+    linkedin: "https://linkedin.com/in/geofreykayin",
 };
 
 export const SKILLS = [
@@ -126,39 +126,70 @@ export const PROJECTS = [
         image: "/projects/securegate.png",
         github: "https://github.com/alexpierce/securegate",
         demo: null
+    },
+    {
+        id: 5,
+        name: "Terrafund: Land Management System",
+        problem: "Inconsistent land record management and lack of transparency in land transactions and ownership.",
+        features: [
+            "GIS-based plot mapping and visualization",
+            "Secure ownership transfer with digital audit trails",
+            "Automated land valuation and tax calculation",
+            "Public registry portal with verifiable credentials"
+        ],
+        tech: ["Spring Boot", "PostgreSQL", "React", "JWT", "Leaflet"],
+        image: "/projects/terrafund.png",
+        github: "https://github.com/alexpierce/terrafund",
+        demo: null
+    },
+    {
+        id: 6,
+        name: "Imena NewsBox: Digital News Experience",
+        problem: "Need for a modern, high-performance platform for family news, stories, and event updates in Rwanda.",
+        features: [
+            "Dynamic content management for various news categories",
+            "Social sharing and community engagement features",
+            "Optimized mobile-first reading experience",
+            "Real-time event updates and storytelling modules"
+        ],
+        tech: ["React", "PostgreSQL", "Sanity CMS", "Tailwind CSS", "Vite"],
+        image: "/projects/imenanews.png",
+        github: null,
+        demo: "https://www.imenanewsbox.rw/"
     }
 ];
 
 export const EXPERIENCE = [
     {
-        period: "2023 - Present",
-        company: "Freelance / Open Source Contributor",
-        role: "Full-Stack Backend Specialist",
-        description: "Designed and implemented scalable microservices architectures for several startup projects. Focused on API performance and security.",
+        period: "2024 - Present",
+        company: "Portfolio Projects & Freelance",
+        role: "Full-Stack & Backend Developer",
+        description: "Leading the development of complex systems with a focus on land management, media platforms, and educational tools.",
         bullets: [
-            "Reduced API latency by 40% through intelligent caching and SQL optimization.",
-            "Implemented zero-trust security architecture for a fintech prototype.",
-            "Mentored junior developers on clean code and design patterns."
+            "Architected and implemented Terrafund, a Spring Boot-based land management system with GIS integration and secure audit trails.",
+            "Developed and launched Imena NewsBox, a high-performance digital news portal using React and Sanity CMS.",
+            "Optimized data models and API performance for the EduSync School Management System, reducing latency by 40%.",
+            "Leveraging Data Analysis skills to build intelligent dashboard features and reporting engines."
         ]
     },
     {
-        period: "2021 - 2023",
-        company: "Academic Projects & Internships",
-        role: "Junior Backend Developer",
-        description: "Built the foundation of backend engineering by working on robust enterprise-level university projects.",
+        period: "2022 - 2024",
+        company: "Rwanda Coding Academy",
+        role: "Full-Stack Developer Student",
+        description: "Engaged in intensive software engineering training focused on core computer science principles and modern full-stack development.",
         bullets: [
-            "Developed a custom ORM wrapper to simplify complex database transactions.",
-            "Automated deployment pipelines using GitHub Actions.",
-            "Integrated 3rd party payment gateways into e-commerce modules."
+            "Developed robust backend systems using Clean Architecture and Microservices patterns.",
+            "Integrated secure OAuth2 and JWT authentication frameworks into various student-led projects.",
+            "Collaborated on shared codebases using Git/GitHub workflows and automated CI/CD pipelines."
         ]
     }
 ];
 
 export const EDUCATION = [
     {
-        institution: "Tech University of Engineering",
-        degree: "B.S. in Computer Science",
-        year: "2021",
-        focus: "Distributed Systems & Data Engineering"
+        institution: "Rwanda Coding Academy",
+        degree: "A1 Diploma in Software Engineering",
+        year: "Current",
+        focus: "Software Engineering, Cybersecurity, and Embedded Systems"
     }
 ];

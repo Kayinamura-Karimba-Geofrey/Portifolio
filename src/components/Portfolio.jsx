@@ -553,73 +553,89 @@ export const ExperienceEducation = () => {
 // --- Contact Component ---
 export const Contact = () => {
     return (
-        <section id="contact" className="py-20 md:py-24 bg-white dark:bg-slate-950 relative overflow-hidden transition-colors duration-1000">
-            <div className="container mx-auto px-6 max-w-7xl">
-                <div className="relative overflow-hidden bg-slate-950 rounded-2xl p-8 md:p-14 shadow-3xl border border-white/5">
-                    {/* Atmospheric Glow */}
-                    <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-indigo-500/10 rounded-full blur-[150px] -translate-y-1/2 translate-x-1/2"></div>
-
-                    <div className="grid lg:grid-cols-12 gap-12 lg:gap-24 items-stretch relative z-10">
-                        <div className="lg:col-span-12 xl:col-span-7">
-                            <div className="inline-block px-5 py-2.5 bg-indigo-600 text-white text-[9px] font-black uppercase tracking-[0.4em] rounded-lg mb-12">
-                                Send a Message
-                            </div>
-                            <h2 className="text-3xl md:text-4xl font-display font-black text-white mb-8 leading-[0.9] tracking-[-0.04em] uppercase">
-                                Get in <span className="text-indigo-500 italic">Touch</span><span className="text-white/20">.</span>
-                            </h2>
-                            <p className="text-xl text-slate-400 mb-16 font-medium leading-relaxed max-w-2xl tracking-tight">
-                                I am currently reviewing high-impact architectural opportunities. Let's discuss how my systems philosophy can strengthen your infrastructure.
-                            </p>
-
-                            <div className="grid sm:grid-cols-2 gap-6 max-w-2xl">
-                                <a href={`mailto:${PROFILE.email}`} className="flex items-center p-8 bg-white/5 hover:bg-white/10 rounded-xl border border-white/5 hover:border-indigo-500/40 transition-all group overflow-hidden relative">
-                                    <div className="w-12 h-12 rounded-lg bg-indigo-600 flex items-center justify-center text-white mr-8 shadow-2xl group-hover:scale-105 transition-transform relative z-10">
-                                        <Mail size={22} />
-                                    </div>
-                                    <div className="relative z-10">
-                                        <p className="text-[8px] font-black text-slate-500 uppercase tracking-[0.5em] mb-2 leading-none">Email</p>
-                                        <p className="text-lg font-display font-black text-white group-hover:text-indigo-400 transition-colors tracking-tighter uppercase leading-none truncate">{PROFILE.email}</p>
-                                    </div>
-                                </a>
-                            </div>
+        <section id="contact" className="py-24 bg-white dark:bg-slate-950 relative overflow-hidden transition-colors duration-1000">
+            <div className="container mx-auto px-6 max-w-7xl relative z-10">
+                <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                        <div className="inline-block px-5 py-2.5 bg-slate-50 dark:bg-white/5 text-indigo-600 dark:text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] rounded-lg mb-10 border border-slate-200 dark:border-white/10 shadow-sm">
+                            Communication Protocol
                         </div>
+                    </motion.div>
 
-                        <div className="lg:col-span-12 xl:col-span-5 h-full">
-                            <div className="h-full bg-white/5 p-8 md:p-10 rounded-2xl border border-white/10 relative group overflow-hidden flex flex-col">
-                                <div className="flex justify-between items-center mb-12">
-                                    <div className="flex space-x-1.5 grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-1000">
-                                        <div className="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
-                                        <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
-                                        <div className="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
-                                    </div>
-                                    <div className="text-[8px] font-mono text-white/20 tracking-[0.6em] uppercase">HANDSHAKE_PROTO</div>
-                                </div>
-
-                                <div className="space-y-8">
-                                    <div className="grid grid-cols-2 gap-4">
-                                        <a href={PROFILE.github} className="group/btn flex flex-col items-center p-6 bg-slate-950 rounded-xl border border-white/5 hover:border-white/10 transition-all hover:-translate-y-1">
-                                            <div className="w-10 h-10 rounded-lg bg-white text-slate-950 flex items-center justify-center mb-4 group-hover/btn:bg-indigo-600 group-hover/btn:text-white transition-all">
-                                                <Github size={20} />
-                                            </div>
-                                            <span className="text-[8px] font-black text-white/40 uppercase tracking-[0.3em] group-hover/btn:text-white transition-colors">Repos</span>
-                                        </a>
-                                        <a href={PROFILE.linkedin} className="group/btn flex flex-col items-center p-6 bg-slate-950 rounded-xl border border-white/5 hover:border-white/10 transition-all hover:-translate-y-1">
-                                            <div className="w-10 h-10 rounded-lg bg-white text-slate-950 flex items-center justify-center mb-4 group-hover/btn:bg-indigo-600 group-hover/btn:text-white transition-all">
-                                                <Linkedin size={20} />
-                                            </div>
-                                            <span className="text-[8px] font-black text-white/40 uppercase tracking-[0.3em] group-hover/btn:text-white transition-colors">Network</span>
-                                        </a>
-                                    </div>
-
-                                    <div className="p-6 bg-indigo-500/5 rounded-xl border border-indigo-500/10 text-center">
-                                        <p className="text-[8px] font-black text-indigo-500 flex items-center justify-center uppercase tracking-[0.5em] leading-none">
-                                            <ShieldCheck size={14} className="mr-4" /> Secure Pipeline Verified
-                                        </p>
-                                    </div>
-                                </div>
+                    <div className="grid md:grid-cols-3 gap-6 w-full mb-16">
+                        <motion.a
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.1 }}
+                            href={`mailto:${PROFILE.email}`}
+                            className="group p-8 bg-slate-50 dark:bg-white/5 rounded-3xl border border-slate-200 dark:border-white/10 hover:border-indigo-500/30 transition-all duration-500 relative overflow-hidden flex flex-col items-center"
+                        >
+                            <div className="w-16 h-16 rounded-2xl bg-slate-950 dark:bg-indigo-600 flex items-center justify-center text-white mb-8 shadow-3xl group-hover:scale-110 transition-all relative z-10">
+                                <Mail size={24} />
                             </div>
-                        </div>
+                            <div className="relative z-10">
+                                <p className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.5em] mb-3 leading-none">Primary Link</p>
+                                <p className="text-lg font-display font-black text-slate-950 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors uppercase truncate">{PROFILE.email}</p>
+                            </div>
+                        </motion.a>
+
+                        <motion.a
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.2 }}
+                            href={PROFILE.github}
+                            className="group p-8 bg-slate-50 dark:bg-white/5 rounded-3xl border border-slate-200 dark:border-white/10 hover:border-indigo-500/30 transition-all duration-500 relative overflow-hidden flex flex-col items-center"
+                        >
+                            <div className="w-16 h-16 rounded-2xl bg-slate-950 dark:bg-white flex items-center justify-center text-white dark:text-slate-950 mb-8 shadow-3xl group-hover:bg-indigo-600 group-hover:text-white transition-all relative z-10">
+                                <Github size={24} />
+                            </div>
+                            <div className="relative z-10">
+                                <p className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.5em] mb-3 leading-none">Code Foundry</p>
+                                <p className="text-lg font-display font-black text-slate-950 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors uppercase">Github Repos</p>
+                            </div>
+                        </motion.a>
+
+                        <motion.a
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
+                            href={PROFILE.linkedin}
+                            className="group p-8 bg-slate-50 dark:bg-white/5 rounded-3xl border border-slate-200 dark:border-white/10 hover:border-indigo-500/30 transition-all duration-500 relative overflow-hidden flex flex-col items-center"
+                        >
+                            <div className="w-16 h-16 rounded-2xl bg-slate-950 dark:bg-white flex items-center justify-center text-white dark:text-slate-950 mb-8 shadow-3xl group-hover:bg-indigo-600 group-hover:text-white transition-all relative z-10">
+                                <Linkedin size={24} />
+                            </div>
+                            <div className="relative z-10">
+                                <p className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.5em] mb-3 leading-none">Network Node</p>
+                                <p className="text-lg font-display font-black text-slate-950 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors uppercase">Professional</p>
+                            </div>
+                        </motion.a>
                     </div>
+
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1, delay: 0.5 }}
+                        className="p-8 bg-indigo-500/5 rounded-[2rem] border border-indigo-500/10 flex flex-col md:flex-row items-center justify-between w-full max-w-2xl gap-6"
+                    >
+                        <div className="flex items-center space-x-4">
+                            <div className="w-3 h-3 rounded-full bg-indigo-500 animate-pulse shadow-[0_0_15px_rgba(99,102,241,0.5)]"></div>
+                            <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.5em]">System Status: Operational</span>
+                        </div>
+                        <div className="flex items-center space-x-8">
+                            <span className="text-[9px] font-mono text-indigo-500/40 uppercase tracking-widest">Region: AF_EAST_1</span>
+                            <span className="text-[9px] font-mono text-indigo-500/40 uppercase tracking-widest">Ref: HANDSHAKE_PROTO_G</span>
+                        </div>
+                    </motion.div>
                 </div>
             </div>
         </section>
