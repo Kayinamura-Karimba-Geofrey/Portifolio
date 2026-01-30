@@ -556,86 +556,40 @@ export const Contact = () => {
         <section id="contact" className="py-24 bg-white dark:bg-slate-950 relative overflow-hidden transition-colors duration-1000">
             <div className="container mx-auto px-6 max-w-7xl relative z-10">
                 <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                    >
-                        <div className="inline-block px-5 py-2.5 bg-slate-50 dark:bg-white/5 text-indigo-600 dark:text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] rounded-lg mb-10 border border-slate-200 dark:border-white/10 shadow-sm">
-                            Communication Protocol
-                        </div>
-                    </motion.div>
-
-                    <div className="grid md:grid-cols-3 gap-6 w-full mb-16">
+                    <div className="grid md:grid-cols-3 gap-12 w-full">
                         <motion.a
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: 0.1 }}
                             href={`mailto:${PROFILE.email}`}
-                            className="group p-8 bg-slate-50 dark:bg-white/5 rounded-3xl border border-slate-200 dark:border-white/10 hover:border-indigo-500/30 transition-all duration-500 relative overflow-hidden flex flex-col items-center"
+                            className="group p-10 bg-slate-50 dark:bg-white/5 rounded-[2rem] border border-slate-200 dark:border-white/10 hover:border-indigo-500/30 transition-all duration-500 relative flex flex-col items-center justify-center min-h-[140px]"
                         >
-                            <div className="w-16 h-16 rounded-2xl bg-slate-950 dark:bg-indigo-600 flex items-center justify-center text-white mb-8 shadow-3xl group-hover:scale-110 transition-all relative z-10">
-                                <Mail size={24} />
-                            </div>
-                            <div className="relative z-10">
-                                <p className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.5em] mb-3 leading-none">Primary Link</p>
-                                <p className="text-lg font-display font-black text-slate-950 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors uppercase truncate">{PROFILE.email}</p>
-                            </div>
+                            <span className="text-sm font-black text-slate-950 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors uppercase tracking-[0.5em] relative z-10">Email</span>
                         </motion.a>
 
                         <motion.a
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: 0.2 }}
                             href={PROFILE.github}
-                            className="group p-8 bg-slate-50 dark:bg-white/5 rounded-3xl border border-slate-200 dark:border-white/10 hover:border-indigo-500/30 transition-all duration-500 relative overflow-hidden flex flex-col items-center"
+                            className="group p-10 bg-slate-50 dark:bg-white/5 rounded-[2rem] border border-slate-200 dark:border-white/10 hover:border-indigo-500/30 transition-all duration-500 relative flex flex-col items-center justify-center min-h-[140px]"
                         >
-                            <div className="w-16 h-16 rounded-2xl bg-slate-950 dark:bg-white flex items-center justify-center text-white dark:text-slate-950 mb-8 shadow-3xl group-hover:bg-indigo-600 group-hover:text-white transition-all relative z-10">
-                                <Github size={24} />
-                            </div>
-                            <div className="relative z-10">
-                                <p className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.5em] mb-3 leading-none">Code Foundry</p>
-                                <p className="text-lg font-display font-black text-slate-950 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors uppercase">Github Repos</p>
-                            </div>
+                            <span className="text-sm font-black text-slate-950 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors uppercase tracking-[0.5em] relative z-10">Github</span>
                         </motion.a>
 
                         <motion.a
-                            initial={{ opacity: 0, y: 20 }}
+                            initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: 0.3 }}
                             href={PROFILE.linkedin}
-                            className="group p-8 bg-slate-50 dark:bg-white/5 rounded-3xl border border-slate-200 dark:border-white/10 hover:border-indigo-500/30 transition-all duration-500 relative overflow-hidden flex flex-col items-center"
+                            className="group p-10 bg-slate-50 dark:bg-white/5 rounded-[2rem] border border-slate-200 dark:border-white/10 hover:border-indigo-500/30 transition-all duration-500 relative flex flex-col items-center justify-center min-h-[140px]"
                         >
-                            <div className="w-16 h-16 rounded-2xl bg-slate-950 dark:bg-white flex items-center justify-center text-white dark:text-slate-950 mb-8 shadow-3xl group-hover:bg-indigo-600 group-hover:text-white transition-all relative z-10">
-                                <Linkedin size={24} />
-                            </div>
-                            <div className="relative z-10">
-                                <p className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.5em] mb-3 leading-none">Network Node</p>
-                                <p className="text-lg font-display font-black text-slate-950 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors uppercase">Professional</p>
-                            </div>
+                            <span className="text-sm font-black text-slate-950 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors uppercase tracking-[0.5em] relative z-10">Linkedin</span>
                         </motion.a>
                     </div>
-
-                    <motion.div
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.5 }}
-                        className="p-8 bg-indigo-500/5 rounded-[2rem] border border-indigo-500/10 flex flex-col md:flex-row items-center justify-between w-full max-w-2xl gap-6"
-                    >
-                        <div className="flex items-center space-x-4">
-                            <div className="w-3 h-3 rounded-full bg-indigo-500 animate-pulse shadow-[0_0_15px_rgba(99,102,241,0.5)]"></div>
-                            <span className="text-[10px] font-black text-indigo-500 uppercase tracking-[0.5em]">System Status: Operational</span>
-                        </div>
-                        <div className="flex items-center space-x-8">
-                            <span className="text-[9px] font-mono text-indigo-500/40 uppercase tracking-widest">Region: AF_EAST_1</span>
-                            <span className="text-[9px] font-mono text-indigo-500/40 uppercase tracking-widest">Ref: HANDSHAKE_PROTO_G</span>
-                        </div>
-                    </motion.div>
                 </div>
             </div>
         </section>
