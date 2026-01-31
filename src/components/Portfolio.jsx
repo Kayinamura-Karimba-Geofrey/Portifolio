@@ -564,51 +564,58 @@ export const Footer = () => {
     ];
 
     const socialLinks = [
-        { name: 'GitHub', icon: <Github size={18} />, href: PROFILE.github, label: 'Source' },
-        { name: 'LinkedIn', icon: <Linkedin size={18} />, href: PROFILE.linkedin, label: 'Network' },
-        { name: 'Twitter', icon: <Twitter size={18} />, href: '#', label: 'Feed' },
-        { name: 'Instagram', icon: <Instagram size={18} />, href: '#', label: 'Visuals' },
+        { name: 'GitHub', icon: <Github size={18} />, href: PROFILE.github, label: 'SOURCE', hoverColor: 'hover:text-white', bgColor: 'group-hover:bg-slate-800' },
+        { name: 'LinkedIn', icon: <Linkedin size={18} />, href: PROFILE.linkedin, label: 'NETWORK', hoverColor: 'hover:text-[#0077b5]', bgColor: 'group-hover:bg-[#0077b5]/10' },
+        { name: 'Twitter', icon: <Twitter size={18} />, href: '#', label: 'FEED', hoverColor: 'hover:text-[#1DA1F2]', bgColor: 'group-hover:bg-[#1DA1F2]/10' },
+        { name: 'Instagram', icon: <Instagram size={18} />, href: '#', label: 'VISUALS', hoverColor: 'hover:text-[#E4405F]', bgColor: 'group-hover:bg-[#E4405F]/10' },
     ];
 
     return (
-        <footer className="relative pt-16 pb-12 bg-white dark:bg-[#020617] transition-colors duration-1000 overflow-hidden border-t border-slate-100 dark:border-white/5">
-            {/* Background Decorative Elements */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-px bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent"></div>
-            <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-indigo-500/5 to-transparent pointer-events-none"></div>
+        <footer className="relative pt-24 pb-12 bg-[#020617] transition-colors duration-1000 overflow-hidden border-t border-white/5">
+            {/* Ambient Background Glows */}
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-600/10 blur-[120px] rounded-full pointer-events-none"></div>
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+            {/* Top Border Gradient Glow */}
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent"></div>
 
             <div className="container mx-auto px-6 max-w-7xl relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-20">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-24">
                     {/* Brand Section */}
-                    <div className="lg:col-span-5 space-y-8">
+                    <div className="lg:col-span-5 space-y-10">
                         <div className="flex items-center space-x-6 group">
-                            <div className="w-14 h-14 bg-slate-950 dark:bg-indigo-600 rounded-2xl flex items-center justify-center text-white font-display font-black text-2xl uppercase shadow-2xl relative overflow-hidden group-hover:rotate-3 transition-transform duration-500">
-                                <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent"></div>
-                                K
+                            <div className="relative w-16 h-16">
+                                <div className="absolute inset-0 bg-indigo-600 blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
+                                <div className="relative w-full h-full bg-slate-950 rounded-2xl border border-white/10 flex items-center justify-center text-white font-display font-black text-2xl uppercase shadow-2xl overflow-hidden group-hover:border-indigo-500/50 transition-all duration-500">
+                                    <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-transparent"></div>
+                                    K
+                                </div>
                             </div>
                             <div>
-                                <h3 className="text-slate-950 dark:text-white font-display font-black text-3xl uppercase tracking-tighter leading-none">
-                                    Geofrey<span className="text-indigo-600 dark:text-indigo-500">.</span>
+                                <h3 className="text-white font-display font-black text-4xl uppercase tracking-tighter leading-none">
+                                    Geofrey<span className="text-indigo-500">.</span>
                                 </h3>
-                                <p className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.5em] mt-3 leading-none italic">
+                                <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.5em] mt-3 leading-none italic">
                                     Systems Architect & Engineer
                                 </p>
                             </div>
                         </div>
 
-                        <p className="text-base text-slate-500 dark:text-slate-400 font-medium leading-relaxed max-w-md tracking-tight">
+                        <p className="text-lg text-slate-400 font-medium leading-relaxed max-w-md tracking-tight">
                             Building resilient digital foundations through precision engineering and architectural clarity. Bridging the gap between complex infrastructure and seamless user experiences.
                         </p>
 
-                        <div className="flex items-center space-x-4">
-                            <div className="flex items-center px-4 py-2 bg-slate-50 dark:bg-white/5 rounded-full border border-slate-200 dark:border-white/10">
+                        <div className="flex flex-wrap gap-4">
+                            <div className="flex items-center px-4 py-2 bg-white/5 rounded-full border border-white/10 backdrop-blur-sm">
                                 <span className="relative flex h-2 w-2 mr-3">
                                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                                     <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                                 </span>
-                                <span className="text-[8px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest">System Status: Operational</span>
+                                <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Core Engine: Operational</span>
                             </div>
-                            <div className="text-[8px] font-mono text-slate-300 dark:text-white/10 uppercase tracking-widest">
-                                v5.2.0-stable
+                            <div className="flex items-center px-4 py-2 bg-white/5 rounded-full border border-white/10 backdrop-blur-sm">
+                                <span className="text-[9px] font-black text-indigo-500 uppercase tracking-widest mr-2">VER:</span>
+                                <span className="text-[9px] font-mono text-slate-400 uppercase tracking-widest">v5.4.2-LTS</span>
                             </div>
                         </div>
                     </div>
@@ -616,15 +623,15 @@ export const Footer = () => {
                     {/* Links Grid */}
                     <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-3 gap-12">
                         {/* Navigation */}
-                        <div className="space-y-6">
-                            <h4 className="text-[10px] font-black text-slate-950 dark:text-white uppercase tracking-[0.4em] mb-8 border-b border-indigo-500/20 pb-4 inline-block">
-                                Navigation
+                        <div className="space-y-8">
+                            <h4 className="text-[11px] font-black text-white uppercase tracking-[0.4em] inline-block relative">
+                                Sitemap <span className="absolute -bottom-2 left-0 w-8 h-px bg-indigo-500"></span>
                             </h4>
-                            <ul className="space-y-4">
+                            <ul className="space-y-4 pt-4">
                                 {footerLinks.map((link) => (
                                     <li key={link.name}>
-                                        <a href={link.href} className="text-sm font-bold text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-white transition-colors flex items-center group">
-                                            <ChevronRight size={12} className="mr-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-indigo-500" />
+                                        <a href={link.href} className="text-sm font-bold text-slate-400 hover:text-white transition-all flex items-center group">
+                                            <span className="w-0 group-hover:w-4 h-px bg-indigo-500 mr-0 group-hover:mr-3 transition-all duration-300"></span>
                                             {link.name}
                                         </a>
                                     </li>
@@ -633,61 +640,75 @@ export const Footer = () => {
                         </div>
 
                         {/* Social Protocols */}
-                        <div className="space-y-6">
-                            <h4 className="text-[10px] font-black text-slate-950 dark:text-white uppercase tracking-[0.4em] mb-8 border-b border-indigo-500/20 pb-4 inline-block">
-                                Socials
+                        <div className="space-y-8 md:col-span-2">
+                            <h4 className="text-[11px] font-black text-white uppercase tracking-[0.4em] inline-block relative">
+                                Uplinks <span className="absolute -bottom-2 left-0 w-8 h-px bg-indigo-500"></span>
                             </h4>
-                            <ul className="space-y-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
                                 {socialLinks.map((social) => (
-                                    <li key={social.name}>
-                                        <a href={social.href} className="flex items-center justify-between group py-1">
-                                            <span className="text-sm font-bold text-slate-500 dark:text-slate-400 group-hover:text-slate-950 dark:group-hover:text-white transition-colors">
+                                    <a
+                                        key={social.name}
+                                        href={social.href}
+                                        className={`flex items-center justify-between group p-3 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/10 transition-all duration-300`}
+                                    >
+                                        <div className="flex items-center space-x-3">
+                                            <div className={`p-2 rounded-lg bg-slate-900 text-slate-400 group-hover:text-white transition-colors duration-300 ${social.bgColor}`}>
+                                                {social.icon}
+                                            </div>
+                                            <span className="text-sm font-bold text-slate-400 group-hover:text-white transition-colors">
                                                 {social.name}
                                             </span>
-                                            <div className="flex items-center space-x-3">
-                                                <span className="text-[7px] font-mono text-slate-300 dark:text-white/10 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
-                                                    {social.label}
-                                                </span>
-                                                <div className="p-2 bg-slate-50 dark:bg-white/5 rounded-lg text-slate-400 group-hover:text-indigo-500 dark:group-hover:text-white border border-transparent group-hover:border-indigo-500/20 transition-all">
-                                                    {social.icon}
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li>
+                                        </div>
+                                        <span className="text-[8px] font-mono text-slate-600 group-hover:text-indigo-400 uppercase tracking-widest transition-colors">
+                                            {social.label}
+                                        </span>
+                                    </a>
                                 ))}
-                            </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div className="pt-12 border-t border-slate-100 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-                    <div className="flex items-center space-x-4">
-                        <p className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.4em]">
-                            © {currentYear} Engineered by Geofrey
+
+                {/* Bottom Bar */}
+                <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+                    <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8">
+                        <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em]">
+                            © {currentYear} Kayinamura Karimba Geofrey
                         </p>
-                        <div className="h-4 w-px bg-slate-200 dark:bg-white/10 hidden sm:block"></div>
-                        <p className="text-[9px] font-black text-indigo-500/60 uppercase tracking-[0.4em] hidden sm:block">
-                            Privacy.Encrypted
-                        </p>
+                        <div className="flex items-center space-x-2 px-3 py-1 bg-indigo-500/10 border border-indigo-500/20 rounded-md">
+                            <div className="w-1 h-1 rounded-full bg-indigo-500 animate-pulse"></div>
+                            <span className="text-[8px] font-black text-indigo-400 uppercase tracking-[0.4em]">Node_AF_East_1</span>
+                        </div>
                     </div>
 
-                    <div className="flex items-center space-x-8">
-                        <div className="flex items-center space-x-2">
-                            <div className="w-1.5 h-1.5 rounded-full bg-indigo-500"></div>
-                            <span className="text-[8px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-[0.4em]">Region: AF_EAST_1</span>
-                        </div>
+                    <div className="flex items-center space-x-12">
                         <button
                             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                            className="group flex items-center space-x-3 text-[9px] font-black text-slate-950 dark:text-white uppercase tracking-[0.4em] hover:text-indigo-600 transition-colors"
+                            className="group flex items-center space-x-4 text-[10px] font-black text-white uppercase tracking-[0.4em] hover:text-indigo-400 transition-colors"
                         >
-                            <span>Return to Apex</span>
-                            <div className="w-8 h-8 rounded-full bg-slate-950 dark:bg-white text-white dark:text-slate-950 flex items-center justify-center group-hover:-translate-y-1 transition-transform">
-                                <ChevronRight size={14} className="-rotate-90" />
+                            <span className="relative">
+                                Return to Apex
+                                <span className="absolute -bottom-1 left-0 w-0 h-px bg-indigo-500 group-hover:w-full transition-all duration-300"></span>
+                            </span>
+                            <div className="w-10 h-10 rounded-full border border-white/10 bg-slate-950 flex items-center justify-center group-hover:border-indigo-500/50 group-hover:-translate-y-1 transition-all">
+                                <ChevronRight size={16} className="-rotate-90 text-slate-400 group-hover:text-white" />
                             </div>
                         </button>
                     </div>
                 </div>
-            </div>
 
+                {/* Latency Mockup */}
+                <div className="mt-8 flex justify-center opacity-20 pointer-events-none">
+                    <div className="flex items-center space-x-8">
+                        {[1, 2, 3, 4, 5, 6].map(i => (
+                            <div key={i} className="flex flex-col items-center">
+                                <div className="w-px h-8 bg-gradient-to-t from-transparent via-slate-500 to-transparent"></div>
+                                <span className="text-[6px] font-mono text-slate-500 mt-2">0.{i}ms</span>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
         </footer>
     );
 };
