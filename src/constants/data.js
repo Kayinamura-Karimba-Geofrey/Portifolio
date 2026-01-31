@@ -80,7 +80,7 @@ export const PROJECTS = [
         tech: ["Spring Boot", "PostgreSQL", "React", "JWT", "Docker"],
         image: "/projects/edusync.png",
         github: "https://github.com/alexpierce/edusync",
-        demo: "https://edusync-demo.com"
+        demo: "https://backend-services-g3m2.onrender.com"
     },
     {
         id: 2,
