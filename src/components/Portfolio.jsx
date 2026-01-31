@@ -675,37 +675,6 @@ export const Footer = () => {
                         <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em]">
                             © {currentYear} Kayinamura Karimba Geofrey
                         </p>
-                        <div className="flex items-center space-x-2 px-3 py-1 bg-indigo-500/10 border border-indigo-500/20 rounded-md">
-                            <div className="w-1 h-1 rounded-full bg-indigo-500 animate-pulse"></div>
-                            <span className="text-[8px] font-black text-indigo-400 uppercase tracking-[0.4em]">Node_AF_East_1</span>
-                        </div>
-                    </div>
-
-                    <div className="flex items-center space-x-12">
-                        <button
-                            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                            className="group flex items-center space-x-4 text-[10px] font-black text-white uppercase tracking-[0.4em] hover:text-indigo-400 transition-colors"
-                        >
-                            <span className="relative">
-                                Return to Apex
-                                <span className="absolute -bottom-1 left-0 w-0 h-px bg-indigo-500 group-hover:w-full transition-all duration-300"></span>
-                            </span>
-                            <div className="w-10 h-10 rounded-full border border-white/10 bg-slate-950 flex items-center justify-center group-hover:border-indigo-500/50 group-hover:-translate-y-1 transition-all">
-                                <ChevronRight size={16} className="-rotate-90 text-slate-400 group-hover:text-white" />
-                            </div>
-                        </button>
-                    </div>
-                </div>
-
-                {/* Latency Mockup */}
-                <div className="mt-8 flex justify-center opacity-20 pointer-events-none">
-                    <div className="flex items-center space-x-8">
-                        {[1, 2, 3, 4, 5, 6].map(i => (
-                            <div key={i} className="flex flex-col items-center">
-                                <div className="w-px h-8 bg-gradient-to-t from-transparent via-slate-500 to-transparent"></div>
-                                <span className="text-[6px] font-mono text-slate-500 mt-2">0.{i}ms</span>
-                            </div>
-                        ))}
                     </div>
                 </div>
             </div>
