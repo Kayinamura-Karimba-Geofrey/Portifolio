@@ -37,7 +37,6 @@ export const Navbar = () => {
         { name: 'Skills', href: '#skills' },
         { name: 'Projects', href: '#projects' },
         { name: 'Experience', href: '#experience' },
-        { name: 'Contact', href: '#contact' },
     ];
 
     return (
@@ -60,9 +59,10 @@ export const Navbar = () => {
                             <a
                                 key={link.name}
                                 href={link.href}
-                                className="px-5 py-2 text-[9px] font-black uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition-all rounded-lg hover:bg-slate-50 dark:hover:bg-white/5"
+                                className="px-5 py-2 text-[9px] font-black uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition-all rounded-lg hover:bg-slate-50 dark:hover:bg-white/5 relative group/link"
                             >
                                 {link.name}
+                                <span className="absolute bottom-0 left-1/2 w-0 h-px bg-indigo-600 dark:bg-indigo-400 transition-all duration-300 -translate-x-1/2 group-hover/link:w-1/2"></span>
                             </a>
                         ))}
 
@@ -163,18 +163,18 @@ export const Hero = () => {
                             <motion.a
                                 whileHover={{ scale: 1.02, y: -2 }}
                                 whileTap={{ scale: 0.98 }}
-                                href="#projects"
+                                href="/cv.pdf"
                                 className="magnetic-button px-10 py-5 bg-slate-950 dark:bg-white text-white dark:text-slate-950 text-[10px] font-black uppercase tracking-[0.4em] rounded-xl shadow-2xl hover:bg-indigo-600 dark:hover:bg-indigo-500 hover:text-white transition-all min-w-[240px] text-center"
                             >
-                                View Projects
+                                Get Resume
                             </motion.a>
                             <motion.a
                                 whileHover={{ scale: 1.02, y: -2 }}
                                 whileTap={{ scale: 0.98 }}
-                                href="#contact"
+                                href="#projects"
                                 className="magnetic-button px-10 py-5 bg-transparent text-slate-950 dark:text-slate-400 text-[10px] font-black uppercase tracking-[0.4em] border border-slate-200 dark:border-white/10 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-all min-w-[240px] text-center"
                             >
-                                Contact Me
+                                View Architecture
                             </motion.a>
                         </div>
                     </motion.div>
@@ -200,7 +200,7 @@ export const Hero = () => {
                         </div>
                     </motion.div>
                 </div>
-            </div>
+            </div >
 
             {/* Scroll Indicator */}
             <motion.div
@@ -551,48 +551,6 @@ export const ExperienceEducation = () => {
 };
 
 // --- Contact Component ---
-export const Contact = () => {
-    return (
-        <section id="contact" className="py-24 bg-white dark:bg-slate-950 relative overflow-hidden transition-colors duration-1000">
-            <div className="container mx-auto px-6 max-w-7xl relative z-10">
-                <div className="flex flex-wrap items-center justify-center gap-x-12 md:gap-x-24 gap-y-8">
-                    <motion.a
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1 }}
-                        href={`mailto:${PROFILE.email}`}
-                        className="text-[11px] font-black text-slate-950 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-500 uppercase tracking-[0.6em] transition-all duration-500"
-                    >
-                        Email
-                    </motion.a>
-
-                    <motion.a
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.1 }}
-                        href={PROFILE.github}
-                        className="text-[11px] font-black text-slate-950 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-500 uppercase tracking-[0.6em] transition-all duration-500"
-                    >
-                        Github
-                    </motion.a>
-
-                    <motion.a
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: 0.2 }}
-                        href={PROFILE.linkedin}
-                        className="text-[11px] font-black text-slate-950 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-500 uppercase tracking-[0.6em] transition-all duration-500"
-                    >
-                        Linkedin
-                    </motion.a>
-                </div>
-            </div>
-        </section>
-    );
-};
 
 // --- Footer Component ---
 export const Footer = () => {
@@ -603,7 +561,6 @@ export const Footer = () => {
         { name: 'Arsenal', href: '#skills' },
         { name: 'Systems', href: '#projects' },
         { name: 'History', href: '#experience' },
-        { name: 'Contact', href: '#contact' },
     ];
 
     const socialLinks = [
@@ -614,7 +571,7 @@ export const Footer = () => {
     ];
 
     return (
-        <footer className="relative pt-24 pb-12 bg-white dark:bg-[#020617] transition-colors duration-1000 overflow-hidden border-t border-slate-100 dark:border-white/5">
+        <footer className="relative pt-16 pb-12 bg-white dark:bg-[#020617] transition-colors duration-1000 overflow-hidden border-t border-slate-100 dark:border-white/5">
             {/* Background Decorative Elements */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-px bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent"></div>
             <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-indigo-500/5 to-transparent pointer-events-none"></div>
@@ -700,28 +657,8 @@ export const Footer = () => {
                                 ))}
                             </ul>
                         </div>
-
-                        {/* Direct Line */}
-                        <div className="col-span-2 md:col-span-1 space-y-6">
-                            <h4 className="text-[10px] font-black text-slate-950 dark:text-white uppercase tracking-[0.4em] mb-8 border-b border-indigo-500/20 pb-4 inline-block">
-                                Contact
-                            </h4>
-                            <div className="bg-slate-50 dark:bg-white/5 p-6 rounded-2xl border border-slate-200 dark:border-white/10 space-y-4">
-                                <p className="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2 leading-none">Primary Interface</p>
-                                <a href={`mailto:${PROFILE.email}`} className="text-sm font-display font-black text-slate-950 dark:text-white hover:text-indigo-600 block truncate transition-colors">
-                                    {PROFILE.email}
-                                </a>
-                                <div className="pt-4 border-t border-slate-200 dark:border-white/10">
-                                    <p className="text-[8px] font-medium text-slate-500 dark:text-slate-500 italic leading-snug">
-                                        "Architecture is the art of how to waste space."
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
-
-                {/* Bottom Bar */}
                 <div className="pt-12 border-t border-slate-100 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
                     <div className="flex items-center space-x-4">
                         <p className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.4em]">
@@ -751,10 +688,6 @@ export const Footer = () => {
                 </div>
             </div>
 
-            {/* Fine Print / Background Decorative Label */}
-            <div className="absolute -bottom-16 -right-16 text-[120px] font-display font-black text-slate-500/5 dark:text-white/[0.02] uppercase select-none pointer-events-none tracking-tighter">
-                GEOF
-            </div>
         </footer>
     );
 };
