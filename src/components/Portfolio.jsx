@@ -271,6 +271,7 @@ const SkillIcon = ({ category }) => {
         case 'Backend': return <Terminal size={20} />;
         case 'Auth & Security': return <ShieldCheck size={20} />;
         case 'Frontend': return <Code2 size={20} />;
+
         case 'Databases': return <Database size={20} />;
         default: return <Terminal size={20} />;
     }

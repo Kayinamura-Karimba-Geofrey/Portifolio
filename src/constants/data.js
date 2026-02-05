@@ -42,6 +42,7 @@ export const SKILLS = [
             { name: "Vite", level: 90 }
         ]
     },
+
     {
         category: "Databases",
         items: [
