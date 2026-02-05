@@ -131,87 +131,49 @@ export const Hero = () => {
             <div className="absolute inset-0 grid-background opacity-[0.15] dark:opacity-[0.05]"></div>
 
             {/* Cinematic Lighting */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl bg-gradient-to-b from-indigo-500/10 via-transparent to-transparent opacity-50 dark:opacity-30 blur-[120px] pointer-events-none"></div>
+            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-indigo-500/20 rounded-full blur-[120px] pointer-events-none animate-pulse"></div>
+            <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[100px] pointer-events-none"></div>
 
-            <div className="container mx-auto px-6 relative z-10">
-                <div className="grid lg:grid-cols-2 gap-16 items-center">
-                    <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                        className="flex flex-col items-center lg:items-start text-center lg:text-left order-2 lg:order-1"
-                    >
-                        <div className="inline-flex items-center py-2 px-4 rounded-full bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-indigo-600 dark:text-indigo-400 text-[8px] font-black tracking-[0.4em] uppercase mb-10 shadow-sm">
-                            <span className="relative flex h-2 w-2 mr-3">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-600"></span>
-                            </span>
-                            Available for Projects
-                        </div>
+            <div className="container mx-auto px-6 relative z-10 flex flex-col items-center justify-center">
 
-                        <h1 className="text-4xl md:text-6xl lg:text-7xl font-display font-black text-slate-950 dark:text-white leading-[0.9] tracking-[-0.04em] uppercase mb-10 text-balance">
-                            Precision <br />
-                            <span className="text-indigo-600 dark:text-indigo-500">Infrastructure</span> <br />
-                            Systems<span className="text-slate-200 dark:text-white/10 text-2xl md:text-3xl lg:text-4xl ml-2">.</span>
-                        </h1>
+                {/* Glassy Photo Container */}
+                <motion.div
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                    className="relative mb-12 group"
+                >
+                    {/* Outer Rotating Glass Ring */}
+                    <div className="absolute -inset-8 bg-gradient-to-tr from-white/10 to-transparent dark:from-white/5 dark:to-transparent rounded-full border border-white/20 dark:border-white/10 backdrop-blur-sm animate-[spin_10s_linear_infinite] opacity-70"></div>
 
-                        <p className="text-sm md:text-lg text-slate-500 dark:text-slate-400 max-w-xl leading-relaxed mb-12 font-medium tracking-tight">
-                            Geofrey Kayinamura — architecting ultra-scalable backend ecosystems and high-fidelity interfaces with engineering precision.
-                        </p>
+                    {/* Inner Static Glass Ring */}
+                    <div className="absolute -inset-4 bg-white/20 dark:bg-white/10 backdrop-blur-md rounded-full border border-white/30 dark:border-white/10 shadow-2xl"></div>
 
-                        <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-                            <motion.a
-                                whileHover={{ scale: 1.02, y: -2 }}
-                                whileTap={{ scale: 0.98 }}
-                                href="/cv.pdf"
-                                className="magnetic-button px-10 py-5 bg-slate-950 dark:bg-white text-white dark:text-slate-950 text-[10px] font-black uppercase tracking-[0.4em] rounded-xl shadow-2xl hover:bg-indigo-600 dark:hover:bg-indigo-500 hover:text-white transition-all min-w-[240px] text-center"
-                            >
-                                Get Resume
-                            </motion.a>
-                            <motion.a
-                                whileHover={{ scale: 1.02, y: -2 }}
-                                whileTap={{ scale: 0.98 }}
-                                href="#projects"
-                                className="magnetic-button px-10 py-5 bg-transparent text-slate-950 dark:text-slate-400 text-[10px] font-black uppercase tracking-[0.4em] border border-slate-200 dark:border-white/10 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-all min-w-[240px] text-center"
-                            >
-                                View Architecture
-                            </motion.a>
-                        </div>
-                    </motion.div>
+                    {/* Decor Blobs */}
+                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-indigo-500 rounded-full blur-md opacity-50 animate-pulse"></div>
+                    <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-purple-500 rounded-full blur-md opacity-50 animate-pulse delay-75"></div>
 
-                    <motion.div
-                        initial={{ opacity: 0, x: 30 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 1.2, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                        className="flex justify-center lg:justify-end order-1 lg:order-2"
-                    >
-                        <div className="relative">
-                            <div className="absolute inset-0 bg-indigo-500/20 rounded-full blur-[100px] animate-pulse"></div>
-                            <div className="relative w-56 h-56 md:w-80 md:h-80 lg:w-[450px] lg:h-[450px] rounded-full border-2 border-indigo-500/30 p-2 md:p-4 bg-white/5 backdrop-blur-sm shadow-3xl">
-                                <img
-                                    src={PROFILE.photo}
-                                    alt={PROFILE.name}
-                                    className="w-full h-full rounded-full object-cover grayscale hover:grayscale-0 transition-all duration-1000"
-                                />
-                            </div>
-                            <div className="absolute bottom-6 right-6 md:bottom-10 md:right-10 w-12 h-12 md:w-16 md:h-16 bg-indigo-600 rounded-full flex items-center justify-center text-white border-4 border-white dark:border-slate-950 shadow-2xl transition-transform hover:scale-110">
-                                <ShieldCheck size={24} className="md:size-8" />
-                            </div>
-                        </div>
-                    </motion.div>
-                </div>
-            </div >
+                    {/* Photo */}
+                    <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-white/30 dark:border-white/10 shadow-inner z-10 transition-transform duration-700 group-hover:scale-105">
+                        <img
+                            src={PROFILE.photo}
+                            alt={PROFILE.name}
+                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out"
+                        />
+                    </div>
+                </motion.div>
 
-            {/* Scroll Indicator */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 2 }}
-                className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center"
-            >
-                <div className="w-px h-20 bg-gradient-to-b from-indigo-500 to-transparent"></div>
-                <span className="text-[8px] font-black text-slate-400 uppercase tracking-[0.6em] mt-6">Scroll to Discover</span>
-            </motion.div>
+                {/* Name */}
+                <motion.h1
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.3 }}
+                    className="text-2xl md:text-4xl lg:text-5xl font-display font-black text-slate-950 dark:text-white uppercase tracking-[0.2em] text-center"
+                >
+                    {PROFILE.name}
+                </motion.h1>
+
+            </div>
         </section>
     );
 };
