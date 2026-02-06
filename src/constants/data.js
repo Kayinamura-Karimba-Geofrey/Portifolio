@@ -1,6 +1,6 @@
 export const PROFILE = {
     name: "KAYINAMURA KARIMBA GEOFREY",
-    title: "Full-Stack Developer | Backend System Architect | Data Analyst",
+    title: "Software Engineer | Backend System Architect | Data Analyst",
     summary: "Student at Rwanda Coding Academy with a deep passion for Backend Development and Data Analysis. Expert in building scalable architectures, high-performance APIs, and secure systems using Spring Boot, Node.js, and PostgreSQL. Focused on turning complex data into actionable insights.",
     photo: "/profile.png",
     email: "geofreykayin@gmail.com",

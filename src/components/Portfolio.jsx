@@ -173,6 +173,16 @@ export const Hero = () => {
                     {PROFILE.name}
                 </motion.h1>
 
+                {/* Title */}
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                    className="mt-6 text-sm md:text-base lg:text-lg font-medium text-slate-500 dark:text-slate-400 uppercase tracking-[0.2em] text-center max-w-2xl mx-auto"
+                >
+                    {PROFILE.title}
+                </motion.p>
+
             </div>
         </section>
     );
