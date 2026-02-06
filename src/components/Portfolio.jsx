@@ -131,35 +131,46 @@ export const Hero = () => {
             {/* Animated Stars */}
             <div className="stars"></div>
 
-            {/* Multiple Light Streak Effects */}
+            {/* Horizontal Light Streaks - Like in reference */}
             <div className="light-streak"></div>
-            <div className="light-streak" style={{ top: '40%', animationDelay: '2s', animationDuration: '10s' }}></div>
-            <div className="light-streak" style={{ top: '60%', animationDelay: '4s', animationDuration: '12s' }}></div>
+            <div className="light-streak" style={{ top: '65%', animationDelay: '3s', animationDuration: '9s' }}></div>
 
-            {/* Purple/Blue Glow Effects - Enhanced */}
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-purple-600/20 rounded-full blur-[150px] pointer-events-none"></div>
-            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-indigo-600/30 rounded-full blur-[120px] pointer-events-none animate-pulse"></div>
-            <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-blue-500/15 rounded-full blur-[100px] pointer-events-none"></div>
-            <div className="absolute top-1/2 right-1/4 w-[500px] h-[500px] bg-purple-500/15 rounded-full blur-[130px] pointer-events-none"></div>
+            {/* Subtle Background Glow - Minimal like reference */}
+            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-600/15 rounded-full blur-[150px] pointer-events-none"></div>
 
             <div className="container mx-auto px-6 relative z-10 flex flex-col items-center justify-center">
 
-                {/* Profile Photo - Clean, No Rings */}
+                {/* Profile Photo with Single Glowing Ring */}
                 <motion.div
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                     className="relative mb-12 group"
                 >
+                    {/* Single Glowing Ring - Matching Reference */}
+                    <div
+                        className="absolute -inset-[50px] rounded-full border-[3px] border-transparent"
+                        style={{
+                            background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.8), rgba(59, 130, 246, 0.6), rgba(168, 85, 247, 0.8)) border-box',
+                            WebkitMask: 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)',
+                            WebkitMaskComposite: 'xor',
+                            maskComposite: 'exclude',
+                            boxShadow: '0 0 30px rgba(139, 92, 246, 0.6), 0 0 60px rgba(139, 92, 246, 0.4), inset 0 0 30px rgba(139, 92, 246, 0.3)',
+                            animation: 'neon-glow 3s ease-in-out infinite'
+                        }}
+                    ></div>
+
                     {/* Photo Container */}
-                    <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-indigo-400/40 shadow-2xl z-10">
+                    <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-slate-800/60 shadow-2xl z-10 group-hover:border-purple-500/40 transition-all duration-700">
                         <img
                             src={PROFILE.photo}
                             alt={PROFILE.name}
-                            className="w-full h-full object-cover transition-all duration-700 ease-in-out"
+                            className="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-110 transition-all duration-700 ease-in-out"
                         />
-                        {/* Inner Glow Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-purple-900/20 via-transparent to-transparent"></div>
+                        {/* Dark Mode Overlay - Visible by default, hidden on hover */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/30 to-transparent group-hover:opacity-0 transition-opacity duration-700"></div>
+                        {/* Light Mode Overlay - Hidden by default, visible on hover */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-purple-500/20 via-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                     </div>
                 </motion.div>
 
