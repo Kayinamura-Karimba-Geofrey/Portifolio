@@ -127,39 +127,39 @@ export const Navbar = () => {
 // --- Hero Component ---
 export const Hero = () => {
     return (
-        <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden bg-white dark:bg-slate-950 transition-colors duration-1000 mesh-gradient">
-            <div className="absolute inset-0 grid-background opacity-[0.15] dark:opacity-[0.05]"></div>
+        <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden space-background">
+            {/* Animated Stars */}
+            <div className="stars"></div>
 
-            {/* Cinematic Lighting */}
-            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-indigo-500/20 rounded-full blur-[120px] pointer-events-none animate-pulse"></div>
-            <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+            {/* Multiple Light Streak Effects */}
+            <div className="light-streak"></div>
+            <div className="light-streak" style={{ top: '40%', animationDelay: '2s', animationDuration: '10s' }}></div>
+            <div className="light-streak" style={{ top: '60%', animationDelay: '4s', animationDuration: '12s' }}></div>
+
+            {/* Purple/Blue Glow Effects - Enhanced */}
+            <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-purple-600/20 rounded-full blur-[150px] pointer-events-none"></div>
+            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-indigo-600/30 rounded-full blur-[120px] pointer-events-none animate-pulse"></div>
+            <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-blue-500/15 rounded-full blur-[100px] pointer-events-none"></div>
+            <div className="absolute top-1/2 right-1/4 w-[500px] h-[500px] bg-purple-500/15 rounded-full blur-[130px] pointer-events-none"></div>
 
             <div className="container mx-auto px-6 relative z-10 flex flex-col items-center justify-center">
 
-                {/* Glassy Photo Container */}
+                {/* Profile Photo - Clean, No Rings */}
                 <motion.div
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                     className="relative mb-12 group"
                 >
-                    {/* Outer Rotating Glass Ring */}
-                    <div className="absolute -inset-8 bg-gradient-to-tr from-white/10 to-transparent dark:from-white/5 dark:to-transparent rounded-full border border-white/20 dark:border-white/10 backdrop-blur-sm animate-[spin_10s_linear_infinite] opacity-70"></div>
-
-                    {/* Inner Static Glass Ring */}
-                    <div className="absolute -inset-4 bg-white/20 dark:bg-white/10 backdrop-blur-md rounded-full border border-white/30 dark:border-white/10 shadow-2xl"></div>
-
-                    {/* Decor Blobs */}
-                    <div className="absolute -top-2 -right-2 w-6 h-6 bg-indigo-500 rounded-full blur-md opacity-50 animate-pulse"></div>
-                    <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-purple-500 rounded-full blur-md opacity-50 animate-pulse delay-75"></div>
-
-                    {/* Photo */}
-                    <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-white/30 dark:border-white/10 shadow-inner z-10 transition-transform duration-700 group-hover:scale-105">
+                    {/* Photo Container */}
+                    <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-indigo-400/40 shadow-2xl z-10">
                         <img
                             src={PROFILE.photo}
                             alt={PROFILE.name}
-                            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-in-out"
+                            className="w-full h-full object-cover transition-all duration-700 ease-in-out"
                         />
+                        {/* Inner Glow Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-purple-900/20 via-transparent to-transparent"></div>
                     </div>
                 </motion.div>
 
@@ -168,7 +168,7 @@ export const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.3 }}
-                    className="text-2xl md:text-4xl lg:text-5xl font-display font-black text-slate-950 dark:text-white uppercase tracking-[0.2em] text-center"
+                    className="text-3xl md:text-5xl lg:text-6xl font-display font-black text-white uppercase tracking-[0.15em] text-center mb-6"
                 >
                     {PROFILE.name}
                 </motion.h1>
@@ -178,7 +178,7 @@ export const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.5 }}
-                    className="mt-6 text-sm md:text-base lg:text-lg font-medium text-slate-500 dark:text-slate-400 uppercase tracking-[0.2em] text-center max-w-2xl mx-auto"
+                    className="text-sm md:text-base lg:text-lg font-medium text-slate-300 uppercase tracking-[0.25em] text-center max-w-4xl mx-auto"
                 >
                     {PROFILE.title}
                 </motion.p>
@@ -193,82 +193,46 @@ export const About = () => {
     return (
         <section id="about" className="py-16 md:py-24 bg-white dark:bg-slate-950 relative overflow-hidden transition-colors duration-1000">
             <div className="container mx-auto px-6 max-w-7xl">
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-                    {/* Visual Card Column */}
-                    <div className="flex flex-col space-y-12">
-                        <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                            className="relative group w-full"
-                        >
-                            <div className="absolute -inset-4 bg-slate-50 dark:bg-white/5 rounded-[2rem] rotate-1 transition-transform group-hover:rotate-0 duration-1000"></div>
-                            <div className="relative aspect-[4/3] bg-slate-950 rounded-2xl flex flex-col items-center justify-center text-indigo-500 p-8 overflow-hidden shadow-3xl border border-white/5">
-                                <Terminal size={200} strokeWidth={0.2} className="mb-8 opacity-[0.03] absolute -top-10 -right-10 rotate-12" />
-                                <Code2 size={80} strokeWidth={0.8} className="relative z-10 group-hover:scale-105 transition-transform duration-1000 text-white dark:text-indigo-400" />
-                                <div className="text-center relative z-10 w-full mt-8">
-                                    <div className="flex justify-center mb-4">
-                                        <div className="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white border-2 border-white dark:border-slate-950 shadow-xl">
-                                            <ShieldCheck size={18} />
-                                        </div>
-                                    </div>
-                                    <p className="text-[9px] font-black tracking-[0.6em] uppercase text-indigo-500/50 mb-4 px-4 border-b border-indigo-500/20 pb-4 inline-block">Architecture Protocol</p>
-                                    <h4 className="text-2xl font-display font-black text-white uppercase tracking-[-0.02em] leading-none mb-2">Systems First</h4>
-                                    <p className="text-[9px] font-mono text-white/30 tracking-widest uppercase">Kernel Node: 0x1A4F</p>
-                                </div>
-                            </div>
-                        </motion.div>
 
+                {/* Card Grid - Bio content distributed within cards */}
+                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {[
+                        {
+                            title: "Software Engineer",
+                            desc: "I am a Software Engineer and Backend System Architect with a passion for building scalable, high-performance applications. My journey involves deep dives into complex algorithms, distributed systems, and secure data structures.",
+                            icon: <Code2 size={16} />
+                        },
+                        {
+                            title: "Security First",
+                            desc: "I design systems that stand the test of time, prioritizing security, reliability, and maintainability. Zero-trust integration and encryption standards are at the core of every solution I build.",
+                            icon: <ShieldCheck size={16} />
+                        },
+                        {
+                            title: "Full-Stack Bridge",
+                            desc: "With a strong foundation in both backend and frontend technologies, I bridge the gap between efficient server-side logic and seamless user experiences. I don't just write code; I craft experiences.",
+                            icon: <Terminal size={16} />
+                        },
+                        {
+                            title: "Continuous Growth",
+                            desc: "Currently focused on mastering advanced backend protocols and data analysis to drive intelligent decision-making within applications. Building automated pipelines that ensure maximum uptime and reliability.",
+                            icon: <ExternalLink size={16} />
+                        }
+                    ].map((item, i) => (
                         <motion.div
+                            key={i}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: 0.2 }}
-                            className="max-w-xl"
+                            transition={{ duration: 0.5, delay: 0.1 * i }}
+                            className="group p-8 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-white/5 hover:border-indigo-500/30 transition-all duration-700 flex flex-col items-start hover:-translate-y-2 shadow-sm hover:shadow-2xl"
                         >
-                            <div className="inline-block px-4 py-2 bg-slate-50 dark:bg-white/5 text-indigo-600 dark:text-indigo-400 text-[9px] font-black uppercase tracking-[0.4em] rounded-lg mb-6 border border-slate-200 dark:border-white/10">
-                                Philosophy
+                            <div className="w-12 h-12 bg-white dark:bg-white/5 rounded-xl flex items-center justify-center text-slate-400 dark:text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-all mb-6 border border-slate-200 dark:border-white/5 shadow-inner">
+                                {item.icon}
                             </div>
-
-                            <h2 className="text-2xl md:text-3xl font-display font-black text-slate-950 dark:text-white mb-6 uppercase tracking-tight leading-tight">
-                                Building <br />
-                                <span className="text-indigo-600 dark:text-indigo-500 italic">Scalable</span> <br />
-                                Systems.
-                            </h2>
-
-                            <p className="text-sm md:text-base text-slate-500 dark:text-slate-400 leading-relaxed font-medium tracking-tight">
-                                I specialize in building resilient digital foundations. My approach priorities clean architectural design, ensuring that every system I build is both performant and ultra-scalable for long-term growth.
-                            </p>
+                            <h4 className="font-display font-black text-base text-slate-950 dark:text-white mb-4 uppercase tracking-tight">{item.title}</h4>
+                            <p className="text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed tracking-tight">{item.desc}</p>
                         </motion.div>
-                    </div>
-
-                    {/* Content Column - Features */}
-                    <div className="h-full">
-                        <div className="grid sm:grid-cols-2 gap-4 h-full">
-                            {[
-                                { title: "Distributed Scaling", desc: "Crafting stateless systems for massive horizontal expansion.", icon: <ExternalLink size={16} /> },
-                                { title: "Hardened Security", desc: "Zero-trust integration and encryption standards.", icon: <ShieldCheck size={16} /> },
-                                { title: "Performance Tuning", desc: "Optimizing for microsecond response times.", icon: <Terminal size={16} /> },
-                                { title: "Reliability First", desc: "Automated pipelines ensuring maximum uptime.", icon: <Code2 size={16} /> }
-                            ].map((item, i) => (
-                                <motion.div
-                                    key={i}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ duration: 0.5, delay: 0.1 * i }}
-                                    className="group p-6 rounded-2xl bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-white/5 hover:border-indigo-500/30 transition-all duration-700 h-full flex flex-col items-start"
-                                >
-                                    <div className="w-10 h-10 bg-slate-50 dark:bg-white/5 rounded-xl flex items-center justify-center text-slate-400 dark:text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-all mb-4 border border-slate-100 dark:border-white/5">
-                                        {item.icon}
-                                    </div>
-                                    <h4 className="font-display font-black text-sm text-slate-950 dark:text-white mb-3 uppercase tracking-tight">{item.title}</h4>
-                                    <p className="text-[11px] text-slate-500 dark:text-slate-400 font-medium leading-relaxed tracking-tight">{item.desc}</p>
-                                </motion.div>
-                            ))}
-                        </div>
-                    </div>
+                    ))}
                 </div>
             </div>
         </section>

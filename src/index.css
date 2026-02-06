@@ -111,6 +111,140 @@
   }
 }
 
+/* Space Background Effects */
+.space-background {
+  background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.stars::before,
+.stars::after {
+  content: "";
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  box-shadow: 
+    50vw 20vh 1px 0px white,
+    10vw 40vh 1px 1px white,
+    80vw 10vh 1px 0px white,
+    20vw 80vh 1px 1px white,
+    90vw 50vh 1px 0px white,
+    30vw 30vh 1px 1px white,
+    60vw 70vh 1px 0px white,
+    70vw 60vh 1px 1px white,
+    40vw 90vh 1px 0px white,
+    85vw 35vh 1px 1px white,
+    15vw 65vh 1px 0px white,
+    95vw 25vh 1px 1px white,
+    5vw 75vh 1px 0px white,
+    75vw 15vh 1px 1px white,
+    25vw 55vh 1px 0px white,
+    65vw 85vh 1px 1px white,
+    35vw 5vh 1px 0px white,
+    55vw 95vh 1px 1px white,
+    45vw 45vh 1px 0px white,
+    88vw 78vh 1px 1px white,
+    12vw 12vh 1px 0px white,
+    92vw 42vh 1px 1px white,
+    22vw 82vh 1px 0px white,
+    72vw 22vh 1px 1px white,
+    32vw 62vh 1px 0px white,
+    82vw 52vh 1px 1px white,
+    42vw 32vh 1px 0px white,
+    62vw 72vh 1px 1px white,
+    52vw 92vh 1px 0px white,
+    8vw 38vh 1px 1px white;
+  animation: stars-twinkle 3s infinite alternate;
+}
+
+.stars::after {
+  box-shadow: 
+    55vw 25vh 1px 0px rgba(255, 255, 255, 0.8),
+    15vw 45vh 1px 1px rgba(255, 255, 255, 0.8),
+    85vw 15vh 1px 0px rgba(255, 255, 255, 0.8),
+    25vw 85vh 1px 1px rgba(255, 255, 255, 0.8),
+    95vw 55vh 1px 0px rgba(255, 255, 255, 0.8),
+    35vw 35vh 1px 1px rgba(255, 255, 255, 0.8),
+    65vw 75vh 1px 0px rgba(255, 255, 255, 0.8),
+    75vw 65vh 1px 1px rgba(255, 255, 255, 0.8),
+    45vw 95vh 1px 0px rgba(255, 255, 255, 0.8),
+    18vw 28vh 1px 0px rgba(255, 255, 255, 0.8);
+  animation-delay: 1.5s;
+}
+
+@keyframes stars-twinkle {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Glowing Neon Ring Animation */
+@keyframes neon-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.6),
+                0 0 40px rgba(139, 92, 246, 0.4),
+                0 0 60px rgba(139, 92, 246, 0.2),
+                inset 0 0 20px rgba(139, 92, 246, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.8),
+                0 0 60px rgba(99, 102, 241, 0.6),
+                0 0 90px rgba(99, 102, 241, 0.4),
+                inset 0 0 30px rgba(99, 102, 241, 0.3);
+  }
+}
+
+@keyframes ring-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Light Streak Effect */
+.light-streak {
+  position: absolute;
+  width: 200%;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(139, 92, 246, 0.8) 50%, 
+    transparent 100%);
+  top: 70%;
+  left: -50%;
+  opacity: 0.6;
+  animation: streak-move 8s ease-in-out infinite;
+}
+
+@keyframes streak-move {
+  0%, 100% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateX(50%);
+  }
+}
+
 ::selection {
   @apply bg-primary-500/20 text-primary-900;
 }
