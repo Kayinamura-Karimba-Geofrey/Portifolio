@@ -145,29 +145,30 @@ export const Hero = () => {
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                    className="relative mb-12 group perspective-1000"
+                    className="relative mb-16 group perspective-1000"
                 >
-                    {/* Outer Orbital Ring */}
+                    {/* Outer Orbital Ring - Reduced size */}
                     <div
-                        className="absolute -inset-[70px] rounded-full border-[2px] border-transparent opacity-40"
+                        className="absolute -inset-[60px] md:-inset-[80px] rounded-full border-[2px] border-transparent opacity-50"
                         style={{
-                            background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.6), rgba(59, 130, 246, 0.4), rgba(168, 85, 247, 0.6)) border-box',
+                            background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.7), rgba(59, 130, 246, 0.5), rgba(168, 85, 247, 0.7)) border-box',
                             WebkitMask: 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)',
                             WebkitMaskComposite: 'xor',
                             maskComposite: 'exclude',
+                            boxShadow: '0 0 40px rgba(139, 92, 246, 0.3), 0 0 80px rgba(59, 130, 246, 0.2)',
                             animation: 'orbit-slow 20s linear infinite'
                         }}
                     ></div>
 
-                    {/* Middle Glowing Ring */}
+                    {/* Middle Glowing Ring - Reduced size */}
                     <div
-                        className="absolute -inset-[50px] rounded-full border-[3px] border-transparent"
+                        className="absolute -inset-[40px] md:-inset-[50px] rounded-full border-[3px] border-transparent"
                         style={{
-                            background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.8), rgba(59, 130, 246, 0.6), rgba(168, 85, 247, 0.8)) border-box',
+                            background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.9), rgba(59, 130, 246, 0.7), rgba(168, 85, 247, 0.9)) border-box',
                             WebkitMask: 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)',
                             WebkitMaskComposite: 'xor',
                             maskComposite: 'exclude',
-                            boxShadow: '0 0 30px rgba(139, 92, 246, 0.6), 0 0 60px rgba(139, 92, 246, 0.4), inset 0 0 30px rgba(139, 92, 246, 0.3)',
+                            boxShadow: '0 0 40px rgba(139, 92, 246, 0.7), 0 0 80px rgba(139, 92, 246, 0.5), inset 0 0 30px rgba(139, 92, 246, 0.4)',
                             animation: 'neon-glow 3s ease-in-out infinite, orbit-slow 15s linear infinite reverse'
                         }}
                     ></div>
@@ -198,14 +199,14 @@ export const Hero = () => {
                     </div>
 
                     {/* Main Photo Container with 3D Transform */}
-                    <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-slate-800/60 shadow-2xl z-10 group-hover:border-purple-500/60 group-hover:shadow-[0_0_60px_rgba(139,92,246,0.4)] transition-all duration-700 group-hover:scale-105">
+                    <div className="relative w-52 h-52 md:w-64 md:h-64 rounded-full overflow-hidden border-[6px] border-slate-800/80 shadow-2xl z-10 group-hover:border-indigo-500/60 group-hover:shadow-[0_0_60px_rgba(139,92,246,0.6)] transition-all duration-700 group-hover:scale-105">
                         <img
                             src={PROFILE.photo}
                             alt={PROFILE.name}
                             className="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-110 group-hover:scale-110 transition-all duration-700 ease-in-out"
                         />
                         {/* Dark Mode Overlay - Visible by default, hidden on hover */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/30 to-transparent group-hover:opacity-0 transition-opacity duration-700"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/40 to-transparent group-hover:opacity-0 transition-opacity duration-700"></div>
                         {/* Light Mode Overlay - Hidden by default, visible on hover */}
                         <div className="absolute inset-0 bg-gradient-to-t from-purple-500/20 via-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
 
@@ -213,45 +214,37 @@ export const Hero = () => {
                         <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                     </div>
 
-                    {/* Status Indicator - Bottom Left */}
+                    {/* Status Indicator - Bottom Center */}
                     <motion.div
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
+                        initial={{ scale: 0, y: 20 }}
+                        animate={{ scale: 1, y: 0 }}
                         transition={{ delay: 0.8, type: "spring", stiffness: 200 }}
-                        className="absolute bottom-8 left-8 md:bottom-10 md:left-10 z-20 flex items-center gap-2 px-4 py-2 bg-slate-900/90 backdrop-blur-xl rounded-full border border-white/20 shadow-2xl"
+                        className="absolute -bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 px-5 py-2.5 bg-slate-900/95 backdrop-blur-xl rounded-full border-2 border-indigo-500/30 shadow-2xl"
                     >
-                        <span className="relative flex h-3 w-3">
+                        <span className="relative flex h-2.5 w-2.5">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500 border-2 border-white/90"></span>
+                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
                         </span>
-                        <span className="text-white text-xs font-black uppercase tracking-wider">Available</span>
+                        <span className="text-white text-xs md:text-sm font-black uppercase tracking-widest">Available</span>
                     </motion.div>
 
-                    {/* Verification Badge - Top Right */}
-                    <motion.div
-                        initial={{ scale: 0, rotate: -180 }}
-                        animate={{ scale: 1, rotate: 0 }}
-                        transition={{ delay: 1, type: "spring", stiffness: 200 }}
-                        className="absolute top-8 right-8 md:top-10 md:right-10 z-20 w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center shadow-2xl border-4 border-white/90 group-hover:scale-110 transition-transform duration-500"
-                        title="Verified Developer"
-                    >
-                        <ShieldCheck size={24} className="text-white" strokeWidth={2.5} />
-                    </motion.div>
-
-                    {/* Floating Info Cards */}
+                    {/* Floating Info Cards - Enhanced Glassmorphic Style */}
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 1.2, duration: 0.8 }}
-                        className="hidden lg:block absolute -left-48 top-1/2 -translate-y-1/2 w-40 premium-glass rounded-2xl p-4 shadow-2xl border-2 border-white/30 group-hover:scale-105 transition-all duration-500"
+                        className="hidden lg:flex absolute -left-52 top-1/2 -translate-y-1/2 w-48 bg-slate-900/40 backdrop-blur-2xl rounded-2xl p-5 shadow-2xl border-2 border-indigo-500/30 group-hover:scale-105 group-hover:border-indigo-400/50 transition-all duration-500"
+                        style={{
+                            boxShadow: '0 0 40px rgba(139, 92, 246, 0.3), 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(139, 92, 246, 0.1)'
+                        }}
                     >
-                        <div className="flex items-center gap-3 mb-2">
-                            <div className="w-10 h-10 bg-indigo-600/20 rounded-lg flex items-center justify-center">
-                                <Code2 size={18} className="text-indigo-400" />
+                        <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 bg-indigo-600/30 backdrop-blur-sm rounded-xl flex items-center justify-center border border-indigo-400/30 shadow-lg">
+                                <Code2 size={22} className="text-indigo-300" strokeWidth={2} />
                             </div>
                             <div>
-                                <p className="text-white font-black text-lg leading-none">50+</p>
-                                <p className="text-slate-300 text-xs font-medium uppercase tracking-wider mt-1">Projects</p>
+                                <p className="text-white font-black text-2xl leading-none mb-1">50+</p>
+                                <p className="text-slate-300 text-xs font-bold uppercase tracking-widest">Projects</p>
                             </div>
                         </div>
                     </motion.div>
@@ -260,15 +253,18 @@ export const Hero = () => {
                         initial={{ opacity: 0, x: 50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 1.4, duration: 0.8 }}
-                        className="hidden lg:block absolute -right-48 top-1/2 -translate-y-1/2 w-40 premium-glass rounded-2xl p-4 shadow-2xl border-2 border-white/30 group-hover:scale-105 transition-all duration-500"
+                        className="hidden lg:flex absolute -right-52 top-1/2 -translate-y-1/2 w-48 bg-slate-900/40 backdrop-blur-2xl rounded-2xl p-5 shadow-2xl border-2 border-purple-500/30 group-hover:scale-105 group-hover:border-purple-400/50 transition-all duration-500"
+                        style={{
+                            boxShadow: '0 0 40px rgba(168, 85, 247, 0.3), 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(168, 85, 247, 0.1)'
+                        }}
                     >
-                        <div className="flex items-center gap-3 mb-2">
-                            <div className="w-10 h-10 bg-purple-600/20 rounded-lg flex items-center justify-center">
-                                <Terminal size={18} className="text-purple-400" />
+                        <div className="flex items-center gap-4">
+                            <div className="w-12 h-12 bg-purple-600/30 backdrop-blur-sm rounded-xl flex items-center justify-center border border-purple-400/30 shadow-lg">
+                                <ShieldCheck size={22} className="text-purple-300" strokeWidth={2} />
                             </div>
                             <div>
-                                <p className="text-white font-black text-lg leading-none">5+</p>
-                                <p className="text-slate-300 text-xs font-medium uppercase tracking-wider mt-1">Years Exp</p>
+                                <p className="text-white font-black text-2xl leading-none mb-1">5+</p>
+                                <p className="text-slate-300 text-xs font-bold uppercase tracking-widest">Years Exp</p>
                             </div>
                         </div>
                     </motion.div>
