@@ -131,10 +131,6 @@ export const Hero = () => {
             {/* Animated Stars */}
             <div className="stars"></div>
 
-            {/* Horizontal Light Streaks - Like in reference */}
-            <div className="light-streak"></div>
-            <div className="light-streak" style={{ top: '65%', animationDelay: '3s', animationDuration: '9s' }}></div>
-
             {/* Subtle Background Glow - Minimal like reference */}
             <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-600/15 rounded-full blur-[150px] pointer-events-none"></div>
 
