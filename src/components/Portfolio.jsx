@@ -210,20 +210,6 @@ export const Hero = () => {
                         <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                     </div>
 
-                    {/* Status Indicator - Bottom Center */}
-                    <motion.div
-                        initial={{ scale: 0, y: 20 }}
-                        animate={{ scale: 1, y: 0 }}
-                        transition={{ delay: 0.8, type: "spring", stiffness: 200 }}
-                        className="absolute -bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 px-5 py-2.5 bg-slate-900/95 backdrop-blur-xl rounded-full border-2 border-indigo-500/30 shadow-2xl"
-                    >
-                        <span className="relative flex h-2.5 w-2.5">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
-                        </span>
-                        <span className="text-white text-xs md:text-sm font-black uppercase tracking-widest">Available</span>
-                    </motion.div>
-
                     {/* Floating Info Cards - Enhanced Glassmorphic Style */}
                     <motion.div
                         initial={{ opacity: 0, x: -50 }}
