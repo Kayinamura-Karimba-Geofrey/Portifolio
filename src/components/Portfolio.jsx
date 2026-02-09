@@ -140,14 +140,26 @@ export const Hero = () => {
 
             <div className="container mx-auto px-6 relative z-10 flex flex-col items-center justify-center">
 
-                {/* Profile Photo with Single Glowing Ring */}
+                {/* Premium Profile Photo Section */}
                 <motion.div
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                    className="relative mb-12 group"
+                    className="relative mb-12 group perspective-1000"
                 >
-                    {/* Single Glowing Ring - Matching Reference */}
+                    {/* Outer Orbital Ring */}
+                    <div
+                        className="absolute -inset-[70px] rounded-full border-[2px] border-transparent opacity-40"
+                        style={{
+                            background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.6), rgba(59, 130, 246, 0.4), rgba(168, 85, 247, 0.6)) border-box',
+                            WebkitMask: 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)',
+                            WebkitMaskComposite: 'xor',
+                            maskComposite: 'exclude',
+                            animation: 'orbit-slow 20s linear infinite'
+                        }}
+                    ></div>
+
+                    {/* Middle Glowing Ring */}
                     <div
                         className="absolute -inset-[50px] rounded-full border-[3px] border-transparent"
                         style={{
@@ -156,22 +168,110 @@ export const Hero = () => {
                             WebkitMaskComposite: 'xor',
                             maskComposite: 'exclude',
                             boxShadow: '0 0 30px rgba(139, 92, 246, 0.6), 0 0 60px rgba(139, 92, 246, 0.4), inset 0 0 30px rgba(139, 92, 246, 0.3)',
-                            animation: 'neon-glow 3s ease-in-out infinite'
+                            animation: 'neon-glow 3s ease-in-out infinite, orbit-slow 15s linear infinite reverse'
                         }}
                     ></div>
 
-                    {/* Photo Container */}
-                    <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-slate-800/60 shadow-2xl z-10 group-hover:border-purple-500/40 transition-all duration-700">
+                    {/* Floating Particles */}
+                    <div className="absolute -inset-16 pointer-events-none">
+                        {[...Array(8)].map((_, i) => (
+                            <motion.div
+                                key={i}
+                                className="absolute w-1 h-1 bg-indigo-400 rounded-full blur-[1px]"
+                                style={{
+                                    top: `${Math.random() * 100}%`,
+                                    left: `${Math.random() * 100}%`,
+                                }}
+                                animate={{
+                                    y: [0, -20, 0],
+                                    opacity: [0.3, 1, 0.3],
+                                    scale: [1, 1.5, 1],
+                                }}
+                                transition={{
+                                    duration: 3 + i * 0.5,
+                                    repeat: Infinity,
+                                    delay: i * 0.3,
+                                    ease: "easeInOut"
+                                }}
+                            />
+                        ))}
+                    </div>
+
+                    {/* Main Photo Container with 3D Transform */}
+                    <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-slate-800/60 shadow-2xl z-10 group-hover:border-purple-500/60 group-hover:shadow-[0_0_60px_rgba(139,92,246,0.4)] transition-all duration-700 group-hover:scale-105">
                         <img
                             src={PROFILE.photo}
                             alt={PROFILE.name}
-                            className="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-110 transition-all duration-700 ease-in-out"
+                            className="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-110 group-hover:scale-110 transition-all duration-700 ease-in-out"
                         />
                         {/* Dark Mode Overlay - Visible by default, hidden on hover */}
                         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/30 to-transparent group-hover:opacity-0 transition-opacity duration-700"></div>
                         {/* Light Mode Overlay - Hidden by default, visible on hover */}
                         <div className="absolute inset-0 bg-gradient-to-t from-purple-500/20 via-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+
+                        {/* Inner Glow Effect */}
+                        <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                     </div>
+
+                    {/* Status Indicator - Bottom Left */}
+                    <motion.div
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ delay: 0.8, type: "spring", stiffness: 200 }}
+                        className="absolute bottom-8 left-8 md:bottom-10 md:left-10 z-20 flex items-center gap-2 px-4 py-2 bg-slate-900/90 backdrop-blur-xl rounded-full border border-white/20 shadow-2xl"
+                    >
+                        <span className="relative flex h-3 w-3">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500 border-2 border-white/90"></span>
+                        </span>
+                        <span className="text-white text-xs font-black uppercase tracking-wider">Available</span>
+                    </motion.div>
+
+                    {/* Verification Badge - Top Right */}
+                    <motion.div
+                        initial={{ scale: 0, rotate: -180 }}
+                        animate={{ scale: 1, rotate: 0 }}
+                        transition={{ delay: 1, type: "spring", stiffness: 200 }}
+                        className="absolute top-8 right-8 md:top-10 md:right-10 z-20 w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center shadow-2xl border-4 border-white/90 group-hover:scale-110 transition-transform duration-500"
+                        title="Verified Developer"
+                    >
+                        <ShieldCheck size={24} className="text-white" strokeWidth={2.5} />
+                    </motion.div>
+
+                    {/* Floating Info Cards */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 1.2, duration: 0.8 }}
+                        className="hidden lg:block absolute -left-48 top-1/2 -translate-y-1/2 w-40 premium-glass rounded-2xl p-4 shadow-2xl border-2 border-white/30 group-hover:scale-105 transition-all duration-500"
+                    >
+                        <div className="flex items-center gap-3 mb-2">
+                            <div className="w-10 h-10 bg-indigo-600/20 rounded-lg flex items-center justify-center">
+                                <Code2 size={18} className="text-indigo-400" />
+                            </div>
+                            <div>
+                                <p className="text-white font-black text-lg leading-none">50+</p>
+                                <p className="text-slate-300 text-xs font-medium uppercase tracking-wider mt-1">Projects</p>
+                            </div>
+                        </div>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: 1.4, duration: 0.8 }}
+                        className="hidden lg:block absolute -right-48 top-1/2 -translate-y-1/2 w-40 premium-glass rounded-2xl p-4 shadow-2xl border-2 border-white/30 group-hover:scale-105 transition-all duration-500"
+                    >
+                        <div className="flex items-center gap-3 mb-2">
+                            <div className="w-10 h-10 bg-purple-600/20 rounded-lg flex items-center justify-center">
+                                <Terminal size={18} className="text-purple-400" />
+                            </div>
+                            <div>
+                                <p className="text-white font-black text-lg leading-none">5+</p>
+                                <p className="text-slate-300 text-xs font-medium uppercase tracking-wider mt-1">Years Exp</p>
+                            </div>
+                        </div>
+                    </motion.div>
                 </motion.div>
 
                 {/* Name */}

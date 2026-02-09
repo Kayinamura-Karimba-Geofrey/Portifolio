@@ -226,6 +226,21 @@
   }
 }
 
+@keyframes orbit-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
 /* Light Streak Effect */
 .light-streak {
   position: absolute;
