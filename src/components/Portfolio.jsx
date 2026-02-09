@@ -147,9 +147,9 @@ export const Hero = () => {
                     transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                     className="relative mb-16 group perspective-1000"
                 >
-                    {/* Outer Orbital Ring - Reduced size */}
+                    {/* Outer Orbital Ring - Close to photo edge */}
                     <div
-                        className="absolute -inset-[50px] md:-inset-[60px] rounded-full border-[2px] border-transparent opacity-50"
+                        className="absolute -inset-[10px] md:-inset-[12px] rounded-full border-[2px] border-transparent opacity-50"
                         style={{
                             background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.7), rgba(59, 130, 246, 0.5), rgba(168, 85, 247, 0.7)) border-box',
                             WebkitMask: 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)',
@@ -160,9 +160,9 @@ export const Hero = () => {
                         }}
                     ></div>
 
-                    {/* Middle Glowing Ring - Reduced size */}
+                    {/* Middle Glowing Ring - Close to photo edge */}
                     <div
-                        className="absolute -inset-[35px] md:-inset-[45px] rounded-full border-[3px] border-transparent"
+                        className="absolute -inset-[5px] md:-inset-[6px] rounded-full border-[3px] border-transparent"
                         style={{
                             background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.9), rgba(59, 130, 246, 0.7), rgba(168, 85, 247, 0.9)) border-box',
                             WebkitMask: 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)',
