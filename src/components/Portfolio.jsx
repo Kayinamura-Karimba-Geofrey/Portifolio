@@ -149,7 +149,7 @@ export const Hero = () => {
                 >
                     {/* Outer Orbital Ring - Reduced size */}
                     <div
-                        className="absolute -inset-[60px] md:-inset-[80px] rounded-full border-[2px] border-transparent opacity-50"
+                        className="absolute -inset-[50px] md:-inset-[60px] rounded-full border-[2px] border-transparent opacity-50"
                         style={{
                             background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.7), rgba(59, 130, 246, 0.5), rgba(168, 85, 247, 0.7)) border-box',
                             WebkitMask: 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)',
@@ -162,7 +162,7 @@ export const Hero = () => {
 
                     {/* Middle Glowing Ring - Reduced size */}
                     <div
-                        className="absolute -inset-[40px] md:-inset-[50px] rounded-full border-[3px] border-transparent"
+                        className="absolute -inset-[35px] md:-inset-[45px] rounded-full border-[3px] border-transparent"
                         style={{
                             background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.9), rgba(59, 130, 246, 0.7), rgba(168, 85, 247, 0.9)) border-box',
                             WebkitMask: 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)',
