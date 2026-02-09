@@ -48,7 +48,7 @@ export const Navbar = () => {
                             <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent"></div>
                             K
                         </div>
-                        <span className="text-xl font-display font-black tracking-[0.1em] text-slate-950 dark:text-white uppercase">
+                        <span className="text-2xl font-display font-black tracking-[0.1em] text-slate-950 dark:text-white uppercase">
                             Geofrey<span className="text-indigo-600 dark:text-indigo-400">.</span>
                         </span>
                     </a>
@@ -59,7 +59,7 @@ export const Navbar = () => {
                             <a
                                 key={link.name}
                                 href={link.href}
-                                className="px-5 py-2 text-[9px] font-black uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition-all rounded-lg hover:bg-slate-50 dark:hover:bg-white/5 relative group/link"
+                                className="px-5 py-2 text-[11px] font-black uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition-all rounded-lg hover:bg-slate-50 dark:hover:bg-white/5 relative group/link"
                             >
                                 {link.name}
                                 <span className="absolute bottom-0 left-1/2 w-0 h-px bg-indigo-600 dark:bg-indigo-400 transition-all duration-300 -translate-x-1/2 group-hover/link:w-1/2"></span>
@@ -76,7 +76,7 @@ export const Navbar = () => {
 
                             <a
                                 href="/cv.pdf"
-                                className="px-8 py-3.5 hidden lg:flex items-center space-x-3 bg-slate-950 dark:bg-white dark:text-slate-950 text-white text-[9px] font-black uppercase tracking-[0.3em] rounded-xl hover:bg-indigo-600 dark:hover:bg-indigo-500 hover:text-white transition-all shadow-2xl active:scale-95 border border-white/10"
+                                className="px-8 py-3.5 hidden lg:flex items-center space-x-3 bg-slate-950 dark:bg-white dark:text-slate-950 text-white text-[11px] font-black uppercase tracking-[0.3em] rounded-xl hover:bg-indigo-600 dark:hover:bg-indigo-500 hover:text-white transition-all shadow-2xl active:scale-95 border border-white/10"
                             >
                                 <span>View Resume</span>
                             </a>
@@ -107,14 +107,14 @@ export const Navbar = () => {
                                 <a
                                     key={link.name}
                                     href={link.href}
-                                    className="px-6 py-4 text-sm font-black text-slate-500 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white flex items-center justify-between rounded-2xl hover:bg-slate-50 dark:hover:bg-white/5 transition-all uppercase tracking-[0.2em]"
+                                    className="px-6 py-4 text-base font-black text-slate-500 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white flex items-center justify-between rounded-2xl hover:bg-slate-50 dark:hover:bg-white/5 transition-all uppercase tracking-[0.2em]"
                                     onClick={() => setIsOpen(false)}
                                 >
                                     {link.name} <ChevronRight size={14} className="text-indigo-600" />
                                 </a>
                             ))}
                             <div className="pt-4 border-t border-slate-100 dark:border-white/5">
-                                <a href="/cv.pdf" className="w-full py-5 bg-slate-950 dark:bg-white dark:text-slate-950 text-white text-center rounded-2xl font-black uppercase tracking-[0.3em] text-[10px] shadow-2xl block">View Resume</a>
+                                <a href="/cv.pdf" className="w-full py-5 bg-slate-950 dark:bg-white dark:text-slate-950 text-white text-center rounded-2xl font-black uppercase tracking-[0.3em] text-xs shadow-2xl block">View Resume</a>
                             </div>
                         </div>
                     </motion.div>
