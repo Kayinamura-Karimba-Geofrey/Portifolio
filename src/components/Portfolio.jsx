@@ -631,19 +631,7 @@ export const Footer = () => {
                             Building resilient digital foundations through precision engineering and architectural clarity. Bridging the gap between complex infrastructure and seamless user experiences.
                         </p>
 
-                        <div className="flex flex-wrap gap-4">
-                            <div className="flex items-center px-4 py-2 bg-white/5 rounded-full border border-white/10 backdrop-blur-sm">
-                                <span className="relative flex h-2 w-2 mr-3">
-                                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                                    <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-                                </span>
-                                <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest">Core Engine: Operational</span>
-                            </div>
-                            <div className="flex items-center px-4 py-2 bg-white/5 rounded-full border border-white/10 backdrop-blur-sm">
-                                <span className="text-[9px] font-black text-indigo-500 uppercase tracking-widest mr-2">VER:</span>
-                                <span className="text-[9px] font-mono text-slate-400 uppercase tracking-widest">v5.4.2-LTS</span>
-                            </div>
-                        </div>
+
                     </div>
 
                     {/* Links Grid */}

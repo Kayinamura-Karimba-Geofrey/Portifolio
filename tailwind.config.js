@@ -6,12 +6,12 @@ export default {
   ],
   theme: {
     extend: {
+      darkMode: 'class',
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
         display: ['Space Grotesk', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
-      darkMode: 'class',
       colors: {
         primary: {
           50: '#f0f9ff',
