@@ -162,27 +162,30 @@ export const PROJECTS = [
 
 export const EXPERIENCE = [
     {
-        period: "2024 - Present",
+        period: "2024 – Present",
         company: "Portfolio Projects & Freelance",
-        role: "Full-Stack & Backend Developer",
-        description: "Leading the development of complex systems with a focus on land management, media platforms, and educational tools.",
+        role: "FULL-STACK & BACKEND DEVELOPER",
+        description: "Focusing on designing and implementing robust systems including land management, digital news platforms, and educational tools.",
         bullets: [
-            "Architected and implemented Terrafund, a Spring Boot-based land management system with GIS integration and secure audit trails.",
-            "Developed and launched Imena NewsBox, a high-performance digital news portal using React and Sanity CMS.",
-            "Optimized data models and API performance for the EduSync School Management System, reducing latency by 40%.",
-            "Leveraging Data Analysis skills to build intelligent dashboard features and reporting engines."
-        ]
+            "Designed and implemented Terrafund, a Spring Boot–based land management system with GIS integration, role-based access, and secure audit trails.",
+            "Built and deployed Imena NewsBox, a high-performance digital news platform using React, Sanity CMS, and optimized REST APIs.",
+            "Optimized database schemas and API performance for the EduSync School Management System, reducing response latency by approximately 40%.",
+            "Developed data-driven dashboards and reporting engines, enabling real-time insights for administrators and stakeholders."
+        ],
+        tech: ["Java", "Spring Boot", "React", "REST APIs", "PostgreSQL", "GIS", "JWT", "Git"]
     },
     {
-        period: "2022 - 2024",
+        period: "2022 – 2024",
         company: "Rwanda Coding Academy",
-        role: "Full-Stack Developer Student",
-        description: "Engaged in intensive software engineering training focused on core computer science principles and modern full-stack development.",
+        role: "FULL-STACK DEVELOPER STUDENT",
+        description: "Engaged in professional software engineering training with a focus on core architecture and security standards.",
         bullets: [
-            "Developed robust backend systems using Clean Architecture and Microservices patterns.",
-            "Integrated secure OAuth2 and JWT authentication frameworks into various student-led projects.",
-            "Collaborated on shared codebases using Git/GitHub workflows and automated CI/CD pipelines."
-        ]
+            "Developed scalable backend services using Clean Architecture and Microservices principles.",
+            "Implemented OAuth2 and JWT-based authentication across multiple student-led applications.",
+            "Collaborated in team environments using Git/GitHub workflows, code reviews, and CI/CD pipelines.",
+            "Applied software engineering best practices including modular design, API documentation, and secure coding standards."
+        ],
+        tech: ["Software Engineering", "Cybersecurity", "Embedded Systems"]
     }
 ];
 

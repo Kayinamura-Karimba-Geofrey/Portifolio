@@ -485,86 +485,166 @@ export const Projects = () => {
 };
 
 // --- Experience & Education ---
-export const ExperienceEducation = () => {
+// --- Professional Experience Component ---
+export const ProfessionalExperience = () => {
     return (
-        <section id="experience" className="py-16 md:py-20 bg-[#020617] relative overflow-hidden transition-colors duration-1000">
-            <div className="absolute top-0 right-0 w-1/2 h-full bg-indigo-500/5 translate-x-1/4 blur-[120px]"></div>
+        <section id="experience" className="py-24 md:py-32 bg-[#020617] relative overflow-hidden transition-colors duration-1000">
+            {/* Premium Background Elements */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(17,24,39,1),rgba(2,6,23,1))]"></div>
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent opacity-30"></div>
+            <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent opacity-30"></div>
 
-            <div className="container mx-auto px-6 max-w-7xl relative z-10">
-                <div className="grid lg:grid-cols-2 gap-20">
-                    {/* Experience */}
-                    <div>
-                        <div className="inline-block px-5 py-2.5 bg-white/5 text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] rounded-lg mb-10 border border-white/10">
-                            My Experience
-                        </div>
-                        <h2 className="text-3xl md:text-4xl font-display font-black text-white mb-10 uppercase tracking-[-0.04em] leading-none">
-                            Experi<span className="text-indigo-500">ence.</span>
-                        </h2>
+            {/* Atmospheric Glows */}
+            <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+            <div className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] pointer-events-none"></div>
 
-                        <div className="space-y-12">
-                            {EXPERIENCE.map((exp, idx) => (
-                                <div key={idx} className="group relative pl-12">
-                                    <div className="absolute left-0 top-0 h-full w-px bg-white/5 group-hover:bg-indigo-500/30 transition-all duration-700"></div>
-                                    <div className="absolute -left-[4px] top-0 w-2 h-2 rounded-full bg-slate-800 border border-white/10 transition-all duration-700 group-hover:scale-150 group-hover:bg-indigo-500 group-hover:shadow-[0_0_20px_rgba(99,102,241,0.5)]"></div>
+            <div className="container mx-auto px-6 max-w-5xl relative z-10">
+                <div className="text-center mb-20">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="inline-block px-5 py-2.5 bg-white/5 text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] rounded-lg mb-6 border border-white/10"
+                    >
+                        Success Track
+                    </motion.div>
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                        className="text-4xl md:text-5xl lg:text-6xl font-display font-black text-white uppercase tracking-[-0.04em] leading-none"
+                    >
+                        Professional<br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-500">Experience.</span>
+                    </motion.h2>
+                </div>
 
-                                    <div className="mb-3">
-                                        <span className="text-[9px] font-black text-indigo-500 uppercase tracking-[0.5em] mb-3 block">{exp.period}</span>
-                                        <h3 className="text-xl md:text-2xl font-display font-black text-white mb-2 tracking-tight uppercase leading-none">{exp.role}</h3>
-                                        <p className="text-slate-500 font-bold mb-6 uppercase tracking-widest text-[10px]">{exp.company}</p>
+                <div className="flex flex-col space-y-12">
+                    {EXPERIENCE.map((exp, idx) => (
+                        <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, delay: idx * 0.2 }}
+                            className="group relative"
+                        >
+                            <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-3xl blur opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                            <div className="relative p-8 md:p-12 bg-slate-900/40 backdrop-blur-xl rounded-2xl border border-white/5 group-hover:border-white/10 transition-all duration-500">
+                                <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-10">
+                                    <div className="space-y-4">
+                                        <div className="flex items-center space-x-3 text-indigo-500">
+                                            <Briefcase size={16} />
+                                            <span className="text-[10px] font-black uppercase tracking-[0.4em]">{exp.period}</span>
+                                        </div>
+                                        <div>
+                                            <h3 className="text-2xl md:text-3xl font-display font-black text-white tracking-tight uppercase leading-none mb-2">
+                                                {exp.role}
+                                            </h3>
+                                            <p className="text-slate-400 font-bold uppercase tracking-widest text-sm flex items-center">
+                                                <span className="w-8 h-px bg-indigo-500/50 mr-3"></span>
+                                                {exp.company}
+                                            </p>
+                                        </div>
                                     </div>
 
-                                    <ul className="space-y-5">
-                                        {exp.bullets.map((bullet, i) => (
-                                            <li key={i} className="text-sm text-slate-400 flex items-start font-medium leading-relaxed tracking-tight group-hover:text-slate-300 transition-colors">
-                                                <div className="w-1.5 h-px bg-indigo-500/40 mt-3 mr-5 flex-shrink-0"></div>
-                                                {bullet}
-                                            </li>
+                                    <div className="flex flex-wrap gap-2 md:justify-end max-w-sm">
+                                        {exp.tech && exp.tech.map((t, i) => (
+                                            <span key={i} className="px-3 py-1.5 bg-white/5 border border-white/10 text-white/60 text-[8px] font-black uppercase tracking-widest rounded-md hover:bg-white/10 hover:text-white transition-colors">
+                                                {t}
+                                            </span>
                                         ))}
-                                    </ul>
+                                    </div>
                                 </div>
-                            ))}
-                        </div>
-                    </div>
 
-                    {/* Education */}
-                    <div className="space-y-20">
-                        <div>
-                            <div className="inline-block px-5 py-2.5 bg-white/5 text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] rounded-lg mb-10 border border-white/10">
-                                Academic History
-                            </div>
-                            <h2 className="text-3xl md:text-4xl font-display font-black text-white mb-10 uppercase tracking-[-0.04em] leading-none">Education<span className="text-indigo-500">.</span></h2>
-
-                            <div className="space-y-6">
-                                {EDUCATION.map((edu, idx) => (
-                                    <div key={idx} className="bg-white/5 p-8 rounded-2xl border border-white/5 hover:bg-white/[0.07] transition-all duration-700 group relative overflow-hidden">
-                                        <div className="flex justify-between items-start mb-10">
-                                            <span className="px-5 py-2 bg-indigo-600 text-white text-[9px] font-black uppercase tracking-widest rounded-lg shadow-2xl">{edu.year}</span>
-                                            <div className="text-[8px] font-mono text-white/20 tracking-[0.4em] uppercase">Core Node: ACAD</div>
-                                        </div>
-
-                                        <h3 className="text-2xl font-display font-black text-white mb-2 tracking-tight uppercase leading-none">{edu.degree}</h3>
-                                        <p className="text-slate-500 font-bold mb-8 text-[10px] uppercase tracking-widest">{edu.institution}</p>
-
-                                        <div className="flex items-center text-slate-400 font-black text-[9px] uppercase tracking-[0.4em] bg-slate-950 p-6 rounded-xl border border-white/5">
-                                            <div className="w-10 h-10 rounded-lg bg-indigo-500/10 flex items-center justify-center mr-6 border border-indigo-500/20">
-                                                <Terminal size={18} className="text-indigo-500" />
-                                            </div>
-                                            Focus: <span className="ml-4 text-white">{edu.focus}</span>
+                                <div className="grid md:grid-cols-12 gap-10">
+                                    <div className="md:col-span-12 space-y-6">
+                                        <p className="text-slate-300 font-medium leading-relaxed italic border-l-2 border-indigo-500/30 pl-6 mb-8 text-lg">
+                                            {exp.description}
+                                        </p>
+                                        <div className="grid sm:grid-cols-2 gap-x-8 gap-y-6">
+                                            {exp.bullets.map((bullet, i) => (
+                                                <div key={i} className="flex items-start group/bullet">
+                                                    <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2 mr-4 flex-shrink-0 group-hover/bullet:scale-150 transition-transform duration-300 shadow-[0_0_10px_rgba(99,102,241,0.8)]"></div>
+                                                    <p className="text-sm text-slate-400 font-medium leading-relaxed group-hover:text-slate-200 transition-colors">
+                                                        {bullet}
+                                                    </p>
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
-                                ))}
+                                </div>
                             </div>
-                        </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
 
-                        <div className="pt-12 border-t border-white/5">
-                            <h3 className="text-[9px] font-black text-slate-500 mb-10 uppercase tracking-[0.5em] text-center lg:text-left text-balance">Industry Protocols & Verified Logic</h3>
-                            <div className="grid sm:grid-cols-2 gap-4">
+// --- Education Component ---
+export const Education = () => {
+    return (
+        <section id="education" className="py-24 bg-white dark:bg-slate-950 transition-colors duration-1000 border-t border-slate-100 dark:border-white/5">
+            <div className="container mx-auto px-6 max-w-7xl">
+                <div className="mb-20">
+                    <div className="inline-block px-5 py-2.5 bg-slate-50 dark:bg-white/5 text-indigo-600 dark:text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] rounded-lg mb-6 border border-slate-200 dark:border-white/10">
+                        Academic History
+                    </div>
+                    <h2 className="text-3xl md:text-5xl font-display font-black text-slate-950 dark:text-white uppercase tracking-[-0.04em]">
+                        Education<span className="text-indigo-600 dark:text-indigo-500">.</span>
+                    </h2>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-8">
+                    {EDUCATION.map((edu, idx) => (
+                        <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="bg-slate-50 dark:bg-white/5 p-10 rounded-3xl border border-slate-200 dark:border-white/5 hover:bg-slate-100 dark:hover:bg-white/[0.07] transition-all duration-700 group relative overflow-hidden"
+                        >
+                            <div className="flex justify-between items-start mb-12">
+                                <span className="px-6 py-2.5 bg-indigo-600 text-white text-[10px] font-black uppercase tracking-widest rounded-xl shadow-2xl">
+                                    {edu.year}
+                                </span>
+                                <div className="p-3 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-indigo-600 dark:text-indigo-400">
+                                    <GraduationCap size={24} />
+                                </div>
+                            </div>
+
+                            <h3 className="text-3xl font-display font-black text-slate-950 dark:text-white mb-4 uppercase leading-none tracking-tight">
+                                {edu.degree}
+                            </h3>
+                            <p className="text-indigo-600 dark:text-indigo-400 font-bold mb-10 text-sm uppercase tracking-widest bg-indigo-50 dark:bg-indigo-500/10 px-4 py-2 rounded-lg inline-block">
+                                {edu.institution}
+                            </p>
+
+                            <div className="flex items-center text-slate-500 dark:text-slate-400 font-black text-[10px] uppercase tracking-[0.4em] bg-white dark:bg-slate-950 p-6 rounded-2xl border border-slate-200 dark:border-white/5 shadow-inner">
+                                <div className="w-12 h-12 rounded-xl bg-slate-50 dark:bg-indigo-500/10 flex items-center justify-center mr-6 border border-slate-200 dark:border-indigo-500/20">
+                                    <Terminal size={20} className="text-indigo-600 dark:text-indigo-500" />
+                                </div>
+                                <div>
+                                    <p className="text-slate-400 dark:text-slate-600 mb-1">Focus Architecture</p>
+                                    <span className="text-slate-950 dark:text-white">{edu.focus}</span>
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+
+                    <div className="space-y-4">
+                        <div className="p-10 bg-slate-50 dark:bg-white/5 rounded-3xl border border-slate-200 dark:border-white/5 h-full flex flex-col justify-center">
+                            <h3 className="text-[11px] font-black text-slate-400 dark:text-slate-500 mb-10 uppercase tracking-[0.5em]">Verified Logic & Industry Status</h3>
+                            <div className="grid gap-4">
                                 {["AWS Architecture", "Cloud Engineering"].map((cert, idx) => (
-                                    <div key={idx} className="flex items-center p-8 bg-white/5 rounded-2xl border border-white/5 group hover:bg-white/[0.08] transition-all duration-700">
-                                        <div className="w-12 h-12 rounded-xl bg-slate-950 flex items-center justify-center text-indigo-500 group-hover:scale-110 transition-all mr-6 border border-white/5 shadow-2xl">
+                                    <div key={idx} className="flex items-center p-6 bg-white dark:bg-white/5 rounded-2xl border border-slate-200 dark:border-white/10 group hover:bg-slate-50 dark:hover:bg-white/[0.08] transition-all duration-500">
+                                        <div className="w-12 h-12 rounded-xl bg-slate-950 flex items-center justify-center text-indigo-500 group-hover:scale-110 transition-all mr-6 border border-white/5 group-hover:border-indigo-500/50">
                                             <ShieldCheck size={22} />
                                         </div>
-                                        <span className="text-white font-black uppercase tracking-widest text-[10px]">{cert}</span>
+                                        <span className="text-slate-950 dark:text-white font-black uppercase tracking-widest text-[10px]">{cert}</span>
                                     </div>
                                 ))}
                             </div>

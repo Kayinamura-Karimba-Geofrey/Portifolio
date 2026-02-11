@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navbar, Hero, About, Skills, Projects, ExperienceEducation, Footer } from './components/Portfolio';
+import { Navbar, Hero, About, Skills, Projects, ProfessionalExperience, Education, Footer } from './components/Portfolio';
 
 function App() {
   return (
@@ -10,7 +10,8 @@ function App() {
         <About />
         <Skills />
         <Projects />
-        <ExperienceEducation />
+        <ProfessionalExperience />
+        <Education />
       </main>
       <Footer />
     </div>
