@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Moon, Sun, Menu, X, Github, Linkedin, Mail, ExternalLink, Code2, Database, ShieldCheck, Terminal, GraduationCap, Briefcase, FileText, ChevronRight, Twitter, Instagram } from 'lucide-react';
-import { PROFILE, SKILLS, PROJECTS, EXPERIENCE, EDUCATION } from '../constants/data';
+import { PROFILE, SKILLS, PROJECTS, EXPERIENCE, EDUCATION, TECH_STACK } from '../constants/data';
 
 // --- Theme Hook ---
 const useTheme = () => {
@@ -44,12 +44,12 @@ export const Navbar = () => {
             <div className="container mx-auto px-6 max-w-7xl">
                 <div className={`flex justify-between items-center transition-all duration-1000 ${scrolled ? 'premium-glass rounded-2xl px-8 py-4' : 'px-4'}`}>
                     <a href="#" className="flex items-center space-x-4 group">
-                        <div className="w-10 h-10 bg-slate-950 dark:bg-indigo-600 rounded-xl flex items-center justify-center text-white font-display font-black text-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-2xl relative overflow-hidden">
-                            <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent"></div>
+                        <div className="w-10 h-10 bg-black dark:bg-black rounded-xl flex items-center justify-center text-white font-display font-black text-xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-2xl relative overflow-hidden ring-1 ring-white/10">
+                            <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent"></div>
                             K
                         </div>
-                        <span className="text-2xl font-display font-black tracking-[0.1em] text-slate-950 dark:text-white uppercase">
-                            Geofrey<span className="text-indigo-600 dark:text-indigo-400">.</span>
+                        <span className="text-2xl font-display font-black tracking-[0.1em] text-white uppercase">
+                            Geofrey<span className="text-indigo-400">.</span>
                         </span>
                     </a>
 
@@ -59,24 +59,24 @@ export const Navbar = () => {
                             <a
                                 key={link.name}
                                 href={link.href}
-                                className="px-5 py-2 text-[11px] font-black uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white transition-all rounded-lg hover:bg-slate-50 dark:hover:bg-white/5 relative group/link"
+                                className="px-5 py-2 text-[11px] font-black uppercase tracking-[0.3em] text-slate-400 hover:text-white transition-all rounded-lg hover:bg-white/5 relative group/link"
                             >
                                 {link.name}
                                 <span className="absolute bottom-0 left-1/2 w-0 h-px bg-indigo-600 dark:bg-indigo-400 transition-all duration-300 -translate-x-1/2 group-hover/link:w-1/2"></span>
                             </a>
                         ))}
 
-                        <div className="flex items-center ml-6 space-x-6 pl-6 border-l border-slate-200 dark:border-white/10">
+                        <div className="flex items-center ml-6 space-x-6 pl-6 border-l border-white/10">
                             <button
                                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                                className="w-10 h-10 rounded-xl bg-slate-50 dark:bg-white/5 text-slate-950 dark:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition-all flex items-center justify-center border border-slate-200/50 dark:border-white/5"
+                                className="w-10 h-10 rounded-xl bg-white/5 text-white hover:bg-white/10 transition-all flex items-center justify-center border border-white/10"
                             >
                                 {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
                             </button>
 
                             <a
                                 href="/cv.pdf"
-                                className="px-8 py-3.5 hidden lg:flex items-center space-x-3 bg-slate-950 dark:bg-white dark:text-slate-950 text-white text-[11px] font-black uppercase tracking-[0.3em] rounded-xl hover:bg-indigo-600 dark:hover:bg-indigo-500 hover:text-white transition-all shadow-2xl active:scale-95 border border-white/10"
+                                className="px-8 py-3.5 hidden lg:flex items-center space-x-3 bg-white text-black text-[11px] font-black uppercase tracking-[0.3em] rounded-xl hover:bg-indigo-500 hover:text-white transition-all shadow-2xl active:scale-95 border border-white/10"
                             >
                                 <span>View Resume</span>
                             </a>
@@ -85,7 +85,7 @@ export const Navbar = () => {
 
                     {/* Mobile Toggle */}
                     <button
-                        className="md:hidden w-12 h-12 flex items-center justify-center rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-950 dark:text-white"
+                        className="md:hidden w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-white"
                         onClick={() => setIsOpen(!isOpen)}
                     >
                         {isOpen ? <X size={20} /> : <Menu size={20} />}
@@ -107,14 +107,14 @@ export const Navbar = () => {
                                 <a
                                     key={link.name}
                                     href={link.href}
-                                    className="px-6 py-4 text-base font-black text-slate-500 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white flex items-center justify-between rounded-2xl hover:bg-slate-50 dark:hover:bg-white/5 transition-all uppercase tracking-[0.2em]"
+                                    className="px-6 py-4 text-base font-black text-slate-400 hover:text-white flex items-center justify-between rounded-2xl hover:bg-white/5 transition-all uppercase tracking-[0.2em]"
                                     onClick={() => setIsOpen(false)}
                                 >
-                                    {link.name} <ChevronRight size={14} className="text-indigo-600" />
+                                    {link.name} <ChevronRight size={14} className="text-indigo-400" />
                                 </a>
                             ))}
-                            <div className="pt-4 border-t border-slate-100 dark:border-white/5">
-                                <a href="/cv.pdf" className="w-full py-5 bg-slate-950 dark:bg-white dark:text-slate-950 text-white text-center rounded-2xl font-black uppercase tracking-[0.3em] text-xs shadow-2xl block">View Resume</a>
+                            <div className="pt-4 border-t border-white/5">
+                                <a href="/cv.pdf" className="w-full py-5 bg-white text-black text-center rounded-2xl font-black uppercase tracking-[0.3em] text-xs shadow-2xl block">View Resume</a>
                             </div>
                         </div>
                     </motion.div>
@@ -131,8 +131,8 @@ export const Hero = () => {
             {/* Animated Stars */}
             <div className="stars"></div>
 
-            {/* Subtle Background Glow - Minimal like reference */}
-            <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-600/15 rounded-full blur-[150px] pointer-events-none"></div>
+            {/* Absolute Black Base - No Glows */}
+            <div className="absolute inset-0 bg-black pointer-events-none"></div>
 
             <div className="container mx-auto px-6 relative z-10 flex flex-col items-center justify-center">
 
@@ -151,7 +151,7 @@ export const Hero = () => {
                             WebkitMask: 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)',
                             WebkitMaskComposite: 'xor',
                             maskComposite: 'exclude',
-                            boxShadow: '0 0 40px rgba(139, 92, 246, 0.3), 0 0 80px rgba(59, 130, 246, 0.2)',
+                            boxShadow: '0 0 20px rgba(139, 92, 246, 0.1), 0 0 40px rgba(59, 130, 246, 0.05)',
                             animation: 'orbit-slow 20s linear infinite'
                         }}
                     ></div>
@@ -164,7 +164,7 @@ export const Hero = () => {
                             WebkitMask: 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)',
                             WebkitMaskComposite: 'xor',
                             maskComposite: 'exclude',
-                            boxShadow: '0 0 40px rgba(139, 92, 246, 0.7), 0 0 80px rgba(139, 92, 246, 0.5), inset 0 0 30px rgba(139, 92, 246, 0.4)',
+                            boxShadow: '0 0 20px rgba(139, 92, 246, 0.2), 0 0 40px rgba(139, 92, 246, 0.1), inset 0 0 10px rgba(139, 92, 246, 0.1)',
                             animation: 'neon-glow 3s ease-in-out infinite, orbit-slow 15s linear infinite reverse'
                         }}
                     ></div>
@@ -195,14 +195,14 @@ export const Hero = () => {
                     </div>
 
                     {/* Main Photo Container with 3D Transform */}
-                    <div className="relative w-52 h-52 md:w-64 md:h-64 rounded-full overflow-hidden border-[6px] border-slate-800/80 shadow-2xl z-10 group-hover:border-indigo-500/60 group-hover:shadow-[0_0_60px_rgba(139,92,246,0.6)] transition-all duration-700 group-hover:scale-105">
+                    <div className="relative w-52 h-52 md:w-64 md:h-64 rounded-full overflow-hidden border-[6px] border-white/10 shadow-2xl z-10 group-hover:border-indigo-500/60 group-hover:shadow-[0_0_60px_rgba(139,92,246,0.6)] transition-all duration-700 group-hover:scale-105">
                         <img
                             src={PROFILE.photo}
                             alt={PROFILE.name}
                             className="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-110 group-hover:scale-110 transition-all duration-700 ease-in-out"
                         />
-                        {/* Dark Mode Overlay - Visible by default, hidden on hover */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/40 to-transparent group-hover:opacity-0 transition-opacity duration-700"></div>
+                        {/* Dark Mode Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent group-hover:opacity-0 transition-opacity duration-700"></div>
                         {/* Light Mode Overlay - Hidden by default, visible on hover */}
                         <div className="absolute inset-0 bg-gradient-to-t from-purple-500/20 via-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
 
@@ -215,9 +215,9 @@ export const Hero = () => {
                         initial={{ opacity: 0, x: -50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 1.2, duration: 0.8 }}
-                        className="hidden lg:flex absolute -left-52 top-1/2 -translate-y-1/2 w-48 bg-slate-900/40 backdrop-blur-2xl rounded-2xl p-5 shadow-2xl border-2 border-indigo-500/30 group-hover:scale-105 group-hover:border-indigo-400/50 transition-all duration-500"
+                        className="hidden lg:flex absolute -left-52 top-1/2 -translate-y-1/2 w-48 bg-black/40 backdrop-blur-2xl rounded-2xl p-5 shadow-2xl border-2 border-indigo-500/30 group-hover:scale-105 group-hover:border-indigo-400/50 transition-all duration-500"
                         style={{
-                            boxShadow: '0 0 40px rgba(139, 92, 246, 0.3), 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(139, 92, 246, 0.1)'
+                            boxShadow: '0 0 40px rgba(139, 92, 246, 0.2), 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(139, 92, 246, 0.05)'
                         }}
                     >
                         <div className="flex items-center gap-4">
@@ -235,9 +235,9 @@ export const Hero = () => {
                         initial={{ opacity: 0, x: 50 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 1.4, duration: 0.8 }}
-                        className="hidden lg:flex absolute -right-52 top-1/2 -translate-y-1/2 w-48 bg-slate-900/40 backdrop-blur-2xl rounded-2xl p-5 shadow-2xl border-2 border-purple-500/30 group-hover:scale-105 group-hover:border-purple-400/50 transition-all duration-500"
+                        className="hidden lg:flex absolute -right-52 top-1/2 -translate-y-1/2 w-48 bg-black/40 backdrop-blur-2xl rounded-2xl p-5 shadow-2xl border-2 border-purple-500/30 group-hover:scale-105 group-hover:border-purple-400/50 transition-all duration-500"
                         style={{
-                            boxShadow: '0 0 40px rgba(168, 85, 247, 0.3), 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(168, 85, 247, 0.1)'
+                            boxShadow: '0 0 40px rgba(168, 85, 247, 0.2), 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(168, 85, 247, 0.05)'
                         }}
                     >
                         <div className="flex items-center gap-4">
@@ -280,7 +280,7 @@ export const Hero = () => {
 // --- About Component ---
 export const About = () => {
     return (
-        <section id="about" className="py-16 md:py-24 bg-white dark:bg-slate-950 relative overflow-hidden transition-colors duration-1000">
+        <section id="about" className="py-16 md:py-24 bg-black relative overflow-hidden transition-colors duration-1000">
             <div className="container mx-auto px-6 max-w-7xl">
 
                 {/* Card Grid - Bio content distributed within cards */}
@@ -313,13 +313,13 @@ export const About = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: 0.1 * i }}
-                            className="group p-8 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-white/5 hover:border-indigo-500/30 transition-all duration-700 flex flex-col items-start hover:-translate-y-2 shadow-sm hover:shadow-2xl"
+                            className="group p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-indigo-500/30 transition-all duration-700 flex flex-col items-start hover:-translate-y-2 shadow-sm hover:shadow-2xl"
                         >
-                            <div className="w-12 h-12 bg-white dark:bg-white/5 rounded-xl flex items-center justify-center text-slate-400 dark:text-slate-500 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-all mb-6 border border-slate-200 dark:border-white/5 shadow-inner">
+                            <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-slate-500 group-hover:text-indigo-400 transition-all mb-6 border border-white/5 shadow-inner">
                                 {item.icon}
                             </div>
-                            <h4 className="font-display font-black text-base text-slate-950 dark:text-white mb-4 uppercase tracking-tight">{item.title}</h4>
-                            <p className="text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed tracking-tight">{item.desc}</p>
+                            <h4 className="font-display font-black text-base text-white mb-4 uppercase tracking-tight">{item.title}</h4>
+                            <p className="text-sm text-slate-400 font-medium leading-relaxed tracking-tight">{item.desc}</p>
                         </motion.div>
                     ))}
                 </div>
@@ -342,16 +342,16 @@ const SkillIcon = ({ category }) => {
 
 export const Skills = () => {
     return (
-        <section id="skills" className="py-16 md:py-20 bg-slate-50 dark:bg-[#020617] relative overflow-hidden transition-colors duration-1000">
-            <div className="absolute inset-0 grid-background opacity-30 dark:opacity-10"></div>
+        <section id="skills" className="py-16 md:py-20 bg-black relative overflow-hidden transition-colors duration-1000">
+            <div className="absolute inset-0 grid-background opacity-10"></div>
             <div className="container mx-auto px-6 max-w-7xl relative z-10">
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
                     <div className="max-w-3xl">
-                        <div className="inline-block px-5 py-2.5 bg-white dark:bg-white/5 text-indigo-600 dark:text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] rounded-lg mb-10 border border-slate-200 dark:border-white/10 shadow-sm">
+                        <div className="inline-block px-5 py-2.5 bg-white/5 text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] rounded-lg mb-10 border border-white/10 shadow-sm">
                             Technical Skills
                         </div>
-                        <h2 className="text-3xl md:text-4xl font-display font-black text-slate-950 dark:text-white uppercase tracking-[-0.04em] leading-[0.9]">
-                            Core Competen<span className="text-indigo-600 dark:text-indigo-500">cies.</span>
+                        <h2 className="text-3xl md:text-4xl font-display font-black text-white uppercase tracking-[-0.04em] leading-[0.9]">
+                            Core Competen<span className="text-indigo-500">cies.</span>
                         </h2>
                     </div>
                 </div>
@@ -366,22 +366,22 @@ export const Skills = () => {
                             transition={{ delay: idx * 0.1, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                             className="group h-full"
                         >
-                            <div className="h-full p-5 rounded-xl bg-white dark:bg-slate-950 border border-slate-200 dark:border-white/10 hover:border-indigo-500/30 transition-all duration-700 relative overflow-hidden flex flex-col">
+                            <div className="h-full p-5 rounded-xl bg-white/5 border border-white/10 hover:border-indigo-500/30 transition-all duration-700 relative overflow-hidden flex flex-col">
                                 <div className="flex items-center justify-between mb-8 relative z-10">
-                                    <div className="w-10 h-10 bg-slate-950 dark:bg-white/5 rounded-xl flex items-center justify-center text-white dark:text-indigo-400 border border-white/10 shadow-2xl group-hover:bg-indigo-600 dark:group-hover:bg-indigo-500 group-hover:text-white transition-all duration-500">
+                                    <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-indigo-400 border border-white/10 shadow-2xl group-hover:bg-indigo-500 group-hover:text-white transition-all duration-500">
                                         <SkillIcon category={skill.category} />
                                     </div>
-                                    <div className="text-[8px] font-mono text-slate-400 dark:text-white/20 tracking-[0.5em] uppercase">Sector: 0{idx + 1}</div>
+                                    <div className="text-[8px] font-mono text-white/20 tracking-[0.5em] uppercase">Sector: 0{idx + 1}</div>
                                 </div>
 
-                                <h3 className="text-lg font-display font-black text-slate-950 dark:text-white mb-6 tracking-[-0.02em] uppercase relative z-10">{skill.category}</h3>
+                                <h3 className="text-lg font-display font-black text-white mb-6 tracking-[-0.02em] uppercase relative z-10">{skill.category}</h3>
 
                                 <div className="grid grid-cols-2 gap-4 relative z-10">
                                     {skill.items.map((item, i) => (
-                                        <div key={i} className="p-3 bg-slate-50 dark:bg-white/5 border border-slate-100 dark:border-white/10 rounded-lg group-hover:border-indigo-500/10 transition-colors">
-                                            <p className="text-[7px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-1">{item.name}</p>
+                                        <div key={i} className="p-3 bg-white/5 border border-white/10 rounded-lg group-hover:border-indigo-500/10 transition-colors">
+                                            <p className="text-[7px] font-black text-slate-500 uppercase tracking-widest mb-1">{item.name}</p>
                                             <div className="flex items-end justify-between">
-                                                <span className="text-xs font-black text-slate-950 dark:text-white leading-none tracking-tight">{item.level}%</span>
+                                                <span className="text-xs font-black text-white leading-none tracking-tight">{item.level}%</span>
                                                 <div className="w-1 h-1 rounded-full bg-indigo-500/30"></div>
                                             </div>
                                         </div>
@@ -399,86 +399,160 @@ export const Skills = () => {
 
 // --- Projects Component ---
 export const Projects = () => {
+    const [showProjects, setShowProjects] = useState(false);
+
+    const toggleProjects = () => {
+        if (!showProjects) {
+            setShowProjects(true);
+            // Small delay to ensure the DOM has updated before scrolling
+            setTimeout(() => {
+                const element = document.getElementById('project-cards');
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 100);
+        } else {
+            const element = document.getElementById('project-cards');
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    };
+
     return (
-        <section id="projects" className="py-16 md:py-20 bg-white dark:bg-slate-950 transition-colors duration-1000">
-            <div className="container mx-auto px-6 max-w-7xl">
-                <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
-                    <div className="max-w-4xl">
-                        <div className="inline-block px-5 py-2.5 bg-slate-50 dark:bg-white/5 text-indigo-600 dark:text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] rounded-lg mb-10 border border-slate-200 dark:border-white/10 shadow-sm">
-                            Portfolio
-                        </div>
-                        <h2 className="text-3xl md:text-4xl font-display font-black text-slate-950 dark:text-white mb-6 uppercase tracking-[-0.04em] leading-[0.9]">
-                            My Projects<span className="text-indigo-600 dark:text-indigo-500">.</span>
-                        </h2>
+        <section id="projects" className="py-24 md:py-32 bg-black transition-colors duration-1000 relative overflow-hidden">
+            <div className="container mx-auto px-6 max-w-7xl relative z-10">
+                {/* Header Section */}
+                <div className="flex flex-col items-center text-center mb-24">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="inline-block px-5 py-2.5 bg-white/5 text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] rounded-lg mb-8 border border-white/10 shadow-sm"
+                    >
+                        Success Track
+                    </motion.div>
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.2 }}
+                        className="text-4xl md:text-5xl lg:text-7xl font-display font-black text-white uppercase tracking-[-0.04em] leading-none mb-12"
+                    >
+                        Tech Stack <span className="text-indigo-500">&</span> Projects<span className="text-indigo-500">.</span>
+                    </motion.h2>
+
+                    {/* Tech Stack Grid */}
+                    <div className="grid grid-cols-4 md:grid-cols-8 gap-8 mb-16 max-w-5xl mx-auto items-center justify-center">
+                        {TECH_STACK.map((tech, idx) => (
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: idx * 0.05 }}
+                                className="group relative flex flex-col items-center"
+                            >
+                                <div className="w-16 h-16 md:w-20 md:h-20 bg-white/5 rounded-2xl flex items-center justify-center p-4 border border-white/10 group-hover:border-indigo-500/50 transition-all duration-500 shadow-sm hover:shadow-indigo-500/20 group-hover:-translate-y-2">
+                                    <img src={tech.logo} alt={tech.name} className="w-full h-full object-contain filter grayscale invert group-hover:grayscale-0 group-hover:invert-0 transition-all duration-500" />
+                                </div>
+                                <span className="absolute -bottom-8 text-[10px] font-black uppercase tracking-widest text-slate-500 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                                    {tech.name}
+                                </span>
+                            </motion.div>
+                        ))}
                     </div>
+
+                    {/* CTA Button */}
+                    <motion.button
+                        onClick={toggleProjects}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.5 }}
+                        className="group flex items-center space-x-4 bg-white text-slate-950 px-10 py-5 rounded-2xl font-black uppercase tracking-[0.3em] text-[11px] shadow-[0_20px_40px_rgba(255,255,255,0.1)] hover:bg-indigo-600 hover:text-white transition-all active:scale-95"
+                    >
+                        <span>{showProjects ? "Scroll to Projects" : "View My Projects"}</span>
+                        <ChevronRight size={16} className={`group-hover:translate-x-1 transition-transform ${showProjects ? "rotate-90" : ""}`} />
+                    </motion.button>
                 </div>
 
-                <div className="grid lg:grid-cols-3 gap-6">
-                    {PROJECTS.map((project, idx) => (
+                {/* Projects Section */}
+                <AnimatePresence>
+                    {showProjects && (
                         <motion.div
-                            key={project.id}
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.1, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                            className="group h-full"
+                            id="project-cards"
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                            className="grid lg:grid-cols-3 gap-8 scroll-mt-32 overflow-hidden"
                         >
-                            <div className="h-full flex flex-col bg-white dark:bg-slate-950 rounded-xl overflow-hidden border border-slate-200 dark:border-white/10 hover:border-indigo-500/30 transition-all duration-700 relative">
-                                {/* Project Image Box */}
-                                <div className="relative h-64 overflow-hidden group-hover:h-56 transition-all duration-700 ease-in-out">
-                                    <div className="absolute inset-0 bg-indigo-600/10 group-hover:bg-transparent transition-colors duration-700 z-10"></div>
-                                    <img
-                                        src={project.image}
-                                        alt={project.name}
-                                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
-                                    />
-                                    {/* Project Logo Overlay */}
-                                    <div className="absolute bottom-6 left-6 z-20">
-                                        <div className="w-14 h-14 bg-slate-950 dark:bg-white rounded-xl flex items-center justify-center text-white dark:text-slate-950 shadow-3xl group-hover:bg-indigo-600 group-hover:text-white transition-all duration-700 border border-white/5">
-                                            {idx === 0 ? <GraduationCap size={28} strokeWidth={1} /> : idx === 1 ? <ShieldCheck size={28} strokeWidth={1} /> : idx === 2 ? <FileText size={28} strokeWidth={1} /> : <Terminal size={28} strokeWidth={1} />}
+                            {PROJECTS.map((project, idx) => (
+                                <motion.div
+                                    key={project.id}
+                                    initial={{ opacity: 0, y: 40 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: idx * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                                    className="group h-full"
+                                >
+                                    <div className="h-full flex flex-col bg-slate-900/40 backdrop-blur-xl rounded-2xl overflow-hidden border border-white/5 hover:border-indigo-500/30 transition-all duration-700 relative shadow-2xl">
+                                        {/* Project Image Box */}
+                                        <div className="relative h-64 overflow-hidden">
+                                            <div className="absolute inset-0 bg-indigo-600/5 group-hover:bg-transparent transition-colors duration-700 z-10"></div>
+                                            <img
+                                                src={project.image}
+                                                alt={project.name}
+                                                className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
+                                            />
+                                            {/* Project Logo Overlay */}
+                                            <div className="absolute bottom-6 left-6 z-20">
+                                                <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-slate-950 shadow-3xl group-hover:bg-indigo-600 group-hover:text-white transition-all duration-700 border border-white/10">
+                                                    {idx === 0 ? <GraduationCap size={28} strokeWidth={1} /> : idx === 1 ? <ShieldCheck size={28} strokeWidth={1} /> : idx === 2 ? <FileText size={28} strokeWidth={1} /> : <Terminal size={28} strokeWidth={1} />}
+                                                </div>
+                                            </div>
+
+                                            {/* Action Buttons Overlay */}
+                                            <div className="absolute top-6 right-6 z-20 flex gap-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700">
+                                                {project.github && <a href={project.github} className="w-12 h-12 bg-white/10 backdrop-blur-md text-white hover:bg-white hover:text-slate-950 rounded-xl transition-all border border-white/10 flex items-center justify-center shadow-xl md:bg-white md:text-black"><Github size={18} /></a>}
+                                                {project.demo && <a href={project.demo} className="px-6 h-12 bg-indigo-600 text-white hover:bg-white hover:text-slate-950 text-[9px] font-black uppercase tracking-[0.2em] rounded-xl transition-all shadow-2xl flex items-center justify-center">Live Demo</a>}
+                                            </div>
+                                        </div>
+
+                                        <div className="p-8 flex-1 flex flex-col relative z-10">
+                                            <h3 className="text-2xl font-display font-black text-white mb-6 tracking-[-0.03em] uppercase leading-none">{project.name}</h3>
+
+                                            <div className="mb-10">
+                                                <p className="text-[9px] font-black text-indigo-400 uppercase tracking-[0.5em] mb-4">Challenge</p>
+                                                <p className="text-base text-slate-400 font-medium leading-relaxed tracking-tight italic border-l-2 border-indigo-500/20 pl-6">{project.problem}</p>
+                                            </div>
+
+                                            <div className="mb-10">
+                                                <p className="text-[9px] font-black text-slate-500 uppercase tracking-[0.5em] mb-4">Key Features</p>
+                                                <ul className="space-y-4">
+                                                    {project.features.map((f, i) => (
+                                                        <li key={i} className="flex items-start text-slate-400 font-bold group/item">
+                                                            <div className="w-1.5 h-1.5 rounded-full bg-indigo-500/30 mt-2 mr-4 group-hover/item:bg-indigo-500 transition-all shadow-[0_0_8px_rgba(99,102,241,0.5)]"></div>
+                                                            <span className="text-sm tracking-tight">{f}</span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+
+                                            <div className="mt-auto pt-10 border-t border-white/5 flex flex-wrap gap-2.5">
+                                                {project.tech.map((t, i) => (
+                                                    <span key={i} className="px-4 py-2 bg-white/5 text-slate-400 text-[8px] font-black uppercase tracking-[0.3em] rounded-lg border border-white/5 group-hover:border-indigo-500/30 transition-colors">
+                                                        {t}
+                                                    </span>
+                                                ))}
+                                            </div>
                                         </div>
                                     </div>
-
-                                    {/* Action Buttons Overlay */}
-                                    <div className="absolute top-6 right-6 z-20 flex gap-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700">
-                                        <a href={project.github} className="w-12 h-12 bg-white/10 backdrop-blur-md text-white hover:bg-white hover:text-slate-950 rounded-xl transition-all border border-white/10 flex items-center justify-center"><Github size={18} /></a>
-                                        {project.demo && <a href={project.demo} className="px-6 h-12 bg-indigo-600 text-white hover:bg-white hover:text-slate-950 text-[9px] font-black uppercase tracking-[0.2em] rounded-xl transition-all shadow-2xl flex items-center justify-center">Live Node</a>}
-                                    </div>
-                                </div>
-
-                                <div className="p-6 md:p-7 flex-1 flex flex-col relative z-10">
-                                    <h3 className="text-xl md:text-2xl font-display font-black text-slate-950 dark:text-white mb-4 tracking-[-0.03em] uppercase leading-none">{project.name}</h3>
-
-                                    <div className="mb-8">
-                                        <p className="text-[9px] font-black text-indigo-500 dark:text-indigo-400 uppercase tracking-[0.5em] mb-4">Goal</p>
-                                        <p className="text-base text-slate-500 dark:text-slate-400 font-medium leading-relaxed tracking-tight italic border-l-2 border-indigo-500/20 pl-6">{project.problem}</p>
-                                    </div>
-
-                                    <div className="mb-8">
-                                        <p className="text-[9px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-[0.5em] mb-4">Features</p>
-                                        <ul className="space-y-4">
-                                            {project.features.map((f, i) => (
-                                                <li key={i} className="flex items-center text-slate-600 dark:text-slate-400 font-bold group/item">
-                                                    <div className="w-2 h-2 rounded-full border border-indigo-500/30 mr-4 group-hover/item:bg-indigo-500 transition-all"></div>
-                                                    <span className="text-sm tracking-tight">{f}</span>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-
-                                    <div className="mt-auto pt-10 border-t border-slate-100 dark:border-white/5 flex flex-wrap gap-2.5">
-                                        {project.tech.map((t, i) => (
-                                            <span key={i} className="px-4 py-2 bg-slate-50 dark:bg-white/5 text-slate-950 dark:text-slate-400 text-[8px] font-black uppercase tracking-[0.3em] rounded-lg border border-slate-100 dark:border-white/5">
-                                                {t}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-
-                            </div>
+                                </motion.div>
+                            ))}
                         </motion.div>
-                    ))}
-                </div>
+                    )}
+                </AnimatePresence>
             </div>
         </section>
     );
@@ -488,15 +562,15 @@ export const Projects = () => {
 // --- Professional Experience Component ---
 export const ProfessionalExperience = () => {
     return (
-        <section id="experience" className="py-24 md:py-32 bg-[#020617] relative overflow-hidden transition-colors duration-1000">
-            {/* Premium Background Elements */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(17,24,39,1),rgba(2,6,23,1))]"></div>
-            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent opacity-30"></div>
-            <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent opacity-30"></div>
+        <section id="experience" className="py-24 md:py-32 bg-black relative overflow-hidden transition-colors duration-1000">
+            {/* Ambient Background Elements - Minimalized */}
+            <div className="absolute inset-0 bg-black"></div>
+            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-indigo-500/10 to-transparent opacity-20"></div>
+            <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/10 to-transparent opacity-20"></div>
 
-            {/* Atmospheric Glows */}
-            <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[120px] pointer-events-none"></div>
-            <div className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+            {/* Atmospheric Glows - Nearly Imperceptible */}
+            <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] bg-indigo-600/2 rounded-full blur-[120px] pointer-events-none"></div>
+            <div className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-purple-600/2 rounded-full blur-[120px] pointer-events-none"></div>
 
             <div className="container mx-auto px-6 max-w-5xl relative z-10">
                 <div className="text-center mb-20">
@@ -530,8 +604,8 @@ export const ProfessionalExperience = () => {
                             transition={{ duration: 0.8, delay: idx * 0.2 }}
                             className="group relative"
                         >
-                            <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 rounded-3xl blur opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-                            <div className="relative p-8 md:p-12 bg-slate-900/40 backdrop-blur-xl rounded-2xl border border-white/5 group-hover:border-white/10 transition-all duration-500">
+                            <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-3xl blur opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                            <div className="relative p-8 md:p-12 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/5 group-hover:border-white/10 transition-all duration-500">
                                 <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-10">
                                     <div className="space-y-4">
                                         <div className="flex items-center space-x-3 text-indigo-500">
@@ -587,14 +661,14 @@ export const ProfessionalExperience = () => {
 // --- Education Component ---
 export const Education = () => {
     return (
-        <section id="education" className="py-24 bg-white dark:bg-slate-950 transition-colors duration-1000 border-t border-slate-100 dark:border-white/5">
+        <section id="education" className="py-24 bg-black transition-colors duration-1000 border-t border-white/5">
             <div className="container mx-auto px-6 max-w-7xl">
                 <div className="mb-20">
-                    <div className="inline-block px-5 py-2.5 bg-slate-50 dark:bg-white/5 text-indigo-600 dark:text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] rounded-lg mb-6 border border-slate-200 dark:border-white/10">
+                    <div className="inline-block px-5 py-2.5 bg-white/5 text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] rounded-lg mb-6 border border-white/10">
                         Academic History
                     </div>
-                    <h2 className="text-3xl md:text-5xl font-display font-black text-slate-950 dark:text-white uppercase tracking-[-0.04em]">
-                        Education<span className="text-indigo-600 dark:text-indigo-500">.</span>
+                    <h2 className="text-3xl md:text-5xl font-display font-black text-white uppercase tracking-[-0.04em]">
+                        Education<span className="text-indigo-500">.</span>
                     </h2>
                 </div>
 
@@ -605,46 +679,46 @@ export const Education = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="bg-slate-50 dark:bg-white/5 p-10 rounded-3xl border border-slate-200 dark:border-white/5 hover:bg-slate-100 dark:hover:bg-white/[0.07] transition-all duration-700 group relative overflow-hidden"
+                            className="bg-white/5 p-10 rounded-3xl border border-white/5 hover:bg-white/[0.07] transition-all duration-700 group relative overflow-hidden"
                         >
                             <div className="flex justify-between items-start mb-12">
                                 <span className="px-6 py-2.5 bg-indigo-600 text-white text-[10px] font-black uppercase tracking-widest rounded-xl shadow-2xl">
                                     {edu.year}
                                 </span>
-                                <div className="p-3 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-indigo-600 dark:text-indigo-400">
+                                <div className="p-3 rounded-2xl bg-white/5 border border-white/10 text-indigo-400">
                                     <GraduationCap size={24} />
                                 </div>
                             </div>
 
-                            <h3 className="text-3xl font-display font-black text-slate-950 dark:text-white mb-4 uppercase leading-none tracking-tight">
+                            <h3 className="text-3xl font-display font-black text-white mb-4 uppercase leading-none tracking-tight">
                                 {edu.degree}
                             </h3>
-                            <p className="text-indigo-600 dark:text-indigo-400 font-bold mb-10 text-sm uppercase tracking-widest bg-indigo-50 dark:bg-indigo-500/10 px-4 py-2 rounded-lg inline-block">
+                            <p className="text-indigo-400 font-bold mb-10 text-sm uppercase tracking-widest bg-indigo-500/10 px-4 py-2 rounded-lg inline-block">
                                 {edu.institution}
                             </p>
 
-                            <div className="flex items-center text-slate-500 dark:text-slate-400 font-black text-[10px] uppercase tracking-[0.4em] bg-white dark:bg-slate-950 p-6 rounded-2xl border border-slate-200 dark:border-white/5 shadow-inner">
-                                <div className="w-12 h-12 rounded-xl bg-slate-50 dark:bg-indigo-500/10 flex items-center justify-center mr-6 border border-slate-200 dark:border-indigo-500/20">
-                                    <Terminal size={20} className="text-indigo-600 dark:text-indigo-500" />
+                            <div className="flex items-center text-slate-400 font-black text-[10px] uppercase tracking-[0.4em] bg-black p-6 rounded-2xl border border-white/5 shadow-inner">
+                                <div className="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center mr-6 border border-indigo-500/20">
+                                    <Terminal size={20} className="text-indigo-500" />
                                 </div>
                                 <div>
-                                    <p className="text-slate-400 dark:text-slate-600 mb-1">Focus Architecture</p>
-                                    <span className="text-slate-950 dark:text-white">{edu.focus}</span>
+                                    <p className="text-slate-600 mb-1">Focus Architecture</p>
+                                    <span className="text-white">{edu.focus}</span>
                                 </div>
                             </div>
                         </motion.div>
                     ))}
 
                     <div className="space-y-4">
-                        <div className="p-10 bg-slate-50 dark:bg-white/5 rounded-3xl border border-slate-200 dark:border-white/5 h-full flex flex-col justify-center">
+                        <div className="p-10 bg-white/5 rounded-3xl border border-white/5 h-full flex flex-col justify-center">
                             <h3 className="text-[11px] font-black text-slate-400 dark:text-slate-500 mb-10 uppercase tracking-[0.5em]">Verified Logic & Industry Status</h3>
                             <div className="grid gap-4">
                                 {["AWS Architecture", "Cloud Engineering"].map((cert, idx) => (
-                                    <div key={idx} className="flex items-center p-6 bg-white dark:bg-white/5 rounded-2xl border border-slate-200 dark:border-white/10 group hover:bg-slate-50 dark:hover:bg-white/[0.08] transition-all duration-500">
-                                        <div className="w-12 h-12 rounded-xl bg-slate-950 flex items-center justify-center text-indigo-500 group-hover:scale-110 transition-all mr-6 border border-white/5 group-hover:border-indigo-500/50">
+                                    <div key={idx} className="flex items-center p-6 bg-white/5 rounded-2xl border border-white/10 group hover:bg-white/[0.08] transition-all duration-500">
+                                        <div className="w-12 h-12 rounded-xl bg-black flex items-center justify-center text-indigo-500 group-hover:scale-110 transition-all mr-6 border border-white/5 group-hover:border-indigo-500/50">
                                             <ShieldCheck size={22} />
                                         </div>
-                                        <span className="text-slate-950 dark:text-white font-black uppercase tracking-widest text-[10px]">{cert}</span>
+                                        <span className="text-white font-black uppercase tracking-widest text-[10px]">{cert}</span>
                                     </div>
                                 ))}
                             </div>
@@ -677,10 +751,10 @@ export const Footer = () => {
     ];
 
     return (
-        <footer className="relative pt-24 pb-12 bg-[#020617] transition-colors duration-1000 overflow-hidden border-t border-white/5">
-            {/* Ambient Background Glows */}
-            <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-600/10 blur-[120px] rounded-full pointer-events-none"></div>
-            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/5 blur-[120px] rounded-full pointer-events-none"></div>
+        <footer className="relative pt-24 pb-12 bg-black transition-colors duration-1000 overflow-hidden border-t border-white/5">
+            {/* Ambient Background Glows - Neutralized */}
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-600/2 blur-[120px] rounded-full pointer-events-none"></div>
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/2 blur-[120px] rounded-full pointer-events-none"></div>
 
             {/* Top Border Gradient Glow */}
             <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent"></div>
@@ -692,8 +766,8 @@ export const Footer = () => {
                         <div className="flex items-center space-x-6 group">
                             <div className="relative w-16 h-16">
                                 <div className="absolute inset-0 bg-indigo-600 blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500"></div>
-                                <div className="relative w-full h-full bg-slate-950 rounded-2xl border border-white/10 flex items-center justify-center text-white font-display font-black text-2xl uppercase shadow-2xl overflow-hidden group-hover:border-indigo-500/50 transition-all duration-500">
-                                    <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-transparent"></div>
+                                <div className="relative w-full h-full bg-black rounded-2xl border border-white/10 flex items-center justify-center text-white font-display font-black text-2xl uppercase shadow-2xl overflow-hidden group-hover:border-indigo-500/50 transition-all duration-500">
+                                    <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/10 to-transparent"></div>
                                     K
                                 </div>
                             </div>
@@ -746,7 +820,7 @@ export const Footer = () => {
                                         className={`flex items-center justify-between group p-3 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/10 transition-all duration-300`}
                                     >
                                         <div className="flex items-center space-x-3">
-                                            <div className={`p-2 rounded-lg bg-slate-900 text-slate-400 group-hover:text-white transition-colors duration-300 ${social.bgColor}`}>
+                                            <div className={`p-2 rounded-lg bg-white/5 text-slate-400 group-hover:text-white transition-colors duration-300 ${social.bgColor}`}>
                                                 {social.icon}
                                             </div>
                                             <span className="text-sm font-bold text-slate-400 group-hover:text-white transition-colors">

@@ -3,7 +3,7 @@ import { Navbar, Hero, About, Skills, Projects, ProfessionalExperience, Educatio
 
 function App() {
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950 transition-colors duration-500 grain-overlay">
+    <div className="min-h-screen bg-black transition-colors duration-500 grain-overlay">
       <Navbar />
       <main>
         <Hero />
