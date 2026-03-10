@@ -9,7 +9,8 @@ export default {
       darkMode: 'class',
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
-        display: ['Outfit', 'Space Grotesk', 'sans-serif'],
+        display: ['Spectral', 'serif'],
+        testimonial: ['Great Vibes', 'cursive'],
         mono: ['JetBrains Mono', 'monospace'],
       },
       colors: {
