@@ -216,3 +216,30 @@ export const EDUCATION = [
         focus: "Software Engineering, Cybersecurity, and Embedded Systems"
     }
 ];
+
+export const TESTIMONIALS = [
+    {
+        name: "Uwonkunda Mahinga Rodin",
+        role: "Senior Backend Developer at RCA",
+        text: "Working with Geofrey was an absolute pleasure. His technical skills and problem-solving abilities are exceptional. He delivered high-quality code and was always willing to go the extra mile.",
+        avatar: "UR"
+    },
+    {
+        name: "Nyumbayire Raurent",
+        role: "CEO at Tech4Impact",
+        text: "Geofrey is a talented developer who brings creativity and technical expertise to every project. His attention to detail and commitment to excellence make him a valuable team member.",
+        avatar: "NR"
+    },
+    {
+        name: "Rukundo Furaha Divin",
+        role: "Co-Founder at BlinkTechnologiz",
+        text: "I highly recommend Geofrey for any development project. He has a deep understanding of both frontend and backend technologies, and his work ethic is outstanding.",
+        avatar: "RD"
+    }
+];
+
+export const GITHUB_STATS = {
+    contributions: "1000+",
+    repositories: "30+",
+    profileUrl: "https://github.com/geofreykayin"
+};

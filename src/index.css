@@ -154,7 +154,7 @@
   }
 
   .cyber-header span {
-    @apply text-[11px] font-black uppercase tracking-[0.3em] text-white;
+    @apply text-[11px] font-display font-black uppercase tracking-[0.3em] text-white;
   }
 
   .mesh-gradient {

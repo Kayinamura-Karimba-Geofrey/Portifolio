@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Moon, Sun, Menu, X, Github, Linkedin, Mail, ExternalLink, Code2, Database, ShieldCheck, Terminal, GraduationCap, Briefcase, FileText, ChevronRight, Twitter, Instagram } from 'lucide-react';
-import { PROFILE, SKILLS, PROJECTS, EXPERIENCE, EDUCATION, TECH_STACK } from '../constants/data';
+import { Moon, Sun, Menu, X, Github, Linkedin, Mail, ExternalLink, Code2, Database, ShieldCheck, Terminal, GraduationCap, Briefcase, FileText, ChevronRight, Twitter, Instagram, Quote, MessageSquare, GitBranch, Layout } from 'lucide-react';
+import { PROFILE, SKILLS, PROJECTS, EXPERIENCE, EDUCATION, TECH_STACK, TESTIMONIALS, GITHUB_STATS } from '../constants/data';
 
 // --- Theme Hook ---
 const useTheme = () => {
@@ -404,6 +404,64 @@ export const Skills = () => {
     );
 };
 
+// --- Helper Components ---
+
+
+const GitHubActivity = () => {
+    // Generate a simple mock contribution grid
+    const weeks = 22;
+    const days = 7;
+    const contributionData = Array.from({ length: weeks * days }, () => Math.floor(Math.random() * 4));
+
+    return (
+        <div className="cyber-card p-6 h-full flex flex-col justify-between">
+            <div className="corner-br"></div>
+            <div>
+                <div className="flex items-center space-x-3 mb-6 self-start w-full relative z-10">
+                    <Github size={20} className="text-white" />
+                    <h3 className="text-sm font-black uppercase tracking-[0.3em] text-white">GitHub Activity</h3>
+                </div>
+
+                <p className="text-[10px] text-slate-500 uppercase tracking-widest mb-8 self-start relative z-10">My contribution activity over the past year</p>
+
+                <div className="flex flex-wrap gap-1 mb-10 w-full overflow-hidden relative z-10">
+                    {contributionData.map((val, i) => (
+                        <div
+                            key={i}
+                            className={`w-2.5 h-2.5 rounded-sm flex-shrink-0 ${val === 0 ? 'bg-white/5' :
+                                val === 1 ? 'bg-indigo-500/30' :
+                                    val === 2 ? 'bg-indigo-500/60' :
+                                        'bg-indigo-500'
+                                }`}
+                        />
+                    ))}
+                </div>
+
+                <div className="grid grid-cols-2 gap-4 w-full mb-8 relative z-10">
+                    <div className="bg-white/5 p-4 border border-white/5 flex flex-col items-center justify-center rounded-lg">
+                        <span className="text-xl font-black text-white">{GITHUB_STATS.contributions}</span>
+                        <span className="text-[8px] text-slate-500 uppercase tracking-widest mt-1 text-center leading-none">Contributions</span>
+                    </div>
+                    <div className="bg-white/5 p-4 border border-white/5 flex flex-col items-center justify-center rounded-lg">
+                        <span className="text-xl font-black text-white">{GITHUB_STATS.repositories}</span>
+                        <span className="text-[8px] text-slate-500 uppercase tracking-widest mt-1 text-center leading-none">Repositories</span>
+                    </div>
+                </div>
+            </div>
+
+            <a
+                href={GITHUB_STATS.profileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full py-4 bg-white text-black hover:bg-indigo-600 hover:text-white transition-all flex items-center justify-center rounded-lg group relative z-10"
+            >
+                <Github size={16} className="mr-3 group-hover:scale-110 transition-transform" />
+                <span className="text-[10px] font-black uppercase tracking-[0.2em]">View GitHub Profile</span>
+            </a>
+        </div>
+    );
+};
+
 // --- Projects Component ---
 export const Projects = () => {
     const [showProjects, setShowProjects] = useState(false);
@@ -411,7 +469,6 @@ export const Projects = () => {
     const toggleProjects = () => {
         if (!showProjects) {
             setShowProjects(true);
-            // Small delay to ensure the DOM has updated before scrolling
             setTimeout(() => {
                 const element = document.getElementById('project-cards');
                 if (element) {
@@ -419,17 +476,13 @@ export const Projects = () => {
                 }
             }, 100);
         } else {
-            const element = document.getElementById('project-cards');
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
+            setShowProjects(false);
         }
     };
 
     return (
         <section id="projects" className="py-24 md:py-32 bg-black transition-colors duration-1000 relative overflow-hidden">
             <div className="container mx-auto px-6 max-w-7xl relative z-10">
-                {/* Header Section */}
                 <div className="flex flex-col items-center text-center mb-24">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
@@ -449,7 +502,6 @@ export const Projects = () => {
                         Tech Stack <span className="text-indigo-500">&</span> Projects<span className="text-indigo-500">.</span>
                     </motion.h2>
 
-                    {/* Tech Stack Grid */}
                     <div className="grid grid-cols-4 md:grid-cols-8 gap-8 mb-16 max-w-5xl mx-auto items-center justify-center">
                         {TECH_STACK.map((tech, idx) => (
                             <motion.div
@@ -470,7 +522,6 @@ export const Projects = () => {
                         ))}
                     </div>
 
-                    {/* CTA Button */}
                     <motion.button
                         onClick={toggleProjects}
                         initial={{ opacity: 0, y: 20 }}
@@ -484,7 +535,6 @@ export const Projects = () => {
                     </motion.button>
                 </div>
 
-                {/* Projects Section */}
                 <AnimatePresence>
                     {showProjects && (
                         <motion.div
@@ -493,70 +543,55 @@ export const Projects = () => {
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0 }}
                             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                            className="grid lg:grid-cols-3 gap-8 scroll-mt-32 overflow-hidden"
+                            className="scroll-mt-32 overflow-hidden"
                         >
-                            {PROJECTS.map((project, idx) => (
-                                <motion.div
-                                    key={project.id}
-                                    initial={{ opacity: 0, y: 40 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: idx * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-                                    className="group h-full"
-                                >
-                                    <div className="h-full flex flex-col bg-slate-900/40 backdrop-blur-xl rounded-2xl overflow-hidden border border-white/5 hover:border-indigo-500/30 transition-all duration-700 relative shadow-2xl">
-                                        {/* Project Image Box */}
-                                        <div className="relative h-64 overflow-hidden">
-                                            <div className="absolute inset-0 bg-indigo-600/5 group-hover:bg-transparent transition-colors duration-700 z-10"></div>
-                                            <img
-                                                src={project.image}
-                                                alt={project.name}
-                                                className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
-                                            />
-                                            {/* Project Logo Overlay */}
-                                            <div className="absolute bottom-6 left-6 z-20">
-                                                <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center text-slate-950 shadow-3xl group-hover:bg-indigo-600 group-hover:text-white transition-all duration-700 border border-white/10">
-                                                    {idx === 0 ? <GraduationCap size={28} strokeWidth={1} /> : idx === 1 ? <ShieldCheck size={28} strokeWidth={1} /> : idx === 2 ? <FileText size={28} strokeWidth={1} /> : <Terminal size={28} strokeWidth={1} />}
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                {PROJECTS.map((project, idx) => (
+                                    <motion.div
+                                        key={project.id}
+                                        initial={{ opacity: 0, y: 40 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: idx * 0.1, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                                        className="group h-full"
+                                    >
+                                        <div className="cyber-card group h-full flex flex-col">
+                                            <div className="corner-br"></div>
+                                            <div className="relative h-48 overflow-hidden rounded-lg mb-6 border border-white/5">
+                                                <div className="absolute inset-0 bg-indigo-600/5 group-hover:bg-transparent transition-colors duration-700 z-10"></div>
+                                                <img
+                                                    src={project.image}
+                                                    alt={project.name}
+                                                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
+                                                />
+                                                <div className="absolute bottom-4 left-4 z-20">
+                                                    <div className="w-10 h-10 bg-white text-black rounded-lg flex items-center justify-center shadow-3xl group-hover:bg-indigo-600 group-hover:text-white transition-all duration-700 border border-white/10">
+                                                        {idx === 0 ? <GraduationCap size={20} /> : idx === 1 ? <ShieldCheck size={20} /> : idx === 2 ? <FileText size={20} /> : <Terminal size={20} />}
+                                                    </div>
+                                                </div>
+                                                <div className="absolute top-4 right-4 z-20 flex gap-3 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700">
+                                                    {project.github && <a href={project.github} className="w-10 h-10 bg-white/10 backdrop-blur-md text-white hover:bg-white hover:text-black rounded-lg transition-all border border-white/10 flex items-center justify-center shadow-xl"><Github size={16} /></a>}
+                                                    {project.demo && <a href={project.demo} className="w-10 h-10 bg-indigo-600 text-white hover:bg-white hover:text-black rounded-lg transition-all shadow-2xl flex items-center justify-center"><ExternalLink size={16} /></a>}
                                                 </div>
                                             </div>
-
-                                            {/* Action Buttons Overlay */}
-                                            <div className="absolute top-6 right-6 z-20 flex gap-4 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700">
-                                                {project.github && <a href={project.github} className="w-12 h-12 bg-white/10 backdrop-blur-md text-white hover:bg-white hover:text-slate-950 rounded-xl transition-all border border-white/10 flex items-center justify-center shadow-xl md:bg-white md:text-black"><Github size={18} /></a>}
-                                                {project.demo && <a href={project.demo} className="px-6 h-12 bg-indigo-600 text-white hover:bg-white hover:text-slate-950 text-[9px] font-black uppercase tracking-[0.2em] rounded-xl transition-all shadow-2xl flex items-center justify-center">Live Demo</a>}
-                                            </div>
-                                        </div>
-
-                                        <div className="p-8 flex-1 flex flex-col relative z-10">
-                                            <h3 className="text-2xl font-display font-black text-white mb-6 tracking-[-0.03em] uppercase leading-none">{project.name}</h3>
-
-                                            <div className="mb-10">
-                                                <p className="text-[9px] font-black text-indigo-400 uppercase tracking-[0.5em] mb-4">Challenge</p>
-                                                <p className="text-base text-slate-400 font-medium leading-relaxed tracking-tight italic border-l-2 border-indigo-500/20 pl-6">{project.problem}</p>
-                                            </div>
-
-                                            <div className="mb-10">
-                                                <p className="text-[9px] font-black text-slate-500 uppercase tracking-[0.5em] mb-4">Key Features</p>
-                                                <ul className="space-y-4">
-                                                    {project.features.map((f, i) => (
-                                                        <li key={i} className="flex items-start text-slate-400 font-bold group/item">
-                                                            <div className="w-1.5 h-1.5 rounded-full bg-indigo-500/30 mt-2 mr-4 group-hover/item:bg-indigo-500 transition-all shadow-[0_0_8px_rgba(99,102,241,0.5)]"></div>
-                                                            <span className="text-sm tracking-tight">{f}</span>
-                                                        </li>
+                                            <div className="flex-1 flex flex-col relative z-10">
+                                                <div className="cyber-header px-4 py-2 mb-4 h-fit w-fit">
+                                                    <span className="font-display">{project.name}</span>
+                                                </div>
+                                                <div className="mb-6">
+                                                    <p className="text-[10px] text-slate-400 font-medium leading-relaxed italic border-l-2 border-white/10 pl-4 uppercase tracking-tight">{project.problem}</p>
+                                                </div>
+                                                <div className="mt-auto pt-6 border-t border-white/5 flex flex-wrap gap-2">
+                                                    {project.tech.map((t, i) => (
+                                                        <span key={i} className="px-3 py-1 bg-white/5 text-slate-500 text-[8px] font-black uppercase tracking-widest rounded transition-colors group-hover:text-white">
+                                                            {t}
+                                                        </span>
                                                     ))}
-                                                </ul>
-                                            </div>
-
-                                            <div className="mt-auto pt-10 border-t border-white/5 flex flex-wrap gap-2.5">
-                                                {project.tech.map((t, i) => (
-                                                    <span key={i} className="px-4 py-2 bg-white/5 text-slate-400 text-[8px] font-black uppercase tracking-[0.3em] rounded-lg border border-white/5 group-hover:border-indigo-500/30 transition-colors">
-                                                        {t}
-                                                    </span>
-                                                ))}
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </motion.div>
-                            ))}
+                                    </motion.div>
+                                ))}
+                            </div>
                         </motion.div>
                     )}
                 </AnimatePresence>
@@ -565,100 +600,73 @@ export const Projects = () => {
     );
 };
 
-// --- Experience & Education ---
-// --- Professional Experience Component ---
+// --- Testimonials Section (Replacing Professional Experience) ---
 export const ProfessionalExperience = () => {
     return (
         <section id="experience" className="py-24 md:py-32 bg-black relative overflow-hidden transition-colors duration-1000">
-            {/* Ambient Background Elements - Minimalized */}
             <div className="absolute inset-0 bg-black"></div>
-            <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-indigo-500/10 to-transparent opacity-20"></div>
-            <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-purple-500/10 to-transparent opacity-20"></div>
-
-            {/* Atmospheric Glows - Nearly Imperceptible */}
-            <div className="absolute top-1/4 -left-20 w-[500px] h-[500px] bg-indigo-600/2 rounded-full blur-[120px] pointer-events-none"></div>
-            <div className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-purple-600/2 rounded-full blur-[120px] pointer-events-none"></div>
-
-            <div className="container mx-auto px-6 max-w-5xl relative z-10">
-                <div className="text-center mb-20">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="inline-block px-5 py-2.5 bg-white/5 text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] rounded-lg mb-6 border border-white/10"
-                    >
-                        Success Track
-                    </motion.div>
-                    <motion.h2
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="text-4xl md:text-5xl lg:text-6xl font-display font-black text-white uppercase tracking-[-0.04em] leading-none"
-                    >
-                        Professional<br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-500">Experience.</span>
-                    </motion.h2>
-                </div>
-
-                <div className="flex flex-col space-y-12">
-                    {EXPERIENCE.map((exp, idx) => (
-                        <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, x: idx % 2 === 0 ? -30 : 30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8, delay: idx * 0.2 }}
-                            className="group relative"
-                        >
-                            <div className="cyber-card group">
-                                <div className="corner-br"></div>
-                                <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-10 relative z-10">
-                                    <div className="space-y-4">
-                                        <div className="flex items-center space-x-3 text-white">
-                                            <Briefcase size={14} />
-                                            <span className="text-[10px] font-black uppercase tracking-[0.4em]">{exp.period}</span>
-                                        </div>
-                                        <div>
-                                            <div className="cyber-header px-4 py-2 mb-4">
-                                                <span>{exp.role}</span>
+            <div className="container mx-auto px-6 max-w-7xl relative z-10">
+                <div className="grid lg:grid-cols-12 gap-12">
+                    <div className="lg:col-span-8">
+                        <div className="mb-16">
+                            <motion.div
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                className="inline-block px-5 py-2.5 bg-white/5 text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] rounded-lg mb-6 border border-white/10"
+                            >
+                                Recommendation Protocol
+                            </motion.div>
+                            <motion.h2
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.2 }}
+                                className="text-4xl md:text-5xl lg:text-7xl font-display font-black text-white uppercase tracking-[-0.04em] leading-none"
+                            >
+                                What People<br />
+                                <span className="text-indigo-500">Say.</span>
+                            </motion.h2>
+                        </div>
+                        <div className="grid grid-cols-1 gap-6">
+                            {TESTIMONIALS.map((t, idx) => (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, x: -30 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.8, delay: idx * 0.2 }}
+                                    className="cyber-card group"
+                                >
+                                    <div className="corner-br"></div>
+                                    <div className="flex flex-col sm:flex-row gap-8 items-start relative z-10">
+                                        <div className="flex-shrink-0">
+                                            <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-indigo-400 group-hover:scale-110 transition-transform group-hover:bg-white group-hover:text-black duration-500">
+                                                <Quote size={24} />
                                             </div>
-                                            <p className="text-slate-400 font-bold uppercase tracking-widest text-sm flex items-center">
-                                                <span className="w-8 h-px bg-white/20 mr-3"></span>
-                                                {exp.company}
+                                        </div>
+                                        <div className="flex-1">
+                                            <p className="text-base md:text-xl text-slate-300 font-medium leading-relaxed tracking-tight mb-10 uppercase group-hover:text-white transition-colors">
+                                                "{t.text}"
                                             </p>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex flex-wrap gap-2 md:justify-end max-w-sm">
-                                        {exp.tech && exp.tech.map((t, i) => (
-                                            <div key={i} className="px-3 py-1.5 bg-white/5 border border-white/10 text-white/60 text-[8px] font-black uppercase tracking-widest rounded-md hover:bg-white hover:text-black transition-all">
-                                                {t}
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                <div className="grid md:grid-cols-12 gap-10 relative z-10">
-                                    <div className="md:col-span-12 space-y-6">
-                                        <p className="text-slate-300 font-medium leading-relaxed italic border-l-2 border-white/20 pl-6 mb-8 text-lg uppercase">
-                                            {exp.description}
-                                        </p>
-                                        <div className="grid sm:grid-cols-2 gap-x-8 gap-y-6">
-                                            {exp.bullets.map((bullet, i) => (
-                                                <div key={i} className="flex items-start group/bullet">
-                                                    <div className="w-1.5 h-1.5 border border-white/40 mt-2 mr-4 flex-shrink-0 group-hover/bullet:bg-white transition-all duration-300"></div>
-                                                    <p className="text-sm text-slate-400 font-medium leading-relaxed group-hover:text-slate-200 transition-colors uppercase">
-                                                        {bullet}
-                                                    </p>
+                                            <div className="flex items-center gap-4">
+                                                <div className="w-12 h-12 rounded-full bg-indigo-600 flex items-center justify-center text-white font-black text-sm border-2 border-white/20 shadow-xl">
+                                                    {t.avatar}
                                                 </div>
-                                            ))}
+                                                <div>
+                                                    <h4 className="text-sm md:text-base font-display font-black text-white uppercase tracking-tight">{t.name}</h4>
+                                                    <p className="text-[10px] text-slate-500 uppercase tracking-[0.2em] font-bold">{t.role}</p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="lg:col-span-4 mt-12 lg:mt-0">
+                        <GitHubActivity />
+                    </div>
                 </div>
             </div>
         </section>
