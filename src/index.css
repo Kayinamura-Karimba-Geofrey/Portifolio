@@ -79,6 +79,84 @@
     @apply bg-black rounded-3xl border border-white/10 shadow-sm hover:shadow-xl hover:border-indigo-500/30 transition-all duration-700;
   }
 
+  .cyber-card {
+    @apply relative bg-black border border-white/5 p-8 transition-all duration-500;
+  }
+
+  .cyber-card::before,
+  .cyber-card::after,
+  .cyber-card>.corner-br::before,
+  .cyber-card>.corner-br::after {
+    content: "";
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    border-color: rgba(255, 255, 255, 0.4);
+    pointer-events: none;
+  }
+
+  /* Top Left Corner */
+  .cyber-card::before {
+    top: -1px;
+    left: -1px;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+  }
+
+  /* Top Right Corner */
+  .cyber-card::after {
+    top: -1px;
+    right: -1px;
+    border-top: 1px solid white;
+    border-right: 1px solid white;
+  }
+
+  .cyber-card>.corner-br {
+    @apply absolute inset-0 pointer-events-none;
+  }
+
+  /* Bottom Left Corner */
+  .cyber-card>.corner-br::before {
+    bottom: -1px;
+    left: -1px;
+    border-bottom: 1px solid white;
+    border-left: 1px solid white;
+  }
+
+  /* Bottom Right Corner */
+  .cyber-card>.corner-br::after {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 1px solid white;
+    border-right: 1px solid white;
+  }
+
+  .cyber-header {
+    @apply relative inline-flex items-center px-4 py-2 mb-6;
+  }
+
+  .cyber-header::before,
+  .cyber-header::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: white;
+  }
+
+  .cyber-header::before {
+    left: 0;
+  }
+
+  .cyber-header::after {
+    right: 0;
+  }
+
+  .cyber-header span {
+    @apply text-[11px] font-black uppercase tracking-[0.3em] text-white;
+  }
+
   .mesh-gradient {
     background: radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.05) 0px, transparent 50%),
       radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.03) 0px, transparent 50%),

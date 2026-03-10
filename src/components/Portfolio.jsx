@@ -313,13 +313,18 @@ export const About = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: 0.1 * i }}
-                            className="group p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-indigo-500/30 transition-all duration-700 flex flex-col items-start hover:-translate-y-2 shadow-sm hover:shadow-2xl"
+                            className="cyber-card group"
                         >
-                            <div className="w-12 h-12 bg-white/5 rounded-xl flex items-center justify-center text-slate-500 group-hover:text-indigo-400 transition-all mb-6 border border-white/5 shadow-inner">
-                                {item.icon}
+                            <div className="corner-br"></div>
+                            <div className="flex items-center gap-4 mb-6">
+                                <div className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center text-slate-500 group-hover:text-white transition-all border border-white/5 shadow-inner">
+                                    {item.icon}
+                                </div>
+                                <div className="cyber-header px-4 py-1.5 mb-0">
+                                    <span>{item.title}</span>
+                                </div>
                             </div>
-                            <h4 className="font-display font-black text-base text-white mb-4 uppercase tracking-tight">{item.title}</h4>
-                            <p className="text-sm text-slate-400 font-medium leading-relaxed tracking-tight">{item.desc}</p>
+                            <p className="text-sm text-slate-400 font-medium leading-relaxed tracking-tight group-hover:text-slate-200 transition-colors uppercase">{item.desc}</p>
                         </motion.div>
                     ))}
                 </div>
@@ -366,28 +371,30 @@ export const Skills = () => {
                             transition={{ delay: idx * 0.1, duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                             className="group h-full"
                         >
-                            <div className="h-full p-5 rounded-xl bg-white/5 border border-white/10 hover:border-indigo-500/30 transition-all duration-700 relative overflow-hidden flex flex-col">
+                            <div className="cyber-card group h-full flex flex-col">
+                                <div className="corner-br"></div>
                                 <div className="flex items-center justify-between mb-8 relative z-10">
-                                    <div className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-indigo-400 border border-white/10 shadow-2xl group-hover:bg-indigo-500 group-hover:text-white transition-all duration-500">
+                                    <div className="w-10 h-10 bg-white/5 rounded-lg flex items-center justify-center text-indigo-400 border border-white/10 shadow-2xl group-hover:bg-white group-hover:text-black transition-all duration-500">
                                         <SkillIcon category={skill.category} />
                                     </div>
                                     <div className="text-[8px] font-mono text-white/20 tracking-[0.5em] uppercase">Sector: 0{idx + 1}</div>
                                 </div>
 
-                                <h3 className="text-lg font-display font-black text-white mb-6 tracking-[-0.02em] uppercase relative z-10">{skill.category}</h3>
+                                <div className="cyber-header px-4 py-2 mb-8">
+                                    <span>{skill.category}</span>
+                                </div>
 
                                 <div className="grid grid-cols-2 gap-4 relative z-10">
                                     {skill.items.map((item, i) => (
-                                        <div key={i} className="p-3 bg-white/5 border border-white/10 rounded-lg group-hover:border-indigo-500/10 transition-colors">
+                                        <div key={i} className="p-3 bg-white/5 border border-white/5 rounded-lg group-hover:border-white/20 transition-colors">
                                             <p className="text-[7px] font-black text-slate-500 uppercase tracking-widest mb-1">{item.name}</p>
                                             <div className="flex items-end justify-between">
                                                 <span className="text-xs font-black text-white leading-none tracking-tight">{item.level}%</span>
-                                                <div className="w-1 h-1 rounded-full bg-indigo-500/30"></div>
+                                                <div className="w-1 h-1 rounded-full bg-white/30"></div>
                                             </div>
                                         </div>
                                     ))}
                                 </div>
-
                             </div>
                         </motion.div>
                     ))}
@@ -604,20 +611,20 @@ export const ProfessionalExperience = () => {
                             transition={{ duration: 0.8, delay: idx * 0.2 }}
                             className="group relative"
                         >
-                            <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 rounded-3xl blur opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-                            <div className="relative p-8 md:p-12 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/5 group-hover:border-white/10 transition-all duration-500">
-                                <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-10">
+                            <div className="cyber-card group">
+                                <div className="corner-br"></div>
+                                <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-10 relative z-10">
                                     <div className="space-y-4">
-                                        <div className="flex items-center space-x-3 text-indigo-500">
-                                            <Briefcase size={16} />
+                                        <div className="flex items-center space-x-3 text-white">
+                                            <Briefcase size={14} />
                                             <span className="text-[10px] font-black uppercase tracking-[0.4em]">{exp.period}</span>
                                         </div>
                                         <div>
-                                            <h3 className="text-2xl md:text-3xl font-display font-black text-white tracking-tight uppercase leading-none mb-2">
-                                                {exp.role}
-                                            </h3>
+                                            <div className="cyber-header px-4 py-2 mb-4">
+                                                <span>{exp.role}</span>
+                                            </div>
                                             <p className="text-slate-400 font-bold uppercase tracking-widest text-sm flex items-center">
-                                                <span className="w-8 h-px bg-indigo-500/50 mr-3"></span>
+                                                <span className="w-8 h-px bg-white/20 mr-3"></span>
                                                 {exp.company}
                                             </p>
                                         </div>
@@ -625,23 +632,23 @@ export const ProfessionalExperience = () => {
 
                                     <div className="flex flex-wrap gap-2 md:justify-end max-w-sm">
                                         {exp.tech && exp.tech.map((t, i) => (
-                                            <span key={i} className="px-3 py-1.5 bg-white/5 border border-white/10 text-white/60 text-[8px] font-black uppercase tracking-widest rounded-md hover:bg-white/10 hover:text-white transition-colors">
+                                            <div key={i} className="px-3 py-1.5 bg-white/5 border border-white/10 text-white/60 text-[8px] font-black uppercase tracking-widest rounded-md hover:bg-white hover:text-black transition-all">
                                                 {t}
-                                            </span>
+                                            </div>
                                         ))}
                                     </div>
                                 </div>
 
-                                <div className="grid md:grid-cols-12 gap-10">
+                                <div className="grid md:grid-cols-12 gap-10 relative z-10">
                                     <div className="md:col-span-12 space-y-6">
-                                        <p className="text-slate-300 font-medium leading-relaxed italic border-l-2 border-indigo-500/30 pl-6 mb-8 text-lg">
+                                        <p className="text-slate-300 font-medium leading-relaxed italic border-l-2 border-white/20 pl-6 mb-8 text-lg uppercase">
                                             {exp.description}
                                         </p>
                                         <div className="grid sm:grid-cols-2 gap-x-8 gap-y-6">
                                             {exp.bullets.map((bullet, i) => (
                                                 <div key={i} className="flex items-start group/bullet">
-                                                    <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mt-2 mr-4 flex-shrink-0 group-hover/bullet:scale-150 transition-transform duration-300 shadow-[0_0_10px_rgba(99,102,241,0.8)]"></div>
-                                                    <p className="text-sm text-slate-400 font-medium leading-relaxed group-hover:text-slate-200 transition-colors">
+                                                    <div className="w-1.5 h-1.5 border border-white/40 mt-2 mr-4 flex-shrink-0 group-hover/bullet:bg-white transition-all duration-300"></div>
+                                                    <p className="text-sm text-slate-400 font-medium leading-relaxed group-hover:text-slate-200 transition-colors uppercase">
                                                         {bullet}
                                                     </p>
                                                 </div>
@@ -679,30 +686,31 @@ export const Education = () => {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            className="bg-white/5 p-10 rounded-3xl border border-white/5 hover:bg-white/[0.07] transition-all duration-700 group relative overflow-hidden"
+                            className="cyber-card group"
                         >
-                            <div className="flex justify-between items-start mb-12">
-                                <span className="px-6 py-2.5 bg-indigo-600 text-white text-[10px] font-black uppercase tracking-widest rounded-xl shadow-2xl">
-                                    {edu.year}
-                                </span>
-                                <div className="p-3 rounded-2xl bg-white/5 border border-white/10 text-indigo-400">
-                                    <GraduationCap size={24} />
+                            <div className="corner-br"></div>
+                            <div className="flex justify-between items-start mb-12 relative z-10">
+                                <div className="cyber-header px-4 py-2 mb-0">
+                                    <span>{edu.year}</span>
+                                </div>
+                                <div className="p-3 rounded-lg bg-white/5 border border-white/10 text-white">
+                                    <GraduationCap size={20} />
                                 </div>
                             </div>
 
-                            <h3 className="text-3xl font-display font-black text-white mb-4 uppercase leading-none tracking-tight">
+                            <h3 className="text-2xl font-display font-black text-white mb-6 uppercase leading-none tracking-tight relative z-10">
                                 {edu.degree}
                             </h3>
-                            <p className="text-indigo-400 font-bold mb-10 text-sm uppercase tracking-widest bg-indigo-500/10 px-4 py-2 rounded-lg inline-block">
+                            <p className="text-slate-400 font-bold mb-10 text-sm uppercase tracking-widest bg-white/5 px-4 py-2 border border-white/10 rounded-lg inline-block relative z-10">
                                 {edu.institution}
                             </p>
 
-                            <div className="flex items-center text-slate-400 font-black text-[10px] uppercase tracking-[0.4em] bg-black p-6 rounded-2xl border border-white/5 shadow-inner">
-                                <div className="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center mr-6 border border-indigo-500/20">
-                                    <Terminal size={20} className="text-indigo-500" />
+                            <div className="flex items-center text-[9px] font-black uppercase tracking-[0.4em] bg-white/[0.02] p-6 rounded-lg border border-white/5 relative z-10">
+                                <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center mr-6 border border-white/10">
+                                    <Terminal size={18} className="text-white" />
                                 </div>
                                 <div>
-                                    <p className="text-slate-600 mb-1">Focus Architecture</p>
+                                    <p className="text-slate-500 mb-1">Focus Architecture</p>
                                     <span className="text-white">{edu.focus}</span>
                                 </div>
                             </div>
@@ -710,15 +718,16 @@ export const Education = () => {
                     ))}
 
                     <div className="space-y-4">
-                        <div className="p-10 bg-white/5 rounded-3xl border border-white/5 h-full flex flex-col justify-center">
-                            <h3 className="text-[11px] font-black text-slate-400 dark:text-slate-500 mb-10 uppercase tracking-[0.5em]">Verified Logic & Industry Status</h3>
-                            <div className="grid gap-4">
+                        <div className="cyber-card group h-full flex flex-col justify-center">
+                            <div className="corner-br"></div>
+                            <h3 className="text-[10px] font-black text-slate-500 mb-10 uppercase tracking-[0.5em] relative z-10">Verified Logic & Status</h3>
+                            <div className="grid gap-4 relative z-10">
                                 {["AWS Architecture", "Cloud Engineering"].map((cert, idx) => (
-                                    <div key={idx} className="flex items-center p-6 bg-white/5 rounded-2xl border border-white/10 group hover:bg-white/[0.08] transition-all duration-500">
-                                        <div className="w-12 h-12 rounded-xl bg-black flex items-center justify-center text-indigo-500 group-hover:scale-110 transition-all mr-6 border border-white/5 group-hover:border-indigo-500/50">
-                                            <ShieldCheck size={22} />
+                                    <div key={idx} className="flex items-center p-6 bg-white/5 rounded-lg border border-white/5 group hover:bg-white/10 transition-all duration-500">
+                                        <div className="w-10 h-10 rounded-lg bg-black flex items-center justify-center text-white mr-6 border border-white/10 group-hover:scale-110 transition-all">
+                                            <ShieldCheck size={20} />
                                         </div>
-                                        <span className="text-white font-black uppercase tracking-widest text-[10px]">{cert}</span>
+                                        <span className="text-white font-black uppercase tracking-widest text-[9px]">{cert}</span>
                                     </div>
                                 ))}
                             </div>
