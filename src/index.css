@@ -22,8 +22,13 @@
   h3,
   h4,
   h5,
-  h6 {
-    @apply font-display;
+  h6,
+  .font-display {
+    font-family: 'Spectral', serif !important;
+  }
+
+  .font-testimonial {
+    font-family: 'Great Vibes', cursive !important;
   }
 
   .dark body {
