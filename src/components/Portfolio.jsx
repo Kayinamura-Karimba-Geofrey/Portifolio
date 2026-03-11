@@ -37,6 +37,7 @@ export const Navbar = () => {
         { name: 'Skills', href: '#skills' },
         { name: 'Projects', href: '#projects' },
         { name: 'Experience', href: '#experience' },
+        { name: 'Contact', href: '#contact' },
     ];
 
     return (
@@ -143,71 +144,15 @@ export const Hero = () => {
                     transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
                     className="relative mb-16 group perspective-1000"
                 >
-                    {/* Outer Orbital Ring - Close to photo edge */}
-                    <div
-                        className="absolute -inset-[10px] md:-inset-[12px] rounded-full border-[2px] border-transparent opacity-50"
-                        style={{
-                            background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.7), rgba(59, 130, 246, 0.5), rgba(168, 85, 247, 0.7)) border-box',
-                            WebkitMask: 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)',
-                            WebkitMaskComposite: 'xor',
-                            maskComposite: 'exclude',
-                            boxShadow: '0 0 20px rgba(139, 92, 246, 0.1), 0 0 40px rgba(59, 130, 246, 0.05)',
-                            animation: 'orbit-slow 20s linear infinite'
-                        }}
-                    ></div>
-
-                    {/* Middle Glowing Ring - Close to photo edge */}
-                    <div
-                        className="absolute -inset-[5px] md:-inset-[6px] rounded-full border-[3px] border-transparent"
-                        style={{
-                            background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.9), rgba(59, 130, 246, 0.7), rgba(168, 85, 247, 0.9)) border-box',
-                            WebkitMask: 'linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)',
-                            WebkitMaskComposite: 'xor',
-                            maskComposite: 'exclude',
-                            boxShadow: '0 0 20px rgba(139, 92, 246, 0.2), 0 0 40px rgba(139, 92, 246, 0.1), inset 0 0 10px rgba(139, 92, 246, 0.1)',
-                            animation: 'neon-glow 3s ease-in-out infinite, orbit-slow 15s linear infinite reverse'
-                        }}
-                    ></div>
-
-                    {/* Floating Particles */}
-                    <div className="absolute -inset-16 pointer-events-none">
-                        {[...Array(8)].map((_, i) => (
-                            <motion.div
-                                key={i}
-                                className="absolute w-1 h-1 bg-indigo-400 rounded-full blur-[1px]"
-                                style={{
-                                    top: `${Math.random() * 100}%`,
-                                    left: `${Math.random() * 100}%`,
-                                }}
-                                animate={{
-                                    y: [0, -20, 0],
-                                    opacity: [0.3, 1, 0.3],
-                                    scale: [1, 1.5, 1],
-                                }}
-                                transition={{
-                                    duration: 3 + i * 0.5,
-                                    repeat: Infinity,
-                                    delay: i * 0.3,
-                                    ease: "easeInOut"
-                                }}
-                            />
-                        ))}
-                    </div>
-
-                    {/* Main Photo Container with 3D Transform */}
-                    <div className="relative w-52 h-52 md:w-64 md:h-64 rounded-full overflow-hidden border-[6px] border-white/10 shadow-2xl z-10 group-hover:border-indigo-500/60 group-hover:shadow-[0_0_60px_rgba(139,92,246,0.6)] transition-all duration-700 group-hover:scale-105">
+                    {/* Main Photo Container - Clean, no rings or decorative borders */}
+                    <div className="relative w-52 h-52 md:w-64 md:h-64 overflow-hidden shadow-2xl z-10 transition-all duration-700 group-hover:scale-105">
                         <img
                             src={PROFILE.photo}
                             alt={PROFILE.name}
                             className="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-110 group-hover:scale-110 transition-all duration-700 ease-in-out"
                         />
-                        {/* Dark Mode Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent group-hover:opacity-0 transition-opacity duration-700"></div>
-                        {/* Light Mode Overlay - Hidden by default, visible on hover */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-purple-500/20 via-indigo-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-
-                        {/* Inner Glow Effect */}
-                        <div className="absolute inset-0 rounded-full ring-1 ring-inset ring-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+                        {/* Dark Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent group-hover:opacity-0 transition-opacity duration-700"></div>
                     </div>
 
                     {/* Floating Info Cards - Enhanced Glassmorphic Style */}
@@ -497,7 +442,7 @@ export const Projects = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="text-4xl md:text-5xl lg:text-7xl font-display font-black text-white uppercase tracking-[-0.04em] leading-none mb-12"
+                        className="text-2xl md:text-3xl lg:text-4xl font-display font-black text-white uppercase tracking-[-0.04em] leading-none mb-12"
                     >
                         Tech Stack <span className="text-indigo-500">&</span> Projects<span className="text-indigo-500">.</span>
                     </motion.h2>
@@ -622,7 +567,7 @@ export const ProfessionalExperience = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.2 }}
-                                className="text-4xl md:text-5xl lg:text-7xl font-display font-black text-white uppercase tracking-[-0.04em] leading-none"
+                                className="text-2xl md:text-3xl lg:text-4xl font-display font-black text-white uppercase tracking-[-0.04em] leading-none"
                             >
                                 What People<br />
                                 <span className="text-indigo-500">Say.</span>
@@ -646,7 +591,7 @@ export const ProfessionalExperience = () => {
                                             </div>
                                         </div>
                                         <div className="flex-1">
-                                            <p className="text-base md:text-xl text-slate-300 font-medium leading-relaxed tracking-tight mb-10 uppercase group-hover:text-white transition-colors">
+                                            <p className="text-2xl md:text-3xl lg:text-4xl text-slate-300 font-testimonial leading-tight mb-10 group-hover:text-white transition-colors">
                                                 "{t.text}"
                                             </p>
                                             <div className="flex items-center gap-4">
@@ -673,72 +618,113 @@ export const ProfessionalExperience = () => {
     );
 };
 
-// --- Education Component ---
-export const Education = () => {
+// --- Contact Component ---
+export const Contact = () => {
     return (
-        <section id="education" className="py-24 bg-black transition-colors duration-1000 border-t border-white/5">
+        <section id="contact" className="py-32 bg-black relative overflow-hidden">
             <div className="container mx-auto px-6 max-w-7xl">
-                <div className="mb-20">
-                    <div className="inline-block px-5 py-2.5 bg-white/5 text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] rounded-lg mb-6 border border-white/10">
-                        Academic History
-                    </div>
-                    <h2 className="text-3xl md:text-5xl font-display font-black text-white uppercase tracking-[-0.04em]">
-                        Education<span className="text-indigo-500">.</span>
+                <div className="mb-24 text-center">
+                    <h2 className="text-3xl md:text-5xl font-display font-black text-white uppercase tracking-tighter mb-8 italic">
+                        Let's Build Something Together<span className="text-indigo-500">.</span>
                     </h2>
+                    <p className="text-slate-500 uppercase tracking-[0.3em] text-[11px] font-bold max-w-2xl mx-auto leading-relaxed">
+                        Ready to harden your systems or build high-performance backend architecture? Connect with me for a technical consultation.
+                    </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-8">
-                    {EDUCATION.map((edu, idx) => (
-                        <motion.div
-                            key={idx}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="cyber-card group"
-                        >
+                <div className="grid lg:grid-cols-12 gap-12">
+                    {/* Contact Info Cards */}
+                    <div className="lg:col-span-4 space-y-8">
+                        {/* Email Card */}
+                        <div className="cyber-card p-10 group hover:bg-white/[0.02] transition-colors h-[280px] flex flex-col justify-between">
                             <div className="corner-br"></div>
-                            <div className="flex justify-between items-start mb-12 relative z-10">
-                                <div className="cyber-header px-4 py-2 mb-0">
-                                    <span>{edu.year}</span>
+                            <div>
+                                <div className="w-14 h-14 bg-white/5 border border-white/10 flex items-center justify-center text-white mb-8 group-hover:scale-110 group-hover:bg-indigo-600 transition-all duration-500 rounded-lg">
+                                    <Mail size={24} />
                                 </div>
-                                <div className="p-3 rounded-lg bg-white/5 border border-white/10 text-white">
-                                    <GraduationCap size={20} />
-                                </div>
+                                <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em] mb-4 block">Email</span>
+                                <p className="text-[11px] text-white font-bold leading-relaxed mb-6 uppercase tracking-widest">Have questions? I'm here for you</p>
                             </div>
+                            <a href="mailto:geofreykayin@gmail.com" className="text-xs font-black text-indigo-400 hover:text-white transition-colors tracking-widest border-b border-indigo-400/30 pb-1 w-fit uppercase">geofreykayin@gmail.com</a>
+                        </div>
 
-                            <h3 className="text-2xl font-display font-black text-white mb-6 uppercase leading-none tracking-tight relative z-10">
-                                {edu.degree}
-                            </h3>
-                            <p className="text-slate-400 font-bold mb-10 text-sm uppercase tracking-widest bg-white/5 px-4 py-2 border border-white/10 rounded-lg inline-block relative z-10">
-                                {edu.institution}
-                            </p>
-
-                            <div className="flex items-center text-[9px] font-black uppercase tracking-[0.4em] bg-white/[0.02] p-6 rounded-lg border border-white/5 relative z-10">
-                                <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center mr-6 border border-white/10">
-                                    <Terminal size={18} className="text-white" />
-                                </div>
-                                <div>
-                                    <p className="text-slate-500 mb-1">Focus Architecture</p>
-                                    <span className="text-white">{edu.focus}</span>
-                                </div>
-                            </div>
-                        </motion.div>
-                    ))}
-
-                    <div className="space-y-4">
-                        <div className="cyber-card group h-full flex flex-col justify-center">
+                        {/* Phone Card */}
+                        <div className="cyber-card p-10 group hover:bg-white/[0.02] transition-colors h-[280px] flex flex-col justify-between">
                             <div className="corner-br"></div>
-                            <h3 className="text-[10px] font-black text-slate-500 mb-10 uppercase tracking-[0.5em] relative z-10">Verified Logic & Status</h3>
-                            <div className="grid gap-4 relative z-10">
-                                {["AWS Architecture", "Cloud Engineering"].map((cert, idx) => (
-                                    <div key={idx} className="flex items-center p-6 bg-white/5 rounded-lg border border-white/5 group hover:bg-white/10 transition-all duration-500">
-                                        <div className="w-10 h-10 rounded-lg bg-black flex items-center justify-center text-white mr-6 border border-white/10 group-hover:scale-110 transition-all">
-                                            <ShieldCheck size={20} />
-                                        </div>
-                                        <span className="text-white font-black uppercase tracking-widest text-[9px]">{cert}</span>
+                            <div>
+                                <div className="w-14 h-14 bg-white/5 border border-white/10 flex items-center justify-center text-white mb-8 group-hover:scale-110 group-hover:bg-indigo-600 transition-all duration-500 rounded-lg">
+                                    <Terminal size={24} />
+                                </div>
+                                <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em] mb-4 block">Direct Call</span>
+                                <p className="text-[11px] text-white font-bold leading-relaxed mb-6 uppercase tracking-widest">Talk to me fast, no hassle.</p>
+                            </div>
+                            <span className="text-xs font-black text-indigo-400 tracking-widest uppercase">0792831659</span>
+                        </div>
+
+                        {/* Consultation Card */}
+                        <div className="cyber-card p-10 group hover:bg-white/[0.02] transition-colors h-[280px] flex flex-col justify-between">
+                            <div className="corner-br"></div>
+                            <div>
+                                <div className="w-14 h-14 bg-white/5 border border-white/10 flex items-center justify-center text-white mb-8 group-hover:scale-110 group-hover:bg-indigo-600 transition-all duration-500 rounded-lg">
+                                    <Briefcase size={24} />
+                                </div>
+                                <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em] mb-4 block">Consultation</span>
+                                <p className="text-[11px] text-white font-bold leading-relaxed mb-6 uppercase tracking-widest">Free to book a call if that feels more convenient—I'm happy to walk you through everything.</p>
+                            </div>
+                            <a href="#" className="text-xs font-black text-indigo-400 hover:text-white transition-colors tracking-widest border-b border-indigo-400/30 pb-1 w-fit uppercase font-display">Book a call</a>
+                        </div>
+                    </div>
+
+                    {/* Contact Form */}
+                    <div className="lg:col-span-8">
+                        <div className="cyber-card p-10 h-full">
+                            <div className="corner-br"></div>
+                            <form className="space-y-10 relative z-10">
+                                <div className="grid md:grid-cols-2 gap-10">
+                                    <div className="space-y-4">
+                                        <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em]">Full Name</label>
+                                        <input
+                                            type="text"
+                                            placeholder="Your Name"
+                                            className="w-full bg-white/5 border border-white/10 px-6 py-5 rounded-lg text-white text-xs font-bold focus:outline-none focus:border-indigo-500/50 focus:bg-white/[0.07] transition-all placeholder:text-slate-700 placeholder:uppercase placeholder:tracking-widest"
+                                        />
                                     </div>
-                                ))}
-                            </div>
+                                    <div className="space-y-4">
+                                        <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em]">Email Address</label>
+                                        <input
+                                            type="email"
+                                            placeholder="Email Address"
+                                            className="w-full bg-white/5 border border-white/10 px-6 py-5 rounded-lg text-white text-xs font-bold focus:outline-none focus:border-indigo-500/50 focus:bg-white/[0.07] transition-all placeholder:text-slate-700 placeholder:uppercase placeholder:tracking-widest"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="space-y-4">
+                                    <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em]">Subject of Interest</label>
+                                    <select className="w-full bg-white/5 border border-white/10 px-6 py-5 rounded-lg text-white text-xs font-bold focus:outline-none focus:border-indigo-500/50 focus:bg-white/[0.07] transition-all appearance-none cursor-pointer uppercase tracking-widest">
+                                        <option className="bg-slate-950">Subject (e.g: Backend Development)</option>
+                                        <option className="bg-slate-950">System Architecture</option>
+                                        <option className="bg-slate-950">Cloud Infrastructure</option>
+                                        <option className="bg-slate-950">Security Hardening</option>
+                                    </select>
+                                </div>
+
+                                <div className="space-y-4">
+                                    <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em]">How may I assist you?</label>
+                                    <textarea
+                                        rows="6"
+                                        placeholder="Detailed project requirements..."
+                                        className="w-full bg-white/5 border border-white/10 px-6 py-5 rounded-lg text-white text-xs font-bold focus:outline-none focus:border-indigo-500/50 focus:bg-white/[0.07] transition-all resize-none placeholder:text-slate-700 placeholder:uppercase placeholder:tracking-widest"
+                                    ></textarea>
+                                </div>
+
+                                <button className="w-full py-6 bg-white text-black hover:bg-indigo-600 hover:text-white transition-all rounded-xl font-black uppercase tracking-[0.5em] text-xs shadow-2xl active:scale-95 group">
+                                    <span className="flex items-center justify-center gap-3">
+                                        Send Request
+                                        <ChevronRight size={16} className="group-hover:translate-x-2 transition-transform" />
+                                    </span>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -746,8 +732,6 @@ export const Education = () => {
         </section>
     );
 };
-
-// --- Contact Component ---
 
 // --- Footer Component ---
 export const Footer = () => {
@@ -758,6 +742,7 @@ export const Footer = () => {
         { name: 'Arsenal', href: '#skills' },
         { name: 'Systems', href: '#projects' },
         { name: 'History', href: '#experience' },
+        { name: 'Contact', href: '#contact' },
     ];
 
     const socialLinks = [
@@ -801,8 +786,6 @@ export const Footer = () => {
                         <p className="text-lg text-slate-400 font-medium leading-relaxed max-w-md tracking-tight">
                             Building resilient digital foundations through precision engineering and architectural clarity. Bridging the gap between complex infrastructure and seamless user experiences.
                         </p>
-
-
                     </div>
 
                     {/* Links Grid */}
