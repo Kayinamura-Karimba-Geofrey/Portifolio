@@ -458,7 +458,7 @@ export const Projects = () => {
                                 className="group relative flex flex-col items-center"
                             >
                                 <div className="w-16 h-16 md:w-20 md:h-20 bg-white/5 rounded-2xl flex items-center justify-center p-4 border border-white/10 group-hover:border-indigo-500/50 transition-all duration-500 shadow-sm hover:shadow-indigo-500/20 group-hover:-translate-y-2">
-                                    <img src={tech.logo} alt={tech.name} className="w-full h-full object-contain filter grayscale invert group-hover:grayscale-0 group-hover:invert-0 transition-all duration-500" />
+                                    <img src={tech.logo} alt={tech.name} className={`w-full h-full object-contain transition-all duration-500 group-hover:scale-110 ${['Next.js', 'Express'].includes(tech.name) ? 'invert opacity-90' : ''}`} />
                                 </div>
                                 <span className="absolute -bottom-8 text-[10px] font-black uppercase tracking-widest text-slate-500 opacity-0 group-hover:opacity-100 transition-all duration-300">
                                     {tech.name}
