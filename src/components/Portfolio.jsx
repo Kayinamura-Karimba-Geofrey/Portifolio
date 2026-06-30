@@ -9,6 +9,29 @@ const proficiencyStyles = {
     learning: 'text-slate-500 border-white/10 bg-white/[0.02]',
 };
 
+const ProjectImage = ({ src, alt }) => {
+    const [imageSrc, setImageSrc] = useState(src);
+
+    useEffect(() => {
+        setImageSrc(src);
+    }, [src]);
+
+    return (
+        <img
+            src={imageSrc}
+            alt={alt}
+            loading="lazy"
+            decoding="async"
+            onError={() => {
+                if (imageSrc.endsWith('.png')) {
+                    setImageSrc(imageSrc.replace('.png', '.svg'));
+                }
+            }}
+            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+        />
+    );
+};
+
 // --- Theme Hook ---
 const useTheme = () => {
     const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
@@ -560,12 +583,7 @@ export const Projects = () => {
                                             <div className="corner-br"></div>
                                             <div className="relative h-56 overflow-hidden rounded-lg mb-6 border border-white/10 bg-slate-950">
                                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 pointer-events-none" aria-hidden="true"></div>
-                                                <img
-                                                    src={project.image}
-                                                    alt={`${project.name} preview`}
-                                                    loading="lazy"
-                                                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-                                                />
+                                                <ProjectImage src={project.image} alt={`${project.name} preview`} />
                                                 {project.featured && (
                                                     <span className="absolute top-4 left-4 z-20 px-2 py-1 bg-indigo-600 text-white text-[8px] font-black uppercase tracking-widest rounded">
                                                         Featured
