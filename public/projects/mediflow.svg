@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="MediFlow Hospital Management preview">
+  <defs>
+    <linearGradient id="med-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#083344"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#med-bg)"/>
+  <rect x="0" y="0" width="1200" height="48" fill="#020617" opacity="0.9"/>
+  <circle cx="28" cy="24" r="7" fill="#ef4444"/><circle cx="52" cy="24" r="7" fill="#f59e0b"/><circle cx="76" cy="24" r="7" fill="#22c55e"/>
+  <rect x="80" y="80" width="1040" height="72" rx="12" fill="#0e7490" opacity="0.2"/>
+  <text x="120" y="128" font-family="system-ui,sans-serif" font-size="26" font-weight="700" fill="#fff">MediFlow Hospital</text>
+  <rect x="80" y="180" width="240" height="140" rx="12" fill="#111827" stroke="#06b6d4"/>
+  <text x="110" y="230" font-family="system-ui,sans-serif" font-size="32" font-weight="700" fill="#22d3ee">128</text>
+  <text x="110" y="260" font-family="system-ui,sans-serif" font-size="12" fill="#67e8f9">Patients Today</text>
+  <rect x="340" y="180" width="240" height="140" rx="12" fill="#111827" stroke="#06b6d4"/>
+  <text x="370" y="230" font-family="system-ui,sans-serif" font-size="32" font-weight="700" fill="#fff">24</text>
+  <text x="370" y="260" font-family="system-ui,sans-serif" font-size="12" fill="#94a3b8">Appointments</text>
+  <rect x="600" y="180" width="240" height="140" rx="12" fill="#111827" stroke="#06b6d4"/>
+  <text x="630" y="230" font-family="system-ui,sans-serif" font-size="32" font-weight="700" fill="#f87171">3</text>
+  <text x="630" y="260" font-family="system-ui,sans-serif" font-size="12" fill="#94a3b8">Low Stock Alerts</text>
+  <rect x="860" y="180" width="260" height="140" rx="12" fill="#111827" stroke="#06b6d4"/>
+  <text x="890" y="230" font-family="system-ui,sans-serif" font-size="32" font-weight="700" fill="#4ade80">EHR</text>
+  <text x="890" y="260" font-family="system-ui,sans-serif" font-size="12" fill="#94a3b8">Encrypted Records</text>
+  <rect x="80" y="350" width="500" height="270" rx="14" fill="#111827" stroke="#0891b2"/>
+  <text x="110" y="390" font-family="system-ui,sans-serif" font-size="14" font-weight="600" fill="#67e8f9">Appointment Schedule</text>
+  <rect x="110" y="410" width="440" height="36" rx="6" fill="#1e293b"/>
+  <rect x="110" y="456" width="440" height="36" rx="6" fill="#164e63"/>
+  <rect x="110" y="502" width="440" height="36" rx="6" fill="#1e293b"/>
+  <rect x="600" y="350" width="520" height="270" rx="14" fill="#111827" stroke="#0891b2"/>
+  <text x="630" y="390" font-family="system-ui,sans-serif" font-size="14" font-weight="600" fill="#67e8f9">Pharmacy Inventory</text>
+  <rect x="630" y="420" width="120" height="80" rx="8" fill="#1e293b"/>
+  <rect x="770" y="420" width="120" height="80" rx="8" fill="#1e293b"/>
+  <rect x="910" y="420" width="120" height="80" rx="8" fill="#164e63"/>
+</svg>

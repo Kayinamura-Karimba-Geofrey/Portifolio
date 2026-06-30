@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Moon, Sun, Menu, X, Github, Linkedin, Mail, ExternalLink, Code2, Database, ShieldCheck, Terminal, GraduationCap, Briefcase, FileText, ChevronRight, Twitter, Instagram, Quote, MessageSquare, GitBranch, Layout } from 'lucide-react';
-import { PROFILE, SKILLS, PROJECTS, EXPERIENCE, EDUCATION, TECH_STACK, TESTIMONIALS, GITHUB_STATS } from '../constants/data';
+import { Moon, Sun, Menu, X, Github, Linkedin, Mail, ExternalLink, Code2, Database, ShieldCheck, Terminal, GraduationCap, Briefcase, ChevronRight, Quote, Award, MapPin, Download, Loader2 } from 'lucide-react';
+import { PROFILE, SKILLS, PROJECTS, PROJECT_TAGS, EXPERIENCE, EDUCATION, TECH_STACK, TESTIMONIALS, GITHUB_STATS, CERTIFICATIONS, PROFICIENCY_LABELS } from '../constants/data';
+
+const proficiencyStyles = {
+    expert: 'text-indigo-400 border-indigo-500/30 bg-indigo-500/10',
+    proficient: 'text-white border-white/20 bg-white/5',
+    learning: 'text-slate-500 border-white/10 bg-white/[0.02]',
+};
 
 // --- Theme Hook ---
 const useTheme = () => {
@@ -37,6 +43,7 @@ export const Navbar = () => {
         { name: 'Skills', href: '#skills' },
         { name: 'Projects', href: '#projects' },
         { name: 'Experience', href: '#experience' },
+        { name: 'Education', href: '#education' },
         { name: 'Contact', href: '#contact' },
     ];
 
@@ -76,7 +83,8 @@ export const Navbar = () => {
                             </button>
 
                             <a
-                                href="/cv.pdf"
+                                href={PROFILE.resumeUrl}
+                                download
                                 className="px-8 py-3.5 hidden lg:flex items-center space-x-3 bg-white text-black text-[11px] font-black uppercase tracking-[0.3em] rounded-xl hover:bg-indigo-500 hover:text-white transition-all shadow-2xl active:scale-95 border border-white/10"
                             >
                                 <span>View Resume</span>
@@ -115,7 +123,7 @@ export const Navbar = () => {
                                 </a>
                             ))}
                             <div className="pt-4 border-t border-white/5">
-                                <a href="/cv.pdf" className="w-full py-5 bg-white text-black text-center rounded-2xl font-black uppercase tracking-[0.3em] text-xs shadow-2xl block">View Resume</a>
+                                <a href={PROFILE.resumeUrl} download className="w-full py-5 bg-white text-black text-center rounded-2xl font-black uppercase tracking-[0.3em] text-xs shadow-2xl block">View Resume</a>
                             </div>
                         </div>
                     </motion.div>
@@ -129,94 +137,107 @@ export const Navbar = () => {
 export const Hero = () => {
     return (
         <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden space-background">
-            {/* Animated Stars */}
-            <div className="stars"></div>
+            <div className="stars" aria-hidden="true"></div>
+            <div className="absolute inset-0 bg-black pointer-events-none" aria-hidden="true"></div>
 
-            {/* Absolute Black Base - No Glows */}
-            <div className="absolute inset-0 bg-black pointer-events-none"></div>
+            <div className="container mx-auto px-6 relative z-10 flex flex-col items-center justify-center pt-28 pb-16">
+                {PROFILE.openToWork && (
+                    <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        className="mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-[10px] font-black uppercase tracking-[0.3em]"
+                    >
+                        <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true"></span>
+                        Open to Work
+                    </motion.div>
+                )}
 
-            <div className="container mx-auto px-6 relative z-10 flex flex-col items-center justify-center">
-
-                {/* Premium Profile Photo Section */}
                 <motion.div
                     initial={{ scale: 0.8, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
-                    className="relative mb-16 group perspective-1000"
+                    className="relative mb-12 group"
                 >
-                    {/* Main Photo Container - Clean, no rings or decorative borders */}
-                    <div className="relative w-52 h-52 md:w-64 md:h-64 overflow-hidden shadow-2xl z-10 transition-all duration-700 group-hover:scale-105">
+                    <div className="relative w-52 h-52 md:w-64 md:h-64 overflow-hidden shadow-2xl z-10 transition-all duration-700 group-hover:scale-105 rounded-full ring-2 ring-white/10">
                         <img
                             src={PROFILE.photo}
-                            alt={PROFILE.name}
+                            alt={`Portrait of ${PROFILE.name}`}
+                            width={256}
+                            height={256}
+                            loading="eager"
                             className="w-full h-full object-cover grayscale brightness-75 group-hover:grayscale-0 group-hover:brightness-110 group-hover:scale-110 transition-all duration-700 ease-in-out"
                         />
-                        {/* Dark Overlay */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent group-hover:opacity-0 transition-opacity duration-700"></div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent group-hover:opacity-0 transition-opacity duration-700" aria-hidden="true"></div>
                     </div>
-
-                    {/* Floating Info Cards - Enhanced Glassmorphic Style */}
-                    <motion.div
-                        initial={{ opacity: 0, x: -50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 1.2, duration: 0.8 }}
-                        className="hidden lg:flex absolute -left-52 top-1/2 -translate-y-1/2 w-48 bg-black/40 backdrop-blur-2xl rounded-2xl p-5 shadow-2xl border-2 border-indigo-500/30 group-hover:scale-105 group-hover:border-indigo-400/50 transition-all duration-500"
-                        style={{
-                            boxShadow: '0 0 40px rgba(139, 92, 246, 0.2), 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(139, 92, 246, 0.05)'
-                        }}
-                    >
-                        <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 bg-indigo-600/30 backdrop-blur-sm rounded-xl flex items-center justify-center border border-indigo-400/30 shadow-lg">
-                                <Code2 size={22} className="text-indigo-300" strokeWidth={2} />
-                            </div>
-                            <div>
-                                <p className="text-white font-black text-2xl leading-none mb-1">50+</p>
-                                <p className="text-slate-300 text-xs font-bold uppercase tracking-widest">Projects</p>
-                            </div>
-                        </div>
-                    </motion.div>
-
-                    <motion.div
-                        initial={{ opacity: 0, x: 50 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: 1.4, duration: 0.8 }}
-                        className="hidden lg:flex absolute -right-52 top-1/2 -translate-y-1/2 w-48 bg-black/40 backdrop-blur-2xl rounded-2xl p-5 shadow-2xl border-2 border-purple-500/30 group-hover:scale-105 group-hover:border-purple-400/50 transition-all duration-500"
-                        style={{
-                            boxShadow: '0 0 40px rgba(168, 85, 247, 0.2), 0 20px 60px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(168, 85, 247, 0.05)'
-                        }}
-                    >
-                        <div className="flex items-center gap-4">
-                            <div className="w-12 h-12 bg-purple-600/30 backdrop-blur-sm rounded-xl flex items-center justify-center border border-purple-400/30 shadow-lg">
-                                <ShieldCheck size={22} className="text-purple-300" strokeWidth={2} />
-                            </div>
-                            <div>
-                                <p className="text-white font-black text-2xl leading-none mb-1">5+</p>
-                                <p className="text-slate-300 text-xs font-bold uppercase tracking-widest">Years Exp</p>
-                            </div>
-                        </div>
-                    </motion.div>
                 </motion.div>
 
-                {/* Name */}
                 <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.3 }}
-                    className="text-3xl md:text-5xl lg:text-6xl font-display font-black text-white uppercase tracking-[0.15em] text-center mb-6"
+                    className="text-3xl md:text-5xl lg:text-6xl font-display font-black text-white uppercase tracking-[0.15em] text-center mb-4"
                 >
                     {PROFILE.name}
                 </motion.h1>
 
-                {/* Title */}
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, delay: 0.5 }}
-                    className="text-sm md:text-base lg:text-lg font-medium text-slate-300 uppercase tracking-[0.25em] text-center max-w-4xl mx-auto"
+                    transition={{ duration: 1, delay: 0.4 }}
+                    className="text-lg md:text-xl font-display font-bold text-indigo-400 uppercase tracking-[0.2em] text-center mb-4"
                 >
                     {PROFILE.title}
                 </motion.p>
 
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                    className="text-sm md:text-base text-slate-400 text-center max-w-2xl mx-auto mb-4 leading-relaxed"
+                >
+                    {PROFILE.subtitle}
+                </motion.p>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.55 }}
+                    className="flex flex-wrap items-center justify-center gap-4 text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 mb-10"
+                >
+                    <span className="flex items-center gap-2"><MapPin size={14} className="text-indigo-400" /> {PROFILE.location}</span>
+                    <span className="hidden sm:inline text-white/20">|</span>
+                    <span>{PROFILE.availability}</span>
+                </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.6 }}
+                    className="flex flex-wrap items-center justify-center gap-4"
+                >
+                    <a
+                        href="#contact"
+                        className="px-8 py-4 bg-white text-black text-[11px] font-black uppercase tracking-[0.3em] rounded-xl hover:bg-indigo-500 hover:text-white transition-all shadow-2xl active:scale-95"
+                    >
+                        Get in Touch
+                    </a>
+                    <a
+                        href={PROFILE.resumeUrl}
+                        download
+                        className="px-8 py-4 flex items-center gap-2 border border-white/20 text-white text-[11px] font-black uppercase tracking-[0.3em] rounded-xl hover:bg-white/10 transition-all active:scale-95"
+                    >
+                        <Download size={14} />
+                        Resume
+                    </a>
+                    <a
+                        href={`mailto:${PROFILE.email}`}
+                        className="px-8 py-4 flex items-center gap-2 border border-white/20 text-white text-[11px] font-black uppercase tracking-[0.3em] rounded-xl hover:bg-white/10 transition-all active:scale-95"
+                    >
+                        <Mail size={14} />
+                        Email
+                    </a>
+                </motion.div>
             </div>
         </section>
     );
@@ -332,11 +353,10 @@ export const Skills = () => {
                                 <div className="grid grid-cols-2 gap-4 relative z-10">
                                     {skill.items.map((item, i) => (
                                         <div key={i} className="p-3 bg-white/5 border border-white/5 rounded-lg group-hover:border-white/20 transition-colors">
-                                            <p className="text-[7px] font-black text-slate-500 uppercase tracking-widest mb-1">{item.name}</p>
-                                            <div className="flex items-end justify-between">
-                                                <span className="text-xs font-black text-white leading-none tracking-tight">{item.level}%</span>
-                                                <div className="w-1 h-1 rounded-full bg-white/30"></div>
-                                            </div>
+                                            <p className="text-[7px] font-black text-slate-500 uppercase tracking-widest mb-2">{item.name}</p>
+                                            <span className={`inline-block px-2 py-0.5 text-[7px] font-black uppercase tracking-widest rounded border ${proficiencyStyles[item.proficiency]}`}>
+                                                {PROFICIENCY_LABELS[item.proficiency]}
+                                            </span>
                                         </div>
                                     ))}
                                 </div>
@@ -353,10 +373,28 @@ export const Skills = () => {
 
 
 const GitHubActivity = () => {
-    // Generate a simple mock contribution grid
-    const weeks = 22;
-    const days = 7;
-    const contributionData = Array.from({ length: weeks * days }, () => Math.floor(Math.random() * 4));
+    const [stats, setStats] = useState({ repos: null, followers: null, loading: true, error: false });
+
+    useEffect(() => {
+        const controller = new AbortController();
+        fetch(`https://api.github.com/users/${GITHUB_STATS.username}`, { signal: controller.signal })
+            .then((res) => {
+                if (!res.ok) throw new Error('GitHub user not found');
+                return res.json();
+            })
+            .then((data) => {
+                setStats({
+                    repos: data.public_repos,
+                    followers: data.followers,
+                    loading: false,
+                    error: false,
+                });
+            })
+            .catch(() => {
+                setStats({ repos: null, followers: null, loading: false, error: true });
+            });
+        return () => controller.abort();
+    }, []);
 
     return (
         <div className="cyber-card p-6 h-full flex flex-col justify-between">
@@ -364,34 +402,33 @@ const GitHubActivity = () => {
             <div>
                 <div className="flex items-center space-x-3 mb-6 self-start w-full relative z-10">
                     <Github size={20} className="text-white" />
-                    <h3 className="text-sm font-black uppercase tracking-[0.3em] text-white">GitHub Activity</h3>
+                    <h3 className="text-sm font-black uppercase tracking-[0.3em] text-white">GitHub Profile</h3>
                 </div>
 
-                <p className="text-[10px] text-slate-500 uppercase tracking-widest mb-8 self-start relative z-10">My contribution activity over the past year</p>
+                <p className="text-[10px] text-slate-500 uppercase tracking-widest mb-8 self-start relative z-10">
+                    Live stats from @{GITHUB_STATS.username}
+                </p>
 
-                <div className="flex flex-wrap gap-1 mb-10 w-full overflow-hidden relative z-10">
-                    {contributionData.map((val, i) => (
-                        <div
-                            key={i}
-                            className={`w-2.5 h-2.5 rounded-sm flex-shrink-0 ${val === 0 ? 'bg-white/5' :
-                                val === 1 ? 'bg-indigo-500/30' :
-                                    val === 2 ? 'bg-indigo-500/60' :
-                                        'bg-indigo-500'
-                                }`}
-                        />
-                    ))}
-                </div>
-
-                <div className="grid grid-cols-2 gap-4 w-full mb-8 relative z-10">
-                    <div className="bg-white/5 p-4 border border-white/5 flex flex-col items-center justify-center rounded-lg">
-                        <span className="text-xl font-black text-white">{GITHUB_STATS.contributions}</span>
-                        <span className="text-[8px] text-slate-500 uppercase tracking-widest mt-1 text-center leading-none">Contributions</span>
+                {stats.loading ? (
+                    <div className="flex items-center justify-center py-12 text-slate-500" aria-live="polite">
+                        <Loader2 size={24} className="animate-spin" />
                     </div>
-                    <div className="bg-white/5 p-4 border border-white/5 flex flex-col items-center justify-center rounded-lg">
-                        <span className="text-xl font-black text-white">{GITHUB_STATS.repositories}</span>
-                        <span className="text-[8px] text-slate-500 uppercase tracking-widest mt-1 text-center leading-none">Repositories</span>
+                ) : stats.error ? (
+                    <p className="text-sm text-slate-400 mb-8 relative z-10">
+                        Profile unavailable. Visit GitHub directly to see repositories and activity.
+                    </p>
+                ) : (
+                    <div className="grid grid-cols-2 gap-4 w-full mb-8 relative z-10">
+                        <div className="bg-white/5 p-4 border border-white/5 flex flex-col items-center justify-center rounded-lg">
+                            <span className="text-xl font-black text-white">{stats.repos}</span>
+                            <span className="text-[8px] text-slate-500 uppercase tracking-widest mt-1 text-center leading-none">Public Repos</span>
+                        </div>
+                        <div className="bg-white/5 p-4 border border-white/5 flex flex-col items-center justify-center rounded-lg">
+                            <span className="text-xl font-black text-white">{stats.followers}</span>
+                            <span className="text-[8px] text-slate-500 uppercase tracking-widest mt-1 text-center leading-none">Followers</span>
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
 
             <a
@@ -410,6 +447,11 @@ const GitHubActivity = () => {
 // --- Projects Component ---
 export const Projects = () => {
     const [showProjects, setShowProjects] = useState(false);
+    const [activeTag, setActiveTag] = useState('All');
+
+    const filteredProjects = activeTag === 'All'
+        ? PROJECTS
+        : PROJECTS.filter((p) => p.tag === activeTag);
 
     const toggleProjects = () => {
         if (!showProjects) {
@@ -435,7 +477,7 @@ export const Projects = () => {
                         viewport={{ once: true }}
                         className="inline-block px-5 py-2.5 bg-white/5 text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] rounded-lg mb-8 border border-white/10 shadow-sm"
                     >
-                        Success Track
+                        Portfolio
                     </motion.div>
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
@@ -458,7 +500,7 @@ export const Projects = () => {
                                 className="group relative flex flex-col items-center"
                             >
                                 <div className="w-16 h-16 md:w-20 md:h-20 bg-white/5 rounded-2xl flex items-center justify-center p-4 border border-white/10 group-hover:border-indigo-500/50 transition-all duration-500 shadow-sm hover:shadow-indigo-500/20 group-hover:-translate-y-2">
-                                    <img src={tech.logo} alt={tech.name} className={`w-full h-full object-contain transition-all duration-500 group-hover:scale-110 ${['Next.js', 'Express'].includes(tech.name) ? 'invert opacity-90' : ''}`} />
+                                    <img src={tech.logo} alt={`${tech.name} logo`} loading="lazy" className={`w-full h-full object-contain transition-all duration-500 group-hover:scale-110 ${['Next.js', 'Express'].includes(tech.name) ? 'invert opacity-90' : ''}`} />
                                 </div>
                                 <span className="absolute -bottom-8 text-[10px] font-black uppercase tracking-widest text-slate-500 opacity-0 group-hover:opacity-100 transition-all duration-300">
                                     {tech.name}
@@ -475,8 +517,8 @@ export const Projects = () => {
                         transition={{ delay: 0.5 }}
                         className="group flex items-center space-x-4 bg-white text-slate-950 px-10 py-5 rounded-2xl font-black uppercase tracking-[0.3em] text-[11px] shadow-[0_20px_40px_rgba(255,255,255,0.1)] hover:bg-indigo-600 hover:text-white transition-all active:scale-95"
                     >
-                        <span>{showProjects ? "Scroll to Projects" : "View My Projects"}</span>
-                        <ChevronRight size={16} className={`group-hover:translate-x-1 transition-transform ${showProjects ? "rotate-90" : ""}`} />
+                        <span>{showProjects ? 'Hide Projects' : 'View My Projects'}</span>
+                        <ChevronRight size={16} className={`group-hover:translate-x-1 transition-transform ${showProjects ? 'rotate-90' : ''}`} />
                     </motion.button>
                 </div>
 
@@ -490,8 +532,23 @@ export const Projects = () => {
                             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                             className="scroll-mt-32 overflow-hidden"
                         >
+                            <div className="flex flex-wrap justify-center gap-3 mb-12">
+                                {PROJECT_TAGS.map((tag) => (
+                                    <button
+                                        key={tag}
+                                        onClick={() => setActiveTag(tag)}
+                                        className={`px-5 py-2 text-[10px] font-black uppercase tracking-[0.2em] rounded-lg border transition-all ${activeTag === tag
+                                            ? 'bg-indigo-600 border-indigo-500 text-white'
+                                            : 'bg-white/5 border-white/10 text-slate-400 hover:text-white hover:border-white/20'
+                                            }`}
+                                    >
+                                        {tag}
+                                    </button>
+                                ))}
+                            </div>
+
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                                {PROJECTS.map((project, idx) => (
+                                {filteredProjects.map((project, idx) => (
                                     <motion.div
                                         key={project.id}
                                         initial={{ opacity: 0, y: 40 }}
@@ -501,30 +558,58 @@ export const Projects = () => {
                                     >
                                         <div className="cyber-card group h-full flex flex-col">
                                             <div className="corner-br"></div>
-                                            <div className="relative h-48 overflow-hidden rounded-lg mb-6 border border-white/5">
-                                                <div className="absolute inset-0 bg-indigo-600/5 group-hover:bg-transparent transition-colors duration-700 z-10"></div>
+                                            <div className="relative h-56 overflow-hidden rounded-lg mb-6 border border-white/10 bg-slate-950">
+                                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 pointer-events-none" aria-hidden="true"></div>
                                                 <img
                                                     src={project.image}
-                                                    alt={project.name}
-                                                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000"
+                                                    alt={`${project.name} preview`}
+                                                    loading="lazy"
+                                                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
                                                 />
-                                                <div className="absolute bottom-4 left-4 z-20">
-                                                    <div className="w-10 h-10 bg-white text-black rounded-lg flex items-center justify-center shadow-3xl group-hover:bg-indigo-600 group-hover:text-white transition-all duration-700 border border-white/10">
-                                                        {idx === 0 ? <GraduationCap size={20} /> : idx === 1 ? <ShieldCheck size={20} /> : idx === 2 ? <FileText size={20} /> : <Terminal size={20} />}
-                                                    </div>
-                                                </div>
+                                                {project.featured && (
+                                                    <span className="absolute top-4 left-4 z-20 px-2 py-1 bg-indigo-600 text-white text-[8px] font-black uppercase tracking-widest rounded">
+                                                        Featured
+                                                    </span>
+                                                )}
                                                 <div className="absolute top-4 right-4 z-20 flex gap-3 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700">
-                                                    {project.github && <a href={project.github} className="w-10 h-10 bg-white/10 backdrop-blur-md text-white hover:bg-white hover:text-black rounded-lg transition-all border border-white/10 flex items-center justify-center shadow-xl"><Github size={16} /></a>}
-                                                    {project.demo && <a href={project.demo} className="w-10 h-10 bg-indigo-600 text-white hover:bg-white hover:text-black rounded-lg transition-all shadow-2xl flex items-center justify-center"><ExternalLink size={16} /></a>}
+                                                    {project.github && (
+                                                        <a href={project.github} target="_blank" rel="noopener noreferrer" aria-label={`${project.name} on GitHub`} className="w-10 h-10 bg-white/10 backdrop-blur-md text-white hover:bg-white hover:text-black rounded-lg transition-all border border-white/10 flex items-center justify-center shadow-xl">
+                                                            <Github size={16} />
+                                                        </a>
+                                                    )}
+                                                    {project.demo && (
+                                                        <a href={project.demo} target="_blank" rel="noopener noreferrer" aria-label={`${project.name} live demo`} className="w-10 h-10 bg-indigo-600 text-white hover:bg-white hover:text-black rounded-lg transition-all shadow-2xl flex items-center justify-center">
+                                                            <ExternalLink size={16} />
+                                                        </a>
+                                                    )}
                                                 </div>
                                             </div>
                                             <div className="flex-1 flex flex-col relative z-10">
-                                                <div className="cyber-header px-4 py-2 mb-4 h-fit w-fit">
-                                                    <span className="font-display">{project.name}</span>
+                                                <div className="flex items-center gap-2 mb-4">
+                                                    <div className="cyber-header px-4 py-2 h-fit w-fit">
+                                                        <span className="font-display">{project.name}</span>
+                                                    </div>
+                                                    <span className="text-[8px] font-black uppercase tracking-widest text-indigo-400 border border-indigo-500/30 px-2 py-1 rounded">
+                                                        {project.tag}
+                                                    </span>
                                                 </div>
-                                                <div className="mb-6">
+                                                <div className="mb-4">
                                                     <p className="text-[10px] text-slate-400 font-medium leading-relaxed italic border-l-2 border-white/10 pl-4 uppercase tracking-tight">{project.problem}</p>
                                                 </div>
+                                                <div className="mb-6">
+                                                    <p className="text-[10px] text-emerald-400/90 font-bold leading-relaxed border-l-2 border-emerald-500/30 pl-4">{project.outcome}</p>
+                                                </div>
+                                                {project.demo && (
+                                                    <a
+                                                        href={project.demo}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className="mb-4 inline-flex items-center gap-2 px-4 py-2 bg-indigo-600/20 border border-indigo-500/30 text-indigo-300 hover:bg-indigo-600 hover:text-white text-[9px] font-black uppercase tracking-widest rounded-lg transition-all"
+                                                    >
+                                                        <ExternalLink size={12} />
+                                                        Live Demo
+                                                    </a>
+                                                )}
                                                 <div className="mt-auto pt-6 border-t border-white/5 flex flex-wrap gap-2">
                                                     {project.tech.map((t, i) => (
                                                         <span key={i} className="px-3 py-1 bg-white/5 text-slate-500 text-[8px] font-black uppercase tracking-widest rounded transition-colors group-hover:text-white">
@@ -545,64 +630,52 @@ export const Projects = () => {
     );
 };
 
-// --- Testimonials Section (Replacing Professional Experience) ---
+// --- Experience ---
 export const ProfessionalExperience = () => {
     return (
         <section id="experience" className="py-24 md:py-32 bg-black relative overflow-hidden transition-colors duration-1000">
-            <div className="absolute inset-0 bg-black"></div>
             <div className="container mx-auto px-6 max-w-7xl relative z-10">
                 <div className="grid lg:grid-cols-12 gap-12">
                     <div className="lg:col-span-8">
                         <div className="mb-16">
-                            <motion.div
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                className="inline-block px-5 py-2.5 bg-white/5 text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] rounded-lg mb-6 border border-white/10"
-                            >
-                                Recommendation Protocol
-                            </motion.div>
-                            <motion.h2
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ delay: 0.2 }}
-                                className="text-2xl md:text-3xl lg:text-4xl font-display font-black text-white uppercase tracking-[-0.04em] leading-none"
-                            >
-                                What People<br />
-                                <span className="text-indigo-500">Say.</span>
-                            </motion.h2>
+                            <div className="inline-block px-5 py-2.5 bg-white/5 text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] rounded-lg mb-6 border border-white/10">
+                                Career Timeline
+                            </div>
+                            <h2 className="text-2xl md:text-4xl font-display font-black text-white uppercase tracking-[-0.04em]">
+                                Professional <span className="text-indigo-500">Experience.</span>
+                            </h2>
                         </div>
-                        <div className="grid grid-cols-1 gap-6">
-                            {TESTIMONIALS.map((t, idx) => (
+                        <div className="space-y-8">
+                            {EXPERIENCE.map((exp, idx) => (
                                 <motion.div
                                     key={idx}
-                                    initial={{ opacity: 0, x: -30 }}
+                                    initial={{ opacity: 0, x: -20 }}
                                     whileInView={{ opacity: 1, x: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ duration: 0.8, delay: idx * 0.2 }}
-                                    className="cyber-card group"
+                                    transition={{ delay: idx * 0.15 }}
+                                    className="cyber-card p-8"
                                 >
                                     <div className="corner-br"></div>
-                                    <div className="flex flex-col sm:flex-row gap-8 items-start relative z-10">
-                                        <div className="flex-shrink-0">
-                                            <div className="w-14 h-14 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-indigo-400 group-hover:scale-110 transition-transform group-hover:bg-white group-hover:text-black duration-500">
-                                                <Quote size={24} />
-                                            </div>
+                                    <div className="relative z-10">
+                                        <div className="flex flex-wrap items-center gap-3 mb-4">
+                                            <span className="text-[10px] font-black text-indigo-400 uppercase tracking-[0.2em]">{exp.period}</span>
+                                            <span className="text-white/20">·</span>
+                                            <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">{exp.company}</span>
                                         </div>
-                                        <div className="flex-1">
-                                            <p className="text-2xl md:text-3xl lg:text-4xl text-slate-300 font-testimonial leading-tight mb-10 group-hover:text-white transition-colors">
-                                                "{t.text}"
-                                            </p>
-                                            <div className="flex items-center gap-4">
-                                                <div className="w-12 h-12 rounded-full bg-indigo-600 flex items-center justify-center text-white font-black text-sm border-2 border-white/20 shadow-xl">
-                                                    {t.avatar}
-                                                </div>
-                                                <div>
-                                                    <h4 className="text-sm md:text-base font-display font-black text-white uppercase tracking-tight">{t.name}</h4>
-                                                    <p className="text-[10px] text-slate-500 uppercase tracking-[0.2em] font-bold">{t.role}</p>
-                                                </div>
-                                            </div>
+                                        <h3 className="text-lg font-display font-black text-white uppercase mb-3">{exp.role}</h3>
+                                        <p className="text-sm text-slate-400 mb-6">{exp.description}</p>
+                                        <ul className="space-y-3 mb-6">
+                                            {exp.bullets.map((bullet, i) => (
+                                                <li key={i} className="flex gap-3 text-sm text-slate-300">
+                                                    <ChevronRight size={14} className="text-indigo-400 flex-shrink-0 mt-1" />
+                                                    {bullet}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                        <div className="flex flex-wrap gap-2">
+                                            {exp.tech.map((t) => (
+                                                <span key={t} className="px-3 py-1 bg-white/5 text-slate-500 text-[8px] font-black uppercase tracking-widest rounded">{t}</span>
+                                            ))}
                                         </div>
                                     </div>
                                 </motion.div>
@@ -618,8 +691,169 @@ export const ProfessionalExperience = () => {
     );
 };
 
+// --- Education ---
+export const Education = () => {
+    return (
+        <section id="education" className="py-24 bg-black relative overflow-hidden">
+            <div className="container mx-auto px-6 max-w-7xl">
+                <div className="mb-12">
+                    <div className="inline-block px-5 py-2.5 bg-white/5 text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] rounded-lg mb-6 border border-white/10">
+                        Academic Background
+                    </div>
+                    <h2 className="text-2xl md:text-4xl font-display font-black text-white uppercase tracking-[-0.04em]">
+                        Educat<span className="text-indigo-500">ion.</span>
+                    </h2>
+                </div>
+                <div className="grid md:grid-cols-2 gap-6">
+                    {EDUCATION.map((edu, idx) => (
+                        <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="cyber-card p-8"
+                        >
+                            <div className="corner-br"></div>
+                            <div className="flex items-start gap-4 relative z-10">
+                                <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center text-indigo-400">
+                                    <GraduationCap size={22} />
+                                </div>
+                                <div>
+                                    <p className="text-[10px] font-black text-indigo-400 uppercase tracking-[0.2em] mb-1">{edu.year}</p>
+                                    <h3 className="text-lg font-display font-black text-white uppercase mb-1">{edu.degree}</h3>
+                                    <p className="text-sm text-slate-400 mb-2">{edu.institution}</p>
+                                    <p className="text-xs text-slate-500">{edu.focus}</p>
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
+// --- Certifications ---
+export const Certifications = () => {
+    return (
+        <section id="certifications" className="py-24 bg-black relative overflow-hidden border-t border-white/5">
+            <div className="container mx-auto px-6 max-w-7xl">
+                <div className="mb-12">
+                    <div className="inline-block px-5 py-2.5 bg-white/5 text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] rounded-lg mb-6 border border-white/10">
+                        Credentials
+                    </div>
+                    <h2 className="text-2xl md:text-4xl font-display font-black text-white uppercase tracking-[-0.04em]">
+                        Certificat<span className="text-indigo-500">ions.</span>
+                    </h2>
+                </div>
+                <div className="grid md:grid-cols-3 gap-6">
+                    {CERTIFICATIONS.map((cert, idx) => (
+                        <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: idx * 0.1 }}
+                            className="cyber-card p-6"
+                        >
+                            <div className="corner-br"></div>
+                            <div className="relative z-10">
+                                <Award size={20} className="text-indigo-400 mb-4" />
+                                <h3 className="text-sm font-display font-black text-white uppercase mb-2">{cert.name}</h3>
+                                <p className="text-[10px] text-slate-500 uppercase tracking-widest mb-1">{cert.issuer}</p>
+                                <p className="text-[10px] text-indigo-400 font-bold">{cert.year}</p>
+                                {cert.credentialUrl && (
+                                    <a href={cert.credentialUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 mt-4 text-[9px] font-black uppercase tracking-widest text-slate-400 hover:text-white transition-colors">
+                                        Verify <ExternalLink size={12} />
+                                    </a>
+                                )}
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
+// --- Testimonials ---
+export const Testimonials = () => {
+    return (
+        <section id="testimonials" className="py-24 md:py-32 bg-black relative overflow-hidden">
+            <div className="container mx-auto px-6 max-w-7xl">
+                <div className="mb-16 text-center">
+                    <div className="inline-block px-5 py-2.5 bg-white/5 text-indigo-400 text-[10px] font-black uppercase tracking-[0.4em] rounded-lg mb-6 border border-white/10">
+                        Recommendations
+                    </div>
+                    <h2 className="text-2xl md:text-4xl font-display font-black text-white uppercase tracking-[-0.04em]">
+                        What People <span className="text-indigo-500">Say.</span>
+                    </h2>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    {TESTIMONIALS.map((t, idx) => (
+                        <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: idx * 0.1 }}
+                            className="cyber-card p-8"
+                        >
+                            <div className="corner-br"></div>
+                            <div className="relative z-10">
+                                <Quote size={20} className="text-indigo-400 mb-6" />
+                                <p className="text-lg text-slate-300 font-testimonial leading-relaxed mb-8">"{t.text}"</p>
+                                <div className="flex items-center gap-4">
+                                    <div className="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center text-white font-black text-xs">{t.avatar}</div>
+                                    <div>
+                                        <h4 className="text-sm font-display font-black text-white uppercase">{t.name}</h4>
+                                        <p className="text-[10px] text-slate-500 uppercase tracking-widest">{t.role}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
+        </section>
+    );
+};
+
 // --- Contact Component ---
 export const Contact = () => {
+    const [formState, setFormState] = useState({ name: '', email: '', subject: 'Backend Development', message: '' });
+    const [status, setStatus] = useState('idle'); // idle | sending | success | error
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (!PROFILE.formspreeEndpoint) {
+            window.location.href = `mailto:${PROFILE.email}?subject=${encodeURIComponent(formState.subject)}&body=${encodeURIComponent(`From: ${formState.name} (${formState.email})\n\n${formState.message}`)}`;
+            return;
+        }
+
+        setStatus('sending');
+        try {
+            const res = await fetch(PROFILE.formspreeEndpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                body: JSON.stringify({
+                    name: formState.name,
+                    email: formState.email,
+                    subject: formState.subject,
+                    message: formState.message,
+                }),
+            });
+            if (!res.ok) throw new Error('Failed to send');
+            setStatus('success');
+            setFormState({ name: '', email: '', subject: 'Backend Development', message: '' });
+        } catch {
+            setStatus('error');
+        }
+    };
+
+    const bookCallHref = PROFILE.calendlyUrl || `mailto:${PROFILE.email}?subject=Schedule%20a%20call`;
+
     return (
         <section id="contact" className="py-32 bg-black relative overflow-hidden">
             <div className="container mx-auto px-6 max-w-7xl">
@@ -633,9 +867,7 @@ export const Contact = () => {
                 </div>
 
                 <div className="grid lg:grid-cols-12 gap-12">
-                    {/* Contact Info Cards */}
                     <div className="lg:col-span-4 space-y-8">
-                        {/* Email Card */}
                         <div className="cyber-card p-10 group hover:bg-white/[0.02] transition-colors h-[280px] flex flex-col justify-between">
                             <div className="corner-br"></div>
                             <div>
@@ -645,10 +877,9 @@ export const Contact = () => {
                                 <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em] mb-4 block">Email</span>
                                 <p className="text-[11px] text-white font-bold leading-relaxed mb-6 uppercase tracking-widest">Have questions? I'm here for you</p>
                             </div>
-                            <a href="mailto:geofreykayin@gmail.com" className="text-xs font-black text-indigo-400 hover:text-white transition-colors tracking-widest border-b border-indigo-400/30 pb-1 w-fit uppercase">geofreykayin@gmail.com</a>
+                            <a href={`mailto:${PROFILE.email}`} className="text-xs font-black text-indigo-400 hover:text-white transition-colors tracking-widest border-b border-indigo-400/30 pb-1 w-fit uppercase">{PROFILE.email}</a>
                         </div>
 
-                        {/* Phone Card */}
                         <div className="cyber-card p-10 group hover:bg-white/[0.02] transition-colors h-[280px] flex flex-col justify-between">
                             <div className="corner-br"></div>
                             <div>
@@ -658,10 +889,9 @@ export const Contact = () => {
                                 <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em] mb-4 block">Direct Call</span>
                                 <p className="text-[11px] text-white font-bold leading-relaxed mb-6 uppercase tracking-widest">Talk to me fast, no hassle.</p>
                             </div>
-                            <span className="text-xs font-black text-indigo-400 tracking-widest uppercase">0792831659</span>
+                            <a href={`tel:${PROFILE.phone.replace(/\s/g, '')}`} className="text-xs font-black text-indigo-400 hover:text-white transition-colors tracking-widest uppercase">{PROFILE.phone}</a>
                         </div>
 
-                        {/* Consultation Card */}
                         <div className="cyber-card p-10 group hover:bg-white/[0.02] transition-colors h-[280px] flex flex-col justify-between">
                             <div className="corner-br"></div>
                             <div>
@@ -669,30 +899,39 @@ export const Contact = () => {
                                     <Briefcase size={24} />
                                 </div>
                                 <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em] mb-4 block">Consultation</span>
-                                <p className="text-[11px] text-white font-bold leading-relaxed mb-6 uppercase tracking-widest">Free to book a call if that feels more convenient—I'm happy to walk you through everything.</p>
+                                <p className="text-[11px] text-white font-bold leading-relaxed mb-6 uppercase tracking-widest">Book a call if that feels more convenient.</p>
                             </div>
-                            <a href="#" className="text-xs font-black text-indigo-400 hover:text-white transition-colors tracking-widest border-b border-indigo-400/30 pb-1 w-fit uppercase font-display">Book a call</a>
+                            <a href={bookCallHref} target={PROFILE.calendlyUrl ? '_blank' : undefined} rel={PROFILE.calendlyUrl ? 'noopener noreferrer' : undefined} className="text-xs font-black text-indigo-400 hover:text-white transition-colors tracking-widest border-b border-indigo-400/30 pb-1 w-fit uppercase font-display">Book a call</a>
                         </div>
                     </div>
 
-                    {/* Contact Form */}
                     <div className="lg:col-span-8">
                         <div className="cyber-card p-10 h-full">
                             <div className="corner-br"></div>
-                            <form className="space-y-10 relative z-10">
+                            <form className="space-y-10 relative z-10" onSubmit={handleSubmit}>
                                 <div className="grid md:grid-cols-2 gap-10">
                                     <div className="space-y-4">
-                                        <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em]">Full Name</label>
+                                        <label htmlFor="contact-name" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em]">Full Name</label>
                                         <input
+                                            id="contact-name"
+                                            name="name"
                                             type="text"
+                                            required
+                                            value={formState.name}
+                                            onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                                             placeholder="Your Name"
                                             className="w-full bg-white/5 border border-white/10 px-6 py-5 rounded-lg text-white text-xs font-bold focus:outline-none focus:border-indigo-500/50 focus:bg-white/[0.07] transition-all placeholder:text-slate-700 placeholder:uppercase placeholder:tracking-widest"
                                         />
                                     </div>
                                     <div className="space-y-4">
-                                        <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em]">Email Address</label>
+                                        <label htmlFor="contact-email" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em]">Email Address</label>
                                         <input
+                                            id="contact-email"
+                                            name="email"
                                             type="email"
+                                            required
+                                            value={formState.email}
+                                            onChange={(e) => setFormState({ ...formState, email: e.target.value })}
                                             placeholder="Email Address"
                                             className="w-full bg-white/5 border border-white/10 px-6 py-5 rounded-lg text-white text-xs font-bold focus:outline-none focus:border-indigo-500/50 focus:bg-white/[0.07] transition-all placeholder:text-slate-700 placeholder:uppercase placeholder:tracking-widest"
                                         />
@@ -700,28 +939,57 @@ export const Contact = () => {
                                 </div>
 
                                 <div className="space-y-4">
-                                    <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em]">Subject of Interest</label>
-                                    <select className="w-full bg-white/5 border border-white/10 px-6 py-5 rounded-lg text-white text-xs font-bold focus:outline-none focus:border-indigo-500/50 focus:bg-white/[0.07] transition-all appearance-none cursor-pointer uppercase tracking-widest">
-                                        <option className="bg-slate-950">Subject (e.g: Backend Development)</option>
-                                        <option className="bg-slate-950">System Architecture</option>
-                                        <option className="bg-slate-950">Cloud Infrastructure</option>
-                                        <option className="bg-slate-950">Security Hardening</option>
+                                    <label htmlFor="contact-subject" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em]">Subject of Interest</label>
+                                    <select
+                                        id="contact-subject"
+                                        name="subject"
+                                        value={formState.subject}
+                                        onChange={(e) => setFormState({ ...formState, subject: e.target.value })}
+                                        className="w-full bg-white/5 border border-white/10 px-6 py-5 rounded-lg text-white text-xs font-bold focus:outline-none focus:border-indigo-500/50 focus:bg-white/[0.07] transition-all appearance-none cursor-pointer uppercase tracking-widest"
+                                    >
+                                        <option className="bg-slate-950" value="Backend Development">Backend Development</option>
+                                        <option className="bg-slate-950" value="System Architecture">System Architecture</option>
+                                        <option className="bg-slate-950" value="Cloud Infrastructure">Cloud Infrastructure</option>
+                                        <option className="bg-slate-950" value="Security Hardening">Security Hardening</option>
+                                        <option className="bg-slate-950" value="Freelance Project">Freelance Project</option>
                                     </select>
                                 </div>
 
                                 <div className="space-y-4">
-                                    <label className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em]">How may I assist you?</label>
+                                    <label htmlFor="contact-message" className="text-[10px] font-black text-slate-500 uppercase tracking-[0.4em]">How may I assist you?</label>
                                     <textarea
+                                        id="contact-message"
+                                        name="message"
+                                        required
                                         rows="6"
+                                        value={formState.message}
+                                        onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                                         placeholder="Detailed project requirements..."
                                         className="w-full bg-white/5 border border-white/10 px-6 py-5 rounded-lg text-white text-xs font-bold focus:outline-none focus:border-indigo-500/50 focus:bg-white/[0.07] transition-all resize-none placeholder:text-slate-700 placeholder:uppercase placeholder:tracking-widest"
                                     ></textarea>
                                 </div>
 
-                                <button className="w-full py-6 bg-white text-black hover:bg-indigo-600 hover:text-white transition-all rounded-xl font-black uppercase tracking-[0.5em] text-xs shadow-2xl active:scale-95 group">
+                                {status === 'success' && (
+                                    <p className="text-sm text-emerald-400 font-bold" role="status">Message sent successfully. I'll get back to you soon.</p>
+                                )}
+                                {status === 'error' && (
+                                    <p className="text-sm text-red-400 font-bold" role="alert">Something went wrong. Please email me directly.</p>
+                                )}
+                                {!PROFILE.formspreeEndpoint && (
+                                    <p className="text-[10px] text-slate-600 uppercase tracking-widest">No Formspree configured — submit opens your email client. Add VITE_FORMSPREE_ENDPOINT to .env for direct delivery.</p>
+                                )}
+
+                                <button
+                                    type="submit"
+                                    disabled={status === 'sending'}
+                                    className="w-full py-6 bg-white text-black hover:bg-indigo-600 hover:text-white transition-all rounded-xl font-black uppercase tracking-[0.5em] text-xs shadow-2xl active:scale-95 group disabled:opacity-60 disabled:cursor-not-allowed"
+                                >
                                     <span className="flex items-center justify-center gap-3">
-                                        Send Request
-                                        <ChevronRight size={16} className="group-hover:translate-x-2 transition-transform" />
+                                        {status === 'sending' ? (
+                                            <><Loader2 size={16} className="animate-spin" /> Sending...</>
+                                        ) : (
+                                            <>Send Request<ChevronRight size={16} className="group-hover:translate-x-2 transition-transform" /></>
+                                        )}
                                     </span>
                                 </button>
                             </form>
@@ -738,18 +1006,18 @@ export const Footer = () => {
     const currentYear = new Date().getFullYear();
 
     const footerLinks = [
-        { name: 'Architecture', href: '#about' },
-        { name: 'Arsenal', href: '#skills' },
-        { name: 'Systems', href: '#projects' },
-        { name: 'History', href: '#experience' },
+        { name: 'About', href: '#about' },
+        { name: 'Skills', href: '#skills' },
+        { name: 'Projects', href: '#projects' },
+        { name: 'Experience', href: '#experience' },
+        { name: 'Education', href: '#education' },
         { name: 'Contact', href: '#contact' },
     ];
 
     const socialLinks = [
-        { name: 'GitHub', icon: <Github size={18} />, href: PROFILE.github, label: 'SOURCE', hoverColor: 'hover:text-white', bgColor: 'group-hover:bg-slate-800' },
-        { name: 'LinkedIn', icon: <Linkedin size={18} />, href: PROFILE.linkedin, label: 'NETWORK', hoverColor: 'hover:text-[#0077b5]', bgColor: 'group-hover:bg-[#0077b5]/10' },
-        { name: 'Twitter', icon: <Twitter size={18} />, href: '#', label: 'FEED', hoverColor: 'hover:text-[#1DA1F2]', bgColor: 'group-hover:bg-[#1DA1F2]/10' },
-        { name: 'Instagram', icon: <Instagram size={18} />, href: '#', label: 'VISUALS', hoverColor: 'hover:text-[#E4405F]', bgColor: 'group-hover:bg-[#E4405F]/10' },
+        { name: 'GitHub', icon: <Github size={18} />, href: PROFILE.github, label: 'SOURCE', bgColor: 'group-hover:bg-slate-800' },
+        { name: 'LinkedIn', icon: <Linkedin size={18} />, href: PROFILE.linkedin, label: 'NETWORK', bgColor: 'group-hover:bg-[#0077b5]/10' },
+        { name: 'Email', icon: <Mail size={18} />, href: `mailto:${PROFILE.email}`, label: 'INBOX', bgColor: 'group-hover:bg-indigo-600/10' },
     ];
 
     return (
@@ -784,7 +1052,7 @@ export const Footer = () => {
                         </div>
 
                         <p className="text-lg text-slate-400 font-medium leading-relaxed max-w-md tracking-tight">
-                            Building resilient digital foundations through precision engineering and architectural clarity. Bridging the gap between complex infrastructure and seamless user experiences.
+                            {PROFILE.summary}
                         </p>
                     </div>
 
@@ -817,7 +1085,9 @@ export const Footer = () => {
                                     <a
                                         key={social.name}
                                         href={social.href}
-                                        className={`flex items-center justify-between group p-3 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/10 transition-all duration-300`}
+                                        target={social.name !== 'Email' ? '_blank' : undefined}
+                                        rel={social.name !== 'Email' ? 'noopener noreferrer' : undefined}
+                                        className="flex items-center justify-between group p-3 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-white/10 transition-all duration-300"
                                     >
                                         <div className="flex items-center space-x-3">
                                             <div className={`p-2 rounded-lg bg-white/5 text-slate-400 group-hover:text-white transition-colors duration-300 ${social.bgColor}`}>

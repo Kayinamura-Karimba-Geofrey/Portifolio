@@ -1,16 +1,80 @@
-# React + Vite
+# Geofrey Kayinamura — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Personal portfolio site for **Kayinamura Karimba Geofrey**, Backend Engineer and Software Engineering student at Rwanda Coding Academy.
 
-Currently, two official plugins are available:
+## Live demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Deploy to [Vercel](https://vercel.com) or [Netlify](https://netlify.com) and set your custom domain (e.g. `geofreykayin.dev`).
 
-## React Compiler
+## Tech stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19 + Vite 7
+- Tailwind CSS 3
+- Framer Motion
 
-## Expanding the ESLint configuration
+## Getting started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173).
+
+## Environment variables
+
+Copy `.env.example` to `.env` and fill in optional values:
+
+| Variable | Description |
+|----------|-------------|
+| `VITE_FORMSPREE_ENDPOINT` | Formspree form URL for the contact form |
+| `VITE_CALENDLY_URL` | Calendly link for "Book a call" |
+
+Without Formspree, the contact form falls back to opening the user's email client.
+
+## Assets to add
+
+Place these in `public/` before deploying:
+
+- `profile.png` — professional headshot (replaces `profile.svg`)
+- `cv.pdf` — resume for the download button
+- `projects/*.png` — optional project screenshots
+
+See `public/ASSETS.md` for details.
+
+## Build & deploy
+
+```bash
+npm run build
+npm run preview
+```
+
+### Vercel
+
+```bash
+npx vercel
+```
+
+`vercel.json` is included for SPA routing.
+
+## Project structure
+
+```
+src/
+  components/Portfolio.jsx   # All UI sections
+  constants/data.js        # Profile, projects, experience, etc.
+public/                      # Static assets
+```
+
+## Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start dev server |
+| `npm run build` | Production build |
+| `npm run preview` | Preview production build |
+| `npm run lint` | Run ESLint |
+
+## License
+
+Private — all rights reserved.

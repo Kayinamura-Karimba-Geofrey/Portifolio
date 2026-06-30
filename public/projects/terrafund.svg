@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="Terrafund Land Management preview">
+  <defs>
+    <linearGradient id="terra-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#terra-bg)"/>
+  <rect x="0" y="0" width="1200" height="48" fill="#020617" opacity="0.9"/>
+  <circle cx="28" cy="24" r="7" fill="#ef4444"/><circle cx="52" cy="24" r="7" fill="#f59e0b"/><circle cx="76" cy="24" r="7" fill="#22c55e"/>
+  <rect x="80" y="80" width="760" height="540" rx="14" fill="#14532d" opacity="0.3"/>
+  <rect x="80" y="80" width="760" height="540" rx="14" fill="#111827" stroke="#7c3aed"/>
+  <ellipse cx="300" cy="350" rx="120" ry="80" fill="#22c55e" opacity="0.25"/>
+  <ellipse cx="500" cy="280" rx="100" ry="70" fill="#4ade80" opacity="0.2"/>
+  <ellipse cx="650" cy="420" rx="140" ry="90" fill="#16a34a" opacity="0.2"/>
+  <path d="M200 450 L350 320 L500 400 L650 250 L750 380" fill="none" stroke="#a78bfa" stroke-width="3" stroke-dasharray="8 6"/>
+  <circle cx="350" cy="320" r="10" fill="#a855f7"/>
+  <circle cx="500" cy="400" r="10" fill="#a855f7"/>
+  <circle cx="650" cy="250" r="10" fill="#a855f7"/>
+  <text x="110" y="130" font-family="system-ui,sans-serif" font-size="22" font-weight="700" fill="#fff">Terrafund GIS Registry</text>
+  <rect x="860" y="80" width="260" height="540" rx="14" fill="#111827" stroke="#7c3aed"/>
+  <text x="890" y="130" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#c4b5fd">Plot Details</text>
+  <rect x="890" y="150" width="200" height="80" rx="8" fill="#1e293b"/>
+  <rect x="890" y="250" width="200" height="36" rx="6" fill="#312e81"/>
+  <rect x="890" y="300" width="200" height="36" rx="6" fill="#1e293b"/>
+  <rect x="890" y="350" width="200" height="36" rx="6" fill="#1e293b"/>
+  <rect x="890" y="420" width="200" height="44" rx="8" fill="#7c3aed"/>
+  <text x="940" y="448" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#fff">Transfer</text>
+</svg>

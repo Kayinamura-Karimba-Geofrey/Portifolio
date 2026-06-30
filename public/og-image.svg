@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Geofrey Kayinamura portfolio">
+  <rect width="1200" height="630" fill="#000"/>
+  <text x="600" y="300" text-anchor="middle" font-family="Georgia,serif" font-size="56" font-weight="700" fill="#fff">Geofrey Kayinamura</text>
+  <text x="600" y="370" text-anchor="middle" font-family="system-ui,sans-serif" font-size="28" fill="#6366f1">Backend Engineer</text>
+</svg>

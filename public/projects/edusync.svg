@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" role="img" aria-label="EduSync School Management preview">
+  <defs>
+    <linearGradient id="edu-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#052e16"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#edu-bg)"/>
+  <rect x="0" y="0" width="1200" height="48" fill="#020617" opacity="0.9"/>
+  <circle cx="28" cy="24" r="7" fill="#ef4444"/><circle cx="52" cy="24" r="7" fill="#f59e0b"/><circle cx="76" cy="24" r="7" fill="#22c55e"/>
+  <rect x="80" y="80" width="220" height="540" rx="14" fill="#111827" stroke="#166534"/>
+  <text x="110" y="130" font-family="system-ui,sans-serif" font-size="18" font-weight="700" fill="#4ade80">EduSync</text>
+  <rect x="100" y="160" width="180" height="36" rx="8" fill="#22c55e" opacity="0.2"/>
+  <rect x="100" y="210" width="180" height="28" rx="6" fill="#1e293b"/>
+  <rect x="100" y="250" width="180" height="28" rx="6" fill="#1e293b"/>
+  <rect x="100" y="290" width="180" height="28" rx="6" fill="#1e293b"/>
+  <rect x="320" y="80" width="840" height="120" rx="14" fill="#111827" stroke="#166534"/>
+  <text x="350" y="130" font-family="system-ui,sans-serif" font-size="24" font-weight="700" fill="#fff">School Dashboard</text>
+  <text x="350" y="160" font-family="system-ui,sans-serif" font-size="13" fill="#86efac">Attendance · Grades · Parent Portal</text>
+  <rect x="320" y="220" width="200" height="120" rx="12" fill="#14532d"/>
+  <text x="350" y="270" font-family="system-ui,sans-serif" font-size="28" font-weight="700" fill="#4ade80">1,248</text>
+  <text x="350" y="300" font-family="system-ui,sans-serif" font-size="12" fill="#86efac">Students</text>
+  <rect x="540" y="220" width="200" height="120" rx="12" fill="#1e293b"/>
+  <text x="570" y="270" font-family="system-ui,sans-serif" font-size="28" font-weight="700" fill="#fff">96%</text>
+  <text x="570" y="300" font-family="system-ui,sans-serif" font-size="12" fill="#94a3b8">Attendance</text>
+  <rect x="760" y="220" width="200" height="120" rx="12" fill="#1e293b"/>
+  <text x="790" y="270" font-family="system-ui,sans-serif" font-size="28" font-weight="700" fill="#fff">42</text>
+  <text x="790" y="300" font-family="system-ui,sans-serif" font-size="12" fill="#94a3b8">Teachers</text>
+  <rect x="320" y="360" width="640" height="260" rx="14" fill="#111827" stroke="#166534"/>
+  <polyline points="360,560 420,500 480,520 540,440 600,460 660,380 720,400 780,340 840,360 900,300" fill="none" stroke="#22c55e" stroke-width="4"/>
+  <text x="350" y="400" font-family="system-ui,sans-serif" font-size="14" font-weight="600" fill="#86efac">Gradebook Analytics</text>
+</svg>

@@ -1,11 +1,21 @@
 export const PROFILE = {
     name: "KAYINAMURA KARIMBA GEOFREY",
-    title: "Software Engineer | Backend System Architect | Data Analyst",
-    summary: "Student at Rwanda Coding Academy with a deep passion for Backend Development and Data Analysis. Expert in building scalable architectures, high-performance APIs, and secure systems using Spring Boot, Node.js, and PostgreSQL. Focused on turning complex data into actionable insights.",
+    title: "Backend Engineer",
+    subtitle: "Building scalable APIs, secure systems & data-driven products",
+    summary:
+        "Software Engineering student at Rwanda Coding Academy with a focus on backend development and data analysis. I design high-performance REST APIs, secure authentication layers, and full-stack applications using Spring Boot, Node.js, and PostgreSQL.",
     photo: "/profile.png",
     email: "geofreykayin@gmail.com",
+    phone: "+250 792 831 659",
     github: "https://github.com/geofreykayin",
     linkedin: "https://linkedin.com/in/geofreykayin",
+    resumeUrl: "/cv.pdf",
+    openToWork: true,
+    availability: "Open to internships, freelance & remote roles",
+    location: "Rwanda",
+    calendlyUrl: import.meta.env.VITE_CALENDLY_URL || "",
+    formspreeEndpoint: import.meta.env.VITE_FORMSPREE_ENDPOINT || "",
+    siteUrl: "https://geofreykayin.dev",
 };
 
 export const TECH_STACK = [
@@ -24,159 +34,185 @@ export const TECH_STACK = [
     { name: "Next.js", logo: "https://cdn.worldvectorlogo.com/logos/next-js.svg" },
     { name: "Express", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg" },
     { name: "Git", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" },
-    { name: "Postman", logo: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" }
+    { name: "Postman", logo: "https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" },
 ];
+
+/** @type {'expert' | 'proficient' | 'learning'} */
+export const PROFICIENCY_LABELS = {
+    expert: "Expert",
+    proficient: "Proficient",
+    learning: "Learning",
+};
 
 export const SKILLS = [
     {
         category: "Backend",
         items: [
-            { name: "Node.js", level: 95 },
-            { name: "Express / NestJS", level: 92 },
-            { name: "Spring Boot", level: 88 },
-            { name: "REST APIs", level: 98 },
-            { name: "Clean Architecture", level: 90 },
-            { name: "Microservices", level: 85 }
-        ]
+            { name: "Node.js", proficiency: "expert" },
+            { name: "Express / NestJS", proficiency: "expert" },
+            { name: "Spring Boot", proficiency: "proficient" },
+            { name: "REST APIs", proficiency: "expert" },
+            { name: "Clean Architecture", proficiency: "proficient" },
+            { name: "Microservices", proficiency: "proficient" },
+        ],
     },
     {
         category: "Auth & Security",
         items: [
-            { name: "JWT", level: 96 },
-            { name: "OAuth2", level: 88 },
-            { name: "Sessions", level: 90 },
-            { name: "RBAC", level: 94 },
-            { name: "Bcrypt", level: 92 },
-            { name: "OpenSSL", level: 82 }
-        ]
+            { name: "JWT", proficiency: "expert" },
+            { name: "OAuth2", proficiency: "proficient" },
+            { name: "Sessions", proficiency: "proficient" },
+            { name: "RBAC", proficiency: "expert" },
+            { name: "Bcrypt", proficiency: "proficient" },
+            { name: "OpenSSL", proficiency: "learning" },
+        ],
     },
     {
         category: "Frontend",
         items: [
-            { name: "React", level: 92 },
-            { name: "Tailwind CSS", level: 95 },
-            { name: "Redux Toolkit", level: 85 },
-            { name: "Framer Motion", level: 80 },
-            { name: "TypeScript", level: 88 },
-            { name: "Vite", level: 90 }
-        ]
+            { name: "React", proficiency: "expert" },
+            { name: "Tailwind CSS", proficiency: "expert" },
+            { name: "Redux Toolkit", proficiency: "proficient" },
+            { name: "Framer Motion", proficiency: "proficient" },
+            { name: "TypeScript", proficiency: "proficient" },
+            { name: "Vite", proficiency: "expert" },
+        ],
     },
-
     {
         category: "Databases",
         items: [
-            { name: "PostgreSQL", level: 94 },
-            { name: "MongoDB", level: 90 },
-            { name: "Redis", level: 85 },
-            { name: "SQL Optimization", level: 88 },
-            { name: "Data Modeling", level: 92 },
-            { name: "Prisma / TypeORM", level: 90 }
-        ]
+            { name: "PostgreSQL", proficiency: "expert" },
+            { name: "MongoDB", proficiency: "proficient" },
+            { name: "Redis", proficiency: "proficient" },
+            { name: "SQL Optimization", proficiency: "proficient" },
+            { name: "Data Modeling", proficiency: "expert" },
+            { name: "Prisma / TypeORM", proficiency: "proficient" },
+        ],
     },
     {
         category: "Tools & DevOps",
         items: [
-            { name: "Docker", level: 88 },
-            { name: "Git & GitHub", level: 96 },
-            { name: "Postman", level: 94 },
-            { name: "Swagger", level: 92 },
-            { name: "Jenkins", level: 80 },
-            { name: "AWS (Basic)", level: 82 }
-        ]
-    }
+            { name: "Docker", proficiency: "proficient" },
+            { name: "Git & GitHub", proficiency: "expert" },
+            { name: "Postman", proficiency: "expert" },
+            { name: "Swagger", proficiency: "proficient" },
+            { name: "Jenkins", proficiency: "learning" },
+            { name: "AWS (Basic)", proficiency: "learning" },
+        ],
+    },
 ];
+
+export const PROJECT_TAGS = ["All", "Backend", "Full-Stack", "CMS"];
 
 export const PROJECTS = [
     {
         id: 1,
-        name: "EduSync: School Management System",
-        problem: "Educational institutions lacked a centralized system for managing attendance, grading, and parent communication securely.",
+        name: "Imena NewsBox",
+        tag: "Full-Stack",
+        problem: "A Rwandan family needed a fast, modern platform for news, stories, and event updates.",
+        outcome: "Live production site serving real readers with Sanity CMS and a mobile-first React frontend.",
         features: [
-            "Role-Based Access Control (RBAC) (Admin, Teacher, Student, Parent)",
-            "Automated attendance tracking and analytics",
-            "Real-time gradebook and reporting engine",
-            "Secure file upload system for assignments"
+            "Dynamic content management for news categories",
+            "Social sharing and community engagement",
+            "Mobile-first reading experience",
+            "Real-time event updates",
         ],
-        tech: ["Spring Boot", "PostgreSQL", "React", "JWT", "Docker"],
-        image: "/projects/edusync.png",
-        github: "https://github.com/alexpierce/edusync",
-        demo: "https://backend-services-g3m2.onrender.com"
+        tech: ["React", "PostgreSQL", "Sanity CMS", "Tailwind CSS", "Vite"],
+        image: "/projects/imenanews.svg",
+        github: null,
+        demo: "https://www.imenanewsbox.rw/",
+        featured: true,
     },
     {
         id: 2,
-        name: "MediFlow: Hospital Management System",
-        problem: "Patient data silos and inefficient appointment scheduling leading to long wait times and data inconsistency.",
+        name: "EduSync: School Management System",
+        tag: "Backend",
+        problem: "Schools lacked a centralized system for attendance, grading, and parent communication.",
+        outcome: "Live backend deployed on Render — reduced API response latency by ~40% after schema and query optimization.",
         features: [
-            "Electronic Health Records (EHR) with high-level encryption",
-            "Intelligent appointment scheduling algorithm",
-            "Pharmacy inventory management with low-stock alerts",
-            "Billing and insurance claim processing"
+            "RBAC for Admin, Teacher, Student, and Parent roles",
+            "Automated attendance tracking and analytics",
+            "Real-time gradebook and reporting engine",
+            "Secure file upload for assignments",
         ],
-        tech: ["Node.js/NestJS", "MongoDB", "React", "Redis", "Swagger"],
-        image: "/projects/mediflow.png",
-        github: "https://github.com/alexpierce/mediflow",
-        demo: "https://mediflow-demo.com"
+        tech: ["Spring Boot", "PostgreSQL", "React", "JWT", "Docker"],
+        image: "/projects/edusync.svg",
+        github: "https://github.com/geofreykayin",
+        demo: "https://backend-services-g3m2.onrender.com",
+        featured: true,
     },
     {
         id: 3,
-        name: "Nexus: High-Performance Blog/CMS",
-        problem: "Generic CMS platforms were too bloated and lacked the performance needed for SEO-driven tech blogs.",
+        name: "Terrafund: Land Management System",
+        tag: "Full-Stack",
+        problem: "Land records were inconsistent with little transparency in ownership transfers.",
+        outcome: "GIS-integrated registry with role-based access and digital audit trails for plot management.",
         features: [
-            "Custom Markdown-to-HTML engine",
-            "Edge-cached content delivery via Redis",
-            "Dynamic SEO metadata generation",
-            "Multi-author workspace with approval workflows"
+            "GIS-based plot mapping with Leaflet",
+            "Secure ownership transfer with audit trails",
+            "Automated land valuation and tax calculation",
+            "Public registry portal",
         ],
-        tech: ["Next.js", "PostgreSQL", "Tailwind CSS", "OAuth2", "Prisma"],
-        image: "/projects/nexus.png",
-        github: "https://github.com/alexpierce/nexus-cms",
-        demo: "https://nexus-cms.com"
+        tech: ["Spring Boot", "PostgreSQL", "React", "JWT", "Leaflet"],
+        image: "/projects/terrafund.svg",
+        github: "https://github.com/geofreykayin",
+        demo: null,
+        featured: true,
     },
     {
         id: 4,
-        name: "SecureGate: Auth & Auth Framework",
-        problem: "Re-implementing secure auth in every project with inconsistent standards and security vulnerabilities.",
+        name: "SecureGate: Auth Framework",
+        tag: "Backend",
+        problem: "Repeated auth implementations led to inconsistent security across projects.",
+        outcome: "Reusable auth module with MFA, refresh token rotation, and audit logging.",
         features: [
-            "Multi-factor Authentication (MFA) via TOTP",
-            "Refresh Token Rotation strategy",
-            "Session management with Redis expiration",
-            "Security audit logging for all auth events"
+            "Multi-factor Authentication (TOTP)",
+            "Refresh token rotation",
+            "Redis-backed session expiration",
+            "Security audit logging",
         ],
         tech: ["Express", "Redis", "JWT", "Bcrypt", "Node.js"],
-        image: "/projects/securegate.png",
-        github: "https://github.com/alexpierce/securegate",
-        demo: null
+        image: "/projects/securegate.svg",
+        github: "https://github.com/geofreykayin",
+        demo: null,
+        featured: false,
     },
     {
         id: 5,
-        name: "Terrafund: Land Management System",
-        problem: "Inconsistent land record management and lack of transparency in land transactions and ownership.",
+        name: "MediFlow: Hospital Management System",
+        tag: "Full-Stack",
+        problem: "Patient data silos and inefficient appointment scheduling caused long wait times.",
+        outcome: "Full-stack hospital system with EHR, scheduling, pharmacy inventory, and billing modules.",
         features: [
-            "GIS-based plot mapping and visualization",
-            "Secure ownership transfer with digital audit trails",
-            "Automated land valuation and tax calculation",
-            "Public registry portal with verifiable credentials"
+            "Electronic Health Records with encryption",
+            "Appointment scheduling",
+            "Pharmacy inventory with low-stock alerts",
+            "Billing and insurance processing",
         ],
-        tech: ["Spring Boot", "PostgreSQL", "React", "JWT", "Leaflet"],
-        image: "/projects/terrafund.png",
-        github: "https://github.com/alexpierce/terrafund",
-        demo: null
+        tech: ["Node.js/NestJS", "MongoDB", "React", "Redis", "Swagger"],
+        image: "/projects/mediflow.svg",
+        github: "https://github.com/geofreykayin",
+        demo: null,
+        featured: false,
     },
     {
         id: 6,
-        name: "Imena NewsBox: Digital News Experience",
-        problem: "Need for a modern, high-performance platform for family news, stories, and event updates in Rwanda.",
+        name: "Nexus: High-Performance Blog/CMS",
+        tag: "CMS",
+        problem: "Generic CMS platforms were too bloated for SEO-driven tech blogs.",
+        outcome: "Custom Markdown engine with Redis edge caching and dynamic SEO metadata.",
         features: [
-            "Dynamic content management for various news categories",
-            "Social sharing and community engagement features",
-            "Optimized mobile-first reading experience",
-            "Real-time event updates and storytelling modules"
+            "Custom Markdown-to-HTML engine",
+            "Edge-cached content via Redis",
+            "Dynamic SEO metadata generation",
+            "Multi-author approval workflows",
         ],
-        tech: ["React", "PostgreSQL", "Sanity CMS", "Tailwind CSS", "Vite"],
-        image: "/projects/imenanews.png",
-        github: null,
-        demo: "https://www.imenanewsbox.rw/"
-    }
+        tech: ["Next.js", "PostgreSQL", "Tailwind CSS", "OAuth2", "Prisma"],
+        image: "/projects/nexus.svg",
+        github: "https://github.com/geofreykayin",
+        demo: null,
+        featured: false,
+    },
 ];
 
 export const EXPERIENCE = [
@@ -184,37 +220,60 @@ export const EXPERIENCE = [
         period: "2024 – Present",
         company: "Portfolio Projects & Freelance",
         role: "FULL-STACK & BACKEND DEVELOPER",
-        description: "Focusing on designing and implementing robust systems including land management, digital news platforms, and educational tools.",
+        description:
+            "Designing and implementing robust systems including land management, digital news platforms, and educational tools.",
         bullets: [
-            "Designed and implemented Terrafund, a Spring Boot–based land management system with GIS integration, role-based access, and secure audit trails.",
-            "Built and deployed Imena NewsBox, a high-performance digital news platform using React, Sanity CMS, and optimized REST APIs.",
-            "Optimized database schemas and API performance for the EduSync School Management System, reducing response latency by approximately 40%.",
-            "Developed data-driven dashboards and reporting engines, enabling real-time insights for administrators and stakeholders."
+            "Designed Terrafund, a Spring Boot land management system with GIS integration, RBAC, and secure audit trails.",
+            "Built and deployed Imena NewsBox, a production news platform using React, Sanity CMS, and optimized REST APIs.",
+            "Optimized EduSync database schemas and API performance, reducing response latency by ~40%.",
+            "Developed data-driven dashboards and reporting engines for real-time administrator insights.",
         ],
-        tech: ["Java", "Spring Boot", "React", "REST APIs", "PostgreSQL", "GIS", "JWT", "Git"]
+        tech: ["Java", "Spring Boot", "React", "REST APIs", "PostgreSQL", "GIS", "JWT", "Git"],
     },
     {
         period: "2022 – 2024",
         company: "Rwanda Coding Academy",
         role: "FULL-STACK DEVELOPER STUDENT",
-        description: "Engaged in professional software engineering training with a focus on core architecture and security standards.",
+        description:
+            "Professional software engineering training with focus on architecture, security, and collaborative development.",
         bullets: [
             "Developed scalable backend services using Clean Architecture and Microservices principles.",
             "Implemented OAuth2 and JWT-based authentication across multiple student-led applications.",
-            "Collaborated in team environments using Git/GitHub workflows, code reviews, and CI/CD pipelines.",
-            "Applied software engineering best practices including modular design, API documentation, and secure coding standards."
+            "Collaborated using Git/GitHub workflows, code reviews, and CI/CD pipelines.",
+            "Applied modular design, API documentation, and secure coding standards.",
         ],
-        tech: ["Software Engineering", "Cybersecurity", "Embedded Systems"]
-    }
+        tech: ["Software Engineering", "Cybersecurity", "Embedded Systems"],
+    },
 ];
 
 export const EDUCATION = [
     {
         institution: "Rwanda Coding Academy",
         degree: "A1 Diploma in Software Engineering",
-        year: "Current",
-        focus: "Software Engineering, Cybersecurity, and Embedded Systems"
-    }
+        year: "2022 – Present",
+        focus: "Software Engineering, Cybersecurity, and Embedded Systems",
+    },
+];
+
+export const CERTIFICATIONS = [
+    {
+        name: "Software Engineering — Rwanda Coding Academy",
+        issuer: "Rwanda Coding Academy",
+        year: "In Progress",
+        credentialUrl: null,
+    },
+    {
+        name: "Cybersecurity Fundamentals",
+        issuer: "Rwanda Coding Academy",
+        year: "2023",
+        credentialUrl: null,
+    },
+    {
+        name: "Git & GitHub Version Control",
+        issuer: "Self-paced / Project-based",
+        year: "2023",
+        credentialUrl: "https://github.com/geofreykayin",
+    },
 ];
 
 export const TESTIMONIALS = [
@@ -222,24 +281,26 @@ export const TESTIMONIALS = [
         name: "Uwonkunda Mahinga Rodin",
         role: "Senior Backend Developer at RCA",
         text: "Working with Geofrey was an absolute pleasure. His technical skills and problem-solving abilities are exceptional. He delivered high-quality code and was always willing to go the extra mile.",
-        avatar: "UR"
+        avatar: "UR",
+        linkedin: null,
     },
     {
         name: "Nyumbayire Raurent",
         role: "CEO at Tech4Impact",
         text: "Geofrey is a talented developer who brings creativity and technical expertise to every project. His attention to detail and commitment to excellence make him a valuable team member.",
-        avatar: "NR"
+        avatar: "NR",
+        linkedin: null,
     },
     {
         name: "Rukundo Furaha Divin",
         role: "Co-Founder at BlinkTechnologiz",
         text: "I highly recommend Geofrey for any development project. He has a deep understanding of both frontend and backend technologies, and his work ethic is outstanding.",
-        avatar: "RD"
-    }
+        avatar: "RD",
+        linkedin: null,
+    },
 ];
 
 export const GITHUB_STATS = {
-    contributions: "1000+",
-    repositories: "30+",
-    profileUrl: "https://github.com/geofreykayin"
+    profileUrl: "https://github.com/geofreykayin",
+    username: "geofreykayin",
 };
