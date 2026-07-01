@@ -7,7 +7,7 @@ export const PROFILE = {
     photo: "/profile.png",
     email: "geofreykayin@gmail.com",
     phone: "+250 792 831 659",
-    github: "https://github.com/geofreykayin",
+    github: "https://github.com/Kayinamura-Karimba-Geofrey",
     linkedin: "https://linkedin.com/in/geofreykayin",
     resumeUrl: "/cv.pdf",
     openToWork: true,
@@ -102,7 +102,7 @@ export const SKILLS = [
     },
 ];
 
-export const PROJECT_TAGS = ["All", "Backend", "Full-Stack", "CMS"];
+export const PROJECT_TAGS = ["All", "Backend", "Full-Stack"];
 
 export const PROJECTS = [
     {
@@ -137,7 +137,7 @@ export const PROJECTS = [
         ],
         tech: ["Spring Boot", "PostgreSQL", "React", "JWT", "Docker"],
         image: "/projects/edusync.png",
-        github: "https://github.com/geofreykayin",
+        github: "https://github.com/Kayinamura-Karimba-Geofrey",
         demo: "https://backend-services-g3m2.onrender.com",
         featured: true,
     },
@@ -155,7 +155,7 @@ export const PROJECTS = [
         ],
         tech: ["Spring Boot", "PostgreSQL", "React", "JWT", "Leaflet"],
         image: "/projects/terrafund.png",
-        github: "https://github.com/geofreykayin",
+        github: "https://github.com/TerraFund/TerraFund-Backend",
         demo: null,
         featured: true,
     },
@@ -164,7 +164,7 @@ export const PROJECTS = [
         name: "SecureGate: Auth Framework",
         tag: "Backend",
         problem: "Repeated auth implementations led to inconsistent security across projects.",
-        outcome: "Reusable auth module with MFA, refresh token rotation, and audit logging.",
+        outcome: "Live payment & auth platform on Render with secure user authentication and session management.",
         features: [
             "Multi-factor Authentication (TOTP)",
             "Refresh token rotation",
@@ -173,8 +173,8 @@ export const PROJECTS = [
         ],
         tech: ["Express", "Redis", "JWT", "Bcrypt", "Node.js"],
         image: "/projects/securegate.png",
-        github: "https://github.com/geofreykayin",
-        demo: null,
+        github: "https://github.com/Kayinamura-Karimba-Geofrey",
+        demo: "https://vaultpay-djum.onrender.com",
         featured: false,
     },
     {
@@ -182,7 +182,7 @@ export const PROJECTS = [
         name: "MediFlow: Hospital Management System",
         tag: "Full-Stack",
         problem: "Patient data silos and inefficient appointment scheduling caused long wait times.",
-        outcome: "Full-stack hospital system with EHR, scheduling, pharmacy inventory, and billing modules.",
+        outcome: "Live hospital management platform on Render with EHR, scheduling, pharmacy inventory, and billing modules.",
         features: [
             "Electronic Health Records with encryption",
             "Appointment scheduling",
@@ -191,26 +191,26 @@ export const PROJECTS = [
         ],
         tech: ["Node.js/NestJS", "MongoDB", "React", "Redis", "Swagger"],
         image: "/projects/mediflow.png",
-        github: "https://github.com/geofreykayin",
-        demo: null,
+        github: "https://github.com/Kayinamura-Karimba-Geofrey",
+        demo: "https://mediconnect-pfqf.onrender.com",
         featured: false,
     },
     {
         id: 6,
-        name: "Nexus: High-Performance Blog/CMS",
-        tag: "CMS",
-        problem: "Generic CMS platforms were too bloated for SEO-driven tech blogs.",
-        outcome: "Custom Markdown engine with Redis edge caching and dynamic SEO metadata.",
+        name: "Ecommerce",
+        tag: "Full-Stack",
+        problem: "Businesses needed a secure, scalable online store with reliable checkout and inventory management.",
+        outcome: "Live e-commerce platform on Render with product catalog, cart, and order processing.",
         features: [
-            "Custom Markdown-to-HTML engine",
-            "Edge-cached content via Redis",
-            "Dynamic SEO metadata generation",
-            "Multi-author approval workflows",
+            "Product catalog and inventory management",
+            "Secure checkout and order processing",
+            "User authentication and role-based access",
+            "Admin dashboard for store management",
         ],
-        tech: ["Next.js", "PostgreSQL", "Tailwind CSS", "OAuth2", "Prisma"],
+        tech: ["Java", "Spring Boot", "PostgreSQL", "REST APIs", "React"],
         image: "/projects/nexus.png",
-        github: "https://github.com/geofreykayin",
-        demo: null,
+        github: "https://github.com/Kayinamura-Karimba-Geofrey",
+        demo: "https://ecommerce-ri9u.onrender.com",
         featured: false,
     },
 ];
@@ -272,7 +272,7 @@ export const CERTIFICATIONS = [
         name: "Git & GitHub Version Control",
         issuer: "Self-paced / Project-based",
         year: "2023",
-        credentialUrl: "https://github.com/geofreykayin",
+        credentialUrl: "https://github.com/Kayinamura-Karimba-Geofrey",
     },
 ];
 
@@ -301,6 +301,8 @@ export const TESTIMONIALS = [
 ];
 
 export const GITHUB_STATS = {
-    profileUrl: "https://github.com/geofreykayin",
-    username: "geofreykayin",
+    profileUrl: "https://github.com/Kayinamura-Karimba-Geofrey",
+    username: "Kayinamura-Karimba-Geofrey",
+    contributionGraphUrl:
+        "https://github-readme-activity-graph.vercel.app/graph?username=Kayinamura-Karimba-Geofrey&theme=react-dark&hide_border=true&bg_color=000000&color=6366f1&line=6366f1&point=ffffff&area=true",
 };
