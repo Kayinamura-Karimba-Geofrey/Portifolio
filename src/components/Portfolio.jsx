@@ -422,26 +422,37 @@ const GitHubActivity = () => {
     return (
         <div className="cyber-card p-6 h-full flex flex-col justify-between">
             <div className="corner-br"></div>
-            <div>
-                <div className="flex items-center space-x-3 mb-6 self-start w-full relative z-10">
+            <div className="flex-1">
+                <div className="flex items-center space-x-3 mb-4 self-start w-full relative z-10">
                     <Github size={20} className="text-white" />
-                    <h3 className="text-sm font-black uppercase tracking-[0.3em] text-white">GitHub Profile</h3>
+                    <h3 className="text-sm font-black uppercase tracking-[0.3em] text-white">GitHub Activity</h3>
                 </div>
 
-                <p className="text-[10px] text-slate-500 uppercase tracking-widest mb-8 self-start relative z-10">
-                    Live stats from @{GITHUB_STATS.username}
+                <p className="text-[10px] text-slate-500 uppercase tracking-widest mb-4 self-start relative z-10">
+                    @{GITHUB_STATS.username}
                 </p>
 
+                <a
+                    href={GITHUB_STATS.profileUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block mb-6 rounded-lg overflow-hidden border border-white/10 bg-black/40 hover:border-indigo-500/40 transition-colors relative z-10"
+                    aria-label="View GitHub contribution graph"
+                >
+                    <img
+                        src={GITHUB_STATS.contributionGraphUrl}
+                        alt="GitHub contribution activity graph"
+                        loading="lazy"
+                        className="w-full h-auto"
+                    />
+                </a>
+
                 {stats.loading ? (
-                    <div className="flex items-center justify-center py-12 text-slate-500" aria-live="polite">
-                        <Loader2 size={24} className="animate-spin" />
+                    <div className="flex items-center justify-center py-6 text-slate-500" aria-live="polite">
+                        <Loader2 size={20} className="animate-spin" />
                     </div>
-                ) : stats.error ? (
-                    <p className="text-sm text-slate-400 mb-8 relative z-10">
-                        Profile unavailable. Visit GitHub directly to see repositories and activity.
-                    </p>
-                ) : (
-                    <div className="grid grid-cols-2 gap-4 w-full mb-8 relative z-10">
+                ) : !stats.error && (
+                    <div className="grid grid-cols-2 gap-4 w-full mb-4 relative z-10">
                         <div className="bg-white/5 p-4 border border-white/5 flex flex-col items-center justify-center rounded-lg">
                             <span className="text-xl font-black text-white">{stats.repos}</span>
                             <span className="text-[8px] text-slate-500 uppercase tracking-widest mt-1 text-center leading-none">Public Repos</span>
@@ -458,7 +469,7 @@ const GitHubActivity = () => {
                 href={GITHUB_STATS.profileUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-4 bg-white text-black hover:bg-indigo-600 hover:text-white transition-all flex items-center justify-center rounded-lg group relative z-10"
+                className="w-full py-4 bg-white text-black hover:bg-indigo-600 hover:text-white transition-all flex items-center justify-center rounded-lg group relative z-10 mt-4"
             >
                 <Github size={16} className="mr-3 group-hover:scale-110 transition-transform" />
                 <span className="text-[10px] font-black uppercase tracking-[0.2em]">View GitHub Profile</span>
