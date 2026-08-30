@@ -104,7 +104,7 @@ const ProjectImage = ({ src, alt }) => {
 
 // --- Theme Hook ---
 const useTheme = () => {
-    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
 
     useEffect(() => {
         const root = window.document.documentElement;

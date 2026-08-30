@@ -7,6 +7,26 @@
     --electric-indigo: 99 102 241;
     --deep-slate: 2 6 23;
     --surface-slate: 15 23 42;
+
+    /* Light mode tokens */
+    --bg-primary:   #f8f9fc;
+    --bg-surface:   #ffffff;
+    --bg-card:      #f1f3f9;
+    --text-primary: #0f172a;
+    --text-muted:   #475569;
+    --text-dim:     #94a3b8;
+    --border-color: rgba(0, 0, 0, 0.08);
+  }
+
+  .dark {
+    /* Dark mode tokens */
+    --bg-primary:   #000000;
+    --bg-surface:   #000000;
+    --bg-card:      #000000;
+    --text-primary: #ffffff;
+    --text-muted:   #94a3b8;
+    --text-dim:     #64748b;
+    --border-color: rgba(255, 255, 255, 0.06);
   }
 
   html {
@@ -40,25 +60,98 @@
   }
 
   body {
-    @apply antialiased text-white bg-black transition-colors duration-500 overflow-x-hidden font-sans;
+    @apply antialiased transition-colors duration-500 overflow-x-hidden font-sans;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  .font-display {
+  h1, h2, h3, h4, h5, h6, .font-display {
     font-family: 'Spectral', serif !important;
   }
 
   .font-testimonial {
     font-family: 'Great Vibes', cursive !important;
   }
+}
 
-  .dark body {
-    @apply text-white bg-black;
+/* ════════════════════════════════
+   LIGHT MODE — global overrides
+   (dark mode stays untouched)
+════════════════════════════════ */
+
+html:not(.dark) {
+
+  /* Page & section backgrounds */
+  body,
+  .bg-black,
+  [class*="bg-black"] { background-color: var(--bg-primary) !important; }
+
+  /* Cards */
+  .cyber-card,
+  .premium-card { background-color: #ffffff !important; border-color: rgba(0,0,0,0.08) !important; }
+
+  /* Cyber-card corner lines */
+  .cyber-card::before, .cyber-card::after,
+  .cyber-card > .corner-br::before, .cyber-card > .corner-br::after {
+    border-color: rgba(0,0,0,0.25) !important;
+  }
+
+  /* Cyber header bars */
+  .cyber-header::before, .cyber-header::after {
+    background-color: #0f172a !important;
+  }
+  .cyber-header span { color: #0f172a !important; }
+
+  /* Text: white → dark */
+  .text-white   { color: var(--text-primary) !important; }
+  .text-slate-400 { color: var(--text-muted) !important; }
+  .text-slate-500 { color: var(--text-dim)   !important; }
+
+  /* Premium glass (navbar when scrolled) */
+  .premium-glass {
+    background: rgba(255,255,255,0.85) !important;
+    border-color: rgba(0,0,0,0.08) !important;
+    backdrop-filter: blur(24px) !important;
+  }
+
+  /* Indigo accent stays — only brighten slightly */
+  .text-indigo-400 { color: #4f46e5 !important; }
+  .text-indigo-500 { color: #4338ca !important; }
+
+  /* White surfaces → light gray */
+  .bg-white\/5   { background-color: rgba(0,0,0,0.04) !important; }
+  .bg-white\/10  { background-color: rgba(0,0,0,0.06) !important; }
+
+  /* Borders */
+  .border-white\/5  { border-color: rgba(0,0,0,0.06) !important; }
+  .border-white\/10 { border-color: rgba(0,0,0,0.10) !important; }
+  .border-white\/20 { border-color: rgba(0,0,0,0.14) !important; }
+
+  /* Stars — dimmer in light mode */
+  .stars::before, .stars::after {
+    opacity: 0.15 !important;
+  }
+
+  /* Scroll progress bar stays indigo */
+
+  /* Grid background */
+  .grid-background {
+    background-image:
+      linear-gradient(rgba(0,0,0,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.06) 1px, transparent 1px) !important;
+  }
+
+  /* Nav links */
+  nav a.text-slate-400 { color: #475569 !important; }
+  nav a:hover { color: #0f172a !important; }
+
+  /* Space background (hero) */
+  .space-background { background: #e8edf5 !important; }
+
+  /* Shooting stars — slightly more visible */
+  .shooting-star { background: #1e293b !important; }
+  .shooting-star::after {
+    background: linear-gradient(90deg, transparent, rgba(99,102,241,0.5), #6366f1) !important;
   }
 }
 
