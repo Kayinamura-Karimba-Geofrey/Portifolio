@@ -193,27 +193,44 @@ html:not(.dark) {
   }
 
   .text-gradient {
-    @apply text-white;
+    color: #ffffff;
   }
 
   .dark .text-gradient {
-    @apply text-white;
+    color: #ffffff;
   }
 
   .premium-glass {
-    @apply bg-white/5 backdrop-blur-2xl border border-white/10 shadow-premium;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1), 0 1px 4px 0 rgba(0,0,0,0.02);
   }
 
   .dark .premium-glass {
-    @apply bg-white/5 border-white/10 shadow-2xl;
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.1);
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
   }
 
   .premium-card {
-    @apply bg-black rounded-3xl border border-white/10 shadow-sm hover:shadow-xl hover:border-indigo-500/30 transition-all duration-700;
+    background-color: #000000;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: all 700ms;
+  }
+  .premium-card:hover {
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.15);
+    border-color: rgba(99,102,241,0.3);
   }
 
   .cyber-card {
-    @apply relative bg-black border border-white/5 p-8 transition-all duration-500;
+    position: relative;
+    background-color: #000000;
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 2rem;
+    transition: all 500ms;
   }
 
   .cyber-card::before,
@@ -287,7 +304,12 @@ html:not(.dark) {
   }
 
   .cyber-header span {
-    @apply text-[11px] font-display font-black uppercase tracking-[0.3em] text-white;
+    font-size: 11px;
+    font-family: 'Spectral', serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: #ffffff;
   }
 
   .mesh-gradient {
@@ -475,11 +497,13 @@ html:not(.dark) {
 }
 
 ::selection {
-  @apply bg-primary-500/20 text-primary-900;
+  background-color: rgba(14, 165, 233, 0.2);
+  color: #0c4a6e;
 }
 
 .dark ::selection {
-  @apply bg-primary-500/40 text-white;
+  background-color: rgba(14, 165, 233, 0.4);
+  color: #ffffff;
 }
 
 /* ════════════════════════════════
