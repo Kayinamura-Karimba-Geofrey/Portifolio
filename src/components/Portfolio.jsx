@@ -180,8 +180,7 @@ export const Navbar = () => {
                             </motion.button>
 
                             <motion.a
-                                href={PROFILE.resumeUrl}
-                                download
+                                href="#resume"
                                 whileHover={{ scale: 1.05, y: -2 }}
                                 whileTap={{ scale: 0.95 }}
                                 className="px-8 py-3.5 hidden lg:flex items-center space-x-3 bg-white text-black text-[11px] font-black uppercase tracking-[0.3em] rounded-xl hover:bg-indigo-500 hover:text-white transition-all shadow-2xl border border-white/10"
@@ -227,7 +226,7 @@ export const Navbar = () => {
                                 </motion.a>
                             ))}
                             <div className="pt-4 border-t border-white/5">
-                                <a href={PROFILE.resumeUrl} download className="w-full py-5 bg-white text-black text-center rounded-2xl font-black uppercase tracking-[0.3em] text-xs shadow-2xl block">View Resume</a>
+                                <a href="#resume" className="w-full py-5 bg-white text-black text-center rounded-2xl font-black uppercase tracking-[0.3em] text-xs shadow-2xl block">View Resume</a>
                             </div>
                         </div>
                     </motion.div>
@@ -338,8 +337,7 @@ export const Hero = () => {
                         Get in Touch
                     </motion.a>
                     <motion.a
-                        href={PROFILE.resumeUrl}
-                        download
+                        href="#resume"
                         whileHover={{ scale: 1.05, y: -2 }}
                         whileTap={{ scale: 0.95 }}
                         className="px-8 py-4 flex items-center gap-2 border border-white/20 text-white text-[11px] font-black uppercase tracking-[0.3em] rounded-xl hover:bg-white/10 transition-all"
