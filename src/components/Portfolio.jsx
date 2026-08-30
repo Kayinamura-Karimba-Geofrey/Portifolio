@@ -4,6 +4,15 @@ import { Link } from 'react-router-dom';
 import { Moon, Sun, Menu, X, Github, Linkedin, Mail, ExternalLink, Code2, Database, ShieldCheck, Terminal, GraduationCap, Briefcase, ChevronRight, Quote, Award, MapPin, Download, Loader2, ArrowUp } from 'lucide-react';
 import { PROFILE, SKILLS, PROJECTS, PROJECT_TAGS, EXPERIENCE, EDUCATION, TECH_STACK, TESTIMONIALS, GITHUB_STATS, CERTIFICATIONS, PROFICIENCY_LABELS } from '../constants/data';
 
+// --- Shooting Stars ---
+export const ShootingStars = () => (
+    <div className="shooting-stars-layer" aria-hidden="true">
+        {Array.from({ length: 12 }).map((_, i) => (
+            <div key={i} className="shooting-star" />
+        ))}
+    </div>
+);
+
 const proficiencyStyles = {
     expert: 'text-indigo-400 border-indigo-500/30 bg-indigo-500/10',
     proficient: 'text-white border-white/20 bg-white/5',

@@ -388,3 +388,74 @@
 .dark ::selection {
   @apply bg-primary-500/40 text-white;
 }
+
+/* ════════════════════════════════
+   SHOOTING STARS
+════════════════════════════════ */
+
+.shooting-stars-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.shooting-star {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: white;
+  transform-origin: top left;
+  animation: shoot linear infinite;
+}
+
+/* The glowing trail */
+.shooting-star::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 120px;
+  height: 1.5px;
+  background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.6) 60%, white 100%);
+  transform: translateX(0) rotate(180deg);
+  transform-origin: right center;
+  border-radius: 100px;
+}
+
+@keyframes shoot {
+  0% {
+    transform: translateX(0) translateY(0) rotate(215deg);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(700px) translateY(700px) rotate(215deg);
+    opacity: 0;
+  }
+}
+
+/* Individual star positions & timing */
+.shooting-star:nth-child(1)  { top:  8%; left:  72%; animation-duration: 6s;   animation-delay: 0s;    width: 2px; }
+.shooting-star:nth-child(2)  { top:  3%; left:  20%; animation-duration: 9s;   animation-delay: 1.5s;  width: 1.5px; }
+.shooting-star:nth-child(3)  { top: 15%; left:  88%; animation-duration: 7s;   animation-delay: 0.8s;  width: 2px; }
+.shooting-star:nth-child(4)  { top:  1%; left:  44%; animation-duration: 10s;  animation-delay: 3s;    width: 1px; }
+.shooting-star:nth-child(5)  { top:  6%; left:  60%; animation-duration: 5.5s; animation-delay: 5s;    width: 2px; }
+.shooting-star:nth-child(6)  { top:  0%; left:  10%; animation-duration: 8s;   animation-delay: 2s;    width: 1.5px; }
+.shooting-star:nth-child(7)  { top: 20%; left:  95%; animation-duration: 6.5s; animation-delay: 4s;    width: 2px; }
+.shooting-star:nth-child(8)  { top:  4%; left:  35%; animation-duration: 11s;  animation-delay: 0.3s;  width: 1px; }
+.shooting-star:nth-child(9)  { top: 12%; left:  78%; animation-duration: 7.5s; animation-delay: 6s;    width: 2px; }
+.shooting-star:nth-child(10) { top:  2%; left:  55%; animation-duration: 9.5s; animation-delay: 1s;    width: 1.5px; }
+.shooting-star:nth-child(11) { top:  9%; left:  15%; animation-duration: 6s;   animation-delay: 7s;    width: 2px; }
+.shooting-star:nth-child(12) { top:  0%; left:  82%; animation-duration: 8.5s; animation-delay: 3.5s;  width: 1px; }
+
+/* Colour tints — subtle indigo/sky on a few stars */
+.shooting-star:nth-child(3)::after { background: linear-gradient(90deg, transparent, rgba(99,102,241,0.5), #818cf8); }
+.shooting-star:nth-child(7)::after { background: linear-gradient(90deg, transparent, rgba(56,189,248,0.4), #7dd3fc); }
+.shooting-star:nth-child(11)::after{ background: linear-gradient(90deg, transparent, rgba(167,139,250,0.4), #c4b5fd); }

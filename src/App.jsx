@@ -14,6 +14,7 @@ import {
     Footer,
     ScrollProgress,
     BackToTop,
+    ShootingStars,
 } from './components/Portfolio';
 import ResumePage from './pages/ResumePage';
 
@@ -47,10 +48,13 @@ function Portfolio() {
 
 function App() {
     return (
-        <Routes>
-            <Route path="/" element={<Portfolio />} />
-            <Route path="/resume" element={<ResumePage />} />
-        </Routes>
+        <>
+            <ShootingStars />
+            <Routes>
+                <Route path="/" element={<Portfolio />} />
+                <Route path="/resume" element={<ResumePage />} />
+            </Routes>
+        </>
     );
 }
 
