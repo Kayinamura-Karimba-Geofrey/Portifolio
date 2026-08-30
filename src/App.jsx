@@ -1,4 +1,5 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 import {
     Navbar,
     Hero,
@@ -14,9 +15,9 @@ import {
     ScrollProgress,
     BackToTop,
 } from './components/Portfolio';
-import Resume from './components/Resume';
+import ResumePage from './pages/ResumePage';
 
-function App() {
+function Portfolio() {
     return (
         <div className="min-h-screen bg-black transition-colors duration-500 grain-overlay">
             <ScrollProgress />
@@ -35,13 +36,21 @@ function App() {
                 <ProfessionalExperience />
                 <Education />
                 <Certifications />
-                <Resume />
                 <Testimonials />
                 <Contact />
             </main>
             <Footer />
             <BackToTop />
         </div>
+    );
+}
+
+function App() {
+    return (
+        <Routes>
+            <Route path="/" element={<Portfolio />} />
+            <Route path="/resume" element={<ResumePage />} />
+        </Routes>
     );
 }
 

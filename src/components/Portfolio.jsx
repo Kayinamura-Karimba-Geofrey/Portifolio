@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Moon, Sun, Menu, X, Github, Linkedin, Mail, ExternalLink, Code2, Database, ShieldCheck, Terminal, GraduationCap, Briefcase, ChevronRight, Quote, Award, MapPin, Download, Loader2, ArrowUp } from 'lucide-react';
 import { PROFILE, SKILLS, PROJECTS, PROJECT_TAGS, EXPERIENCE, EDUCATION, TECH_STACK, TESTIMONIALS, GITHUB_STATS, CERTIFICATIONS, PROFICIENCY_LABELS } from '../constants/data';
 
@@ -127,7 +128,6 @@ export const Navbar = () => {
         { name: 'Projects', href: '#projects' },
         { name: 'Experience', href: '#experience' },
         { name: 'Education', href: '#education' },
-        { name: 'Resume', href: '#resume' },
         { name: 'Contact', href: '#contact' },
     ];
 
@@ -179,14 +179,19 @@ export const Navbar = () => {
                                 {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
                             </motion.button>
 
-                            <motion.a
-                                href="#resume"
-                                whileHover={{ scale: 1.05, y: -2 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="px-8 py-3.5 hidden lg:flex items-center space-x-3 bg-white text-black text-[11px] font-black uppercase tracking-[0.3em] rounded-xl hover:bg-indigo-500 hover:text-white transition-all shadow-2xl border border-white/10"
+                            <Link
+                                to="/resume"
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
-                                <span>View Resume</span>
-                            </motion.a>
+                                <motion.span
+                                    whileHover={{ scale: 1.05, y: -2 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className="px-8 py-3.5 hidden lg:flex items-center space-x-3 bg-white text-black text-[11px] font-black uppercase tracking-[0.3em] rounded-xl hover:bg-indigo-500 hover:text-white transition-all shadow-2xl border border-white/10"
+                                >
+                                    <span>View Resume</span>
+                                </motion.span>
+                            </Link>
                         </div>
                     </div>
 
@@ -226,7 +231,7 @@ export const Navbar = () => {
                                 </motion.a>
                             ))}
                             <div className="pt-4 border-t border-white/5">
-                                <a href="#resume" className="w-full py-5 bg-white text-black text-center rounded-2xl font-black uppercase tracking-[0.3em] text-xs shadow-2xl block">View Resume</a>
+                                <Link to="/resume" target="_blank" rel="noopener noreferrer" className="w-full py-5 bg-white text-black text-center rounded-2xl font-black uppercase tracking-[0.3em] text-xs shadow-2xl block">View Resume</Link>
                             </div>
                         </div>
                     </motion.div>
@@ -336,15 +341,16 @@ export const Hero = () => {
                     >
                         Get in Touch
                     </motion.a>
-                    <motion.a
-                        href="#resume"
-                        whileHover={{ scale: 1.05, y: -2 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="px-8 py-4 flex items-center gap-2 border border-white/20 text-white text-[11px] font-black uppercase tracking-[0.3em] rounded-xl hover:bg-white/10 transition-all"
-                    >
-                        <Download size={14} />
-                        Resume
-                    </motion.a>
+                    <Link to="/resume" target="_blank" rel="noopener noreferrer">
+                        <motion.span
+                            whileHover={{ scale: 1.05, y: -2 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="px-8 py-4 flex items-center gap-2 border border-white/20 text-white text-[11px] font-black uppercase tracking-[0.3em] rounded-xl hover:bg-white/10 transition-all"
+                        >
+                            <Download size={14} />
+                            Resume
+                        </motion.span>
+                    </Link>
                     <motion.a
                         href={`mailto:${PROFILE.email}`}
                         whileHover={{ scale: 1.05, y: -2 }}
