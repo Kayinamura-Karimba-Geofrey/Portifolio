@@ -11,11 +11,14 @@ import {
     Testimonials,
     Contact,
     Footer,
+    ScrollProgress,
+    BackToTop,
 } from './components/Portfolio';
 
 function App() {
     return (
         <div className="min-h-screen bg-black transition-colors duration-500 grain-overlay">
+            <ScrollProgress />
             <a
                 href="#main-content"
                 className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded-lg focus:text-sm focus:font-bold"
@@ -35,6 +38,7 @@ function App() {
                 <Contact />
             </main>
             <Footer />
+            <BackToTop />
         </div>
     );
 }
