@@ -397,8 +397,9 @@
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 0;
+  z-index: 9;
   overflow: hidden;
+  mix-blend-mode: screen;
 }
 
 .shooting-star {
