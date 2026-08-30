@@ -14,6 +14,7 @@ import {
     ScrollProgress,
     BackToTop,
 } from './components/Portfolio';
+import Resume from './components/Resume';
 
 function App() {
     return (
@@ -34,6 +35,7 @@ function App() {
                 <ProfessionalExperience />
                 <Education />
                 <Certifications />
+                <Resume />
                 <Testimonials />
                 <Contact />
             </main>
